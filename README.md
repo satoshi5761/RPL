@@ -1,6 +1,4 @@
 # RPL
-### Periode	Semester GENAP 2024/2025 <br>
-
 #### Pengajar	
 Budi Susanto, S.Kom., M.T <br>
 
@@ -11,3 +9,5 @@ Budi Susanto, S.Kom., M.T <br>
 |14 | 71230975 | Thomas Aquinas Ryan Wisnu Adi | 
 |32 | 71231002 | Philip Deric Kho |
 |46 | 71231050 | Samuel Natanael |
+
+> 3 Februari 2025
