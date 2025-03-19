@@ -15,11 +15,19 @@ action[name="Halaman Registrasi"] {
   background-color: rgba(51, 209, 122, 1.0);
 }
 
-action[name="Halaman Utama"] {
+action[name="Tampilkan Halaman Utama"] {
   background-color: rgba(51, 209, 122, 1.0);
 }
 
 action[name="Tampilkan Daftar Kategori"] {
+  background-color: rgba(51, 209, 122, 1.0);
+}
+
+action[name="Tambah Kategori"] {
+  background-color: rgba(51, 209, 122, 1.0);
+}
+
+action[name="Tambah Tugas"] {
   background-color: rgba(51, 209, 122, 1.0);
 }
 
@@ -72,14 +80,9 @@ action[name = "Kelola Kategori"] {
 <ref refid="65acfdd4-0318-11f0-8f5d-b508d8d2d21c"/>
 <ref refid="93ffe503-0318-11f0-ad59-b508d8d2d21c"/>
 <ref refid="c6c9cd12-0319-11f0-a1e4-b508d8d2d21c"/>
-<ref refid="a2e9eb3d-031a-11f0-bd1e-b508d8d2d21c"/>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
-<ref refid="75d7238d-031b-11f0-9307-b508d8d2d21c"/>
-<ref refid="776538d4-031b-11f0-b527-b508d8d2d21c"/>
-<ref refid="78c6f801-031b-11f0-b9ad-b508d8d2d21c"/>
 <ref refid="7b93c025-031b-11f0-8d5a-b508d8d2d21c"/>
 <ref refid="ad85812e-031e-11f0-8be3-b508d8d2d21c"/>
-<ref refid="6c4b3b29-031f-11f0-9468-b508d8d2d21c"/>
 <ref refid="9c155940-031f-11f0-9404-b508d8d2d21c"/>
 <ref refid="ee6ea153-031f-11f0-838b-b508d8d2d21c"/>
 <ref refid="0cb007c3-0320-11f0-ab08-b508d8d2d21c"/>
@@ -112,19 +115,14 @@ action[name = "Kelola Kategori"] {
 <ref refid="4a306f45-0319-11f0-bb8d-b508d8d2d21c"/>
 <ref refid="cd3685b3-0319-11f0-9d6f-b508d8d2d21c"/>
 <ref refid="fb13ac46-0319-11f0-93ce-b508d8d2d21c"/>
-<ref refid="ad519803-031a-11f0-8249-b508d8d2d21c"/>
 <ref refid="6bc7cef6-031b-11f0-b7d6-b508d8d2d21c"/>
-<ref refid="857acb3d-031b-11f0-b612-b508d8d2d21c"/>
 <ref refid="8771de46-031b-11f0-aba3-b508d8d2d21c"/>
 <ref refid="8919ff7d-031b-11f0-9b7d-b508d8d2d21c"/>
 <ref refid="8d5a764f-031b-11f0-bf56-b508d8d2d21c"/>
 <ref refid="c4d1003d-031e-11f0-a33a-b508d8d2d21c"/>
 <ref refid="d36a96f1-031f-11f0-b437-b508d8d2d21c"/>
-<ref refid="dfaf72c0-031f-11f0-b7ee-b508d8d2d21c"/>
 <ref refid="f06f530e-031f-11f0-9fcd-b508d8d2d21c"/>
-<ref refid="f1f93456-031f-11f0-9b92-b508d8d2d21c"/>
 <ref refid="f3415c22-031f-11f0-b763-b508d8d2d21c"/>
-<ref refid="f4a0e590-031f-11f0-a712-b508d8d2d21c"/>
 <ref refid="f5929921-031f-11f0-94ea-b508d8d2d21c"/>
 <ref refid="f70498b9-031f-11f0-afae-b508d8d2d21c"/>
 <ref refid="fbb3bd8a-031f-11f0-a71c-b508d8d2d21c"/>
@@ -140,6 +138,15 @@ action[name = "Kelola Kategori"] {
 <ref refid="a0f95f71-0417-11f0-bda1-d8c4974f8672"/>
 <ref refid="a4cc4d02-0417-11f0-bf37-d8c4974f8672"/>
 <ref refid="dfb3514c-0417-11f0-af12-d8c4974f8672"/>
+<ref refid="cbfa8986-04b1-11f0-b05f-d8c4974f8672"/>
+<ref refid="d00f85b4-04b1-11f0-9647-d8c4974f8672"/>
+<ref refid="d8f54f34-04b1-11f0-aa22-d8c4974f8672"/>
+<ref refid="db5efe70-04b1-11f0-9e7e-d8c4974f8672"/>
+<ref refid="dde124d0-04b1-11f0-a99f-d8c4974f8672"/>
+<ref refid="f4569637-04b1-11f0-a389-d8c4974f8672"/>
+<ref refid="f6118d0e-04b1-11f0-a4ad-d8c4974f8672"/>
+<ref refid="f856c98c-04b1-11f0-a742-d8c4974f8672"/>
+<ref refid="faa5a3b9-04b1-11f0-a430-d8c4974f8672"/>
 </reflist>
 </ownedPresentation>
 </UML:Diagram>
@@ -162,7 +169,7 @@ action[name = "Kelola Kategori"] {
 </UML:InitialNode>
 <UML:InitialNodeItem id="4d289e4a-0312-11f0-acad-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 108.43473811044056, 289.0000000000001)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 108.43473811044055, 289.00000000000006)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -190,20 +197,11 @@ action[name = "Kelola Kategori"] {
 <ref refid="714b9355-0318-11f0-bf53-b508d8d2d21c"/>
 <ref refid="95404d05-0318-11f0-af88-b508d8d2d21c"/>
 <ref refid="400c68dc-0319-11f0-b16d-b508d8d2d21c"/>
-<ref refid="6c9c035d-031b-11f0-a00d-b508d8d2d21c"/>
-<ref refid="8645a31b-031b-11f0-9658-b508d8d2d21c"/>
-<ref refid="87e37d54-031b-11f0-8edc-b508d8d2d21c"/>
 <ref refid="89b6d4c0-031b-11f0-87a3-b508d8d2d21c"/>
-<ref refid="8de54171-031b-11f0-a79d-b508d8d2d21c"/>
 <ref refid="c5c245e5-031e-11f0-a978-b508d8d2d21c"/>
 <ref refid="d448ba56-031f-11f0-8c93-b508d8d2d21c"/>
-<ref refid="e03dde30-031f-11f0-8560-b508d8d2d21c"/>
 <ref refid="f11a825e-031f-11f0-9bc7-b508d8d2d21c"/>
-<ref refid="f2aeb1c7-031f-11f0-a4b6-b508d8d2d21c"/>
-<ref refid="f4281526-031f-11f0-ae30-b508d8d2d21c"/>
-<ref refid="f52c84b1-031f-11f0-8e89-b508d8d2d21c"/>
 <ref refid="f6766933-031f-11f0-9cfd-b508d8d2d21c"/>
-<ref refid="f7a2cbe5-031f-11f0-b2b9-b508d8d2d21c"/>
 <ref refid="fc84b259-031f-11f0-b647-b508d8d2d21c"/>
 <ref refid="146086fd-0320-11f0-a41a-b508d8d2d21c"/>
 <ref refid="8fe8b1aa-0320-11f0-8476-b508d8d2d21c"/>
@@ -216,6 +214,20 @@ action[name = "Kelola Kategori"] {
 <ref refid="bd657ca6-0417-11f0-a461-d8c4974f8672"/>
 <ref refid="c06b40ea-0417-11f0-b874-d8c4974f8672"/>
 <ref refid="e269c4a6-0417-11f0-8462-d8c4974f8672"/>
+<ref refid="086c552b-04af-11f0-bc0c-d8c4974f8672"/>
+<ref refid="313b0199-04af-11f0-8afd-d8c4974f8672"/>
+<ref refid="33297b00-04af-11f0-8539-d8c4974f8672"/>
+<ref refid="21b55768-04b1-11f0-a9cc-d8c4974f8672"/>
+<ref refid="231fe12a-04b1-11f0-bc89-d8c4974f8672"/>
+<ref refid="cca2bbd6-04b1-11f0-8aff-d8c4974f8672"/>
+<ref refid="d0c5200a-04b1-11f0-87d6-d8c4974f8672"/>
+<ref refid="d9e55da0-04b1-11f0-80f8-d8c4974f8672"/>
+<ref refid="dc960328-04b1-11f0-aede-d8c4974f8672"/>
+<ref refid="ded9eb19-04b1-11f0-bbac-d8c4974f8672"/>
+<ref refid="f4e04498-04b1-11f0-9763-d8c4974f8672"/>
+<ref refid="f6eab3f9-04b1-11f0-9958-d8c4974f8672"/>
+<ref refid="f90ebb35-04b1-11f0-a143-d8c4974f8672"/>
+<ref refid="fb6ed692-04b1-11f0-ade3-d8c4974f8672"/>
 </reflist>
 </edge>
 <name>
@@ -232,14 +244,9 @@ action[name = "Kelola Kategori"] {
 <ref refid="65abf577-0318-11f0-bae7-b508d8d2d21c"/>
 <ref refid="93ff2ba3-0318-11f0-801d-b508d8d2d21c"/>
 <ref refid="c6c95882-0319-11f0-ba8b-b508d8d2d21c"/>
-<ref refid="a2e93c71-031a-11f0-a2d2-b508d8d2d21c"/>
 <ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
-<ref refid="75d6512e-031b-11f0-b939-b508d8d2d21c"/>
-<ref refid="77648197-031b-11f0-9dc1-b508d8d2d21c"/>
-<ref refid="78c66af6-031b-11f0-9144-b508d8d2d21c"/>
 <ref refid="7b92ef2a-031b-11f0-9c83-b508d8d2d21c"/>
 <ref refid="ad84fd1b-031e-11f0-8bd0-b508d8d2d21c"/>
-<ref refid="6c4a7efa-031f-11f0-8c2a-b508d8d2d21c"/>
 <ref refid="9c14d870-031f-11f0-be19-b508d8d2d21c"/>
 <ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
 <ref refid="0caf66f5-0320-11f0-a651-b508d8d2d21c"/>
@@ -282,6 +289,9 @@ action[name = "Kelola Kategori"] {
 <name>
 <val>Halaman Login</val>
 </name>
+<note>
+<val>M.1.</val>
+</note>
 <outgoing>
 <reflist>
 <ref refid="b476d1f4-0315-11f0-a275-b508d8d2d21c"/>
@@ -330,7 +340,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 161.28640818660563, 482.21836260306054)</val>
 </matrix>
 <points>
-<val>[(-32.851670076165064, -183.21836260306043), (63.03292775467111, -183.2183626030606)]</val>
+<val>[(-32.851670076165064, -183.21836260306054), (63.03292775467111, -183.2183626030606)]</val>
 </points>
 <head-connection>
 <ref refid="4d289e4a-0312-11f0-acad-b508d8d2d21c"/>
@@ -378,7 +388,7 @@ action[name = "Kelola Kategori"] {
 </UML:DecisionNode>
 <UML:DecisionNodeItem id="9be3962b-0315-11f0-bce5-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 272.88705300205834, 417.2630102777768)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 276.73019792430574, 416.26030886131514)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -413,7 +423,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 279.75619653320746, 311.38509470011564)</val>
 </matrix>
 <points>
-<val>[(6.974001391098284, 17.641568212462175), (3.1308564688508795, 105.87791557766116)]</val>
+<val>[(6.974001391098284, 17.641568212462175), (6.974001391098284, 104.8752141611995)]</val>
 </points>
 <head-connection>
 <ref refid="2086edf8-0313-11f0-8024-b508d8d2d21c"/>
@@ -498,7 +508,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 281.5185802151699, 428.480239547792)</val>
 </matrix>
 <points>
-<val>[(11.368472786888447, 3.7827707299848043), (144.98496434072848, 2.7800693135231427)]</val>
+<val>[(15.21161770913585, 2.7800693135231427), (144.98496434072848, 2.7800693135231427)]</val>
 </points>
 <head-connection>
 <ref refid="9be3962b-0315-11f0-bce5-b508d8d2d21c"/>
@@ -541,6 +551,9 @@ action[name = "Kelola Kategori"] {
 <name>
 <val>Halaman Registrasi</val>
 </name>
+<note>
+<val>M.2.</val>
+</note>
 <presentation>
 <reflist>
 <ref refid="11207d7b-0316-11f0-86ce-b508d8d2d21c"/>
@@ -584,7 +597,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 209.14806322632194, 480.74261326880605)</val>
 </matrix>
 <points>
-<val>[(75.16386775942465, -33.47960299102931), (75.16386775942468, 38.623655546318446), (217.35548132957643, 38.62365554631856)]</val>
+<val>[(77.5821346979838, -34.482304407490915), (77.58213469798383, 38.62365554631856), (217.35548132957643, 38.62365554631856)]</val>
 </points>
 <head-connection>
 <ref refid="9be3962b-0315-11f0-bce5-b508d8d2d21c"/>
@@ -692,8 +705,16 @@ action[name = "Kelola Kategori"] {
 </reflist>
 </incoming>
 <name>
-<val>Halaman Utama</val>
+<val>Tampilkan Halaman Utama</val>
 </name>
+<note>
+<val>M.3.</val>
+</note>
+<outgoing>
+<reflist>
+<ref refid="086c552b-04af-11f0-bc0c-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="65acfdd4-0318-11f0-8f5d-b508d8d2d21c"/>
@@ -702,13 +723,13 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="65acfdd4-0318-11f0-8f5d-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 639.5845595741933, 318.94043847374587)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 647.6713902967682, 325.9404384737458)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>100.0</val>
+<val>139.0</val>
 </width>
 <height>
 <val>44.0</val>
@@ -737,7 +758,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 468.8981182120534, 330.61264616493213)</val>
 </matrix>
 <points>
-<val>[(11.39667538528829, 9.99402702885665), (170.68644136213993, 10.327792308813684)]</val>
+<val>[(11.39667538528829, 17.3277923088137), (178.7732720847149, 17.327792308813628)]</val>
 </points>
 <head-connection>
 <ref refid="56f5eeaa-0318-11f0-aec3-b508d8d2d21c"/>
@@ -779,10 +800,10 @@ action[name = "Kelola Kategori"] {
 <ref refid="95404d05-0318-11f0-af88-b508d8d2d21c"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 470.2947935973417, 330.9876168515985)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 471.5042543043922, 330.9876168515985)</val>
 </matrix>
 <points>
-<val>[(-1.806348892914798, 1.9528216221473258), (-0.6047303535252695, -93.58536927124291)]</val>
+<val>[(-1.2094607070504964, 1.9528216221473258), (-1.8141910605757516, -93.58536927124291)]</val>
 </points>
 <head-connection>
 <ref refid="56f5eeaa-0318-11f0-aec3-b508d8d2d21c"/>
@@ -811,7 +832,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="93ffe503-0318-11f0-ad59-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 426.5035445558983, 193.40224758035558)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 426.5035445558983, 193.40224758035563)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -836,6 +857,9 @@ action[name = "Kelola Kategori"] {
 <guard>
 <val>tidak berhasil</val>
 </guard>
+<name>
+<val></val>
+</name>
 <presentation>
 <reflist>
 <ref refid="814b1ec0-0318-11f0-bf9a-b508d8d2d21c"/>
@@ -878,7 +902,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 623.167971098733, 332.2820414312145)</val>
 </matrix>
 <points>
-<val>[(-187.5732205942685, -94.87979385085893), (-301.71320103589306, -63.3087043437925)]</val>
+<val>[(-196.6644265428347, -118.17474605197064), (-304.680503933025, -57.72644804863255)]</val>
 </points>
 <head-connection>
 <ref refid="93ffe503-0318-11f0-ad59-b508d8d2d21c"/>
@@ -899,7 +923,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="c6c9cd12-0319-11f0-a1e4-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 424.2947935973417, 675.74206344885)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 430.50354455589826, 674.2059513457846)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -931,7 +955,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 467.4985754874633, 530.7052802404698)</val>
 </matrix>
 <points>
-<val>[(0.0, 10.660988574654766), (-2.2087509585566067, 145.03678320838014)]</val>
+<val>[(9.004969068435017, 10.660988574654851), (9.004969068435031, 143.50067110531472)]</val>
 </points>
 <tail-connection>
 <ref refid="c6c9cd12-0319-11f0-a1e4-b508d8d2d21c"/>
@@ -951,68 +975,10 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 422.4952064740181, 610.9720173205039)</val>
 </matrix>
 <points>
-<val>[(1.7995871233235903, 75.09554161461517), (-198.1758705327414, 75.09554161461517), (-190.93566990280976, -281.9453544079261)]</val>
+<val>[(8.00833808188014, 73.55942951154975), (-190.93566990280976, 73.55942951154981), (-190.93566990280976, -281.9453544079261)]</val>
 </points>
 <head-connection>
 <ref refid="c6c9cd12-0319-11f0-a1e4-b508d8d2d21c"/>
-</head-connection>
-</UML:ObjectFlowItem>
-<UML:Action id="a2e93c71-031a-11f0-a2d2-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<name>
-<val>Menampilkan Daftar Tugas</val>
-</name>
-<outgoing>
-<reflist>
-<ref refid="6c9c035d-031b-11f0-a00d-b508d8d2d21c"/>
-</reflist>
-</outgoing>
-<presentation>
-<reflist>
-<ref refid="a2e9eb3d-031a-11f0-bd1e-b508d8d2d21c"/>
-</reflist>
-</presentation>
-</UML:Action>
-<UML:ActionItem id="a2e9eb3d-031a-11f0-bd1e-b508d8d2d21c">
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 815.61438285206, 309.60667319378865)</val>
-</matrix>
-<top-left>
-<val>(0.0, 0.0)</val>
-</top-left>
-<width>
-<val>105.0</val>
-</width>
-<height>
-<val>62.0</val>
-</height>
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<subject>
-<ref refid="a2e93c71-031a-11f0-a2d2-b508d8d2d21c"/>
-</subject>
-</UML:ActionItem>
-<UML:ObjectFlowItem id="ad519803-031a-11f0-8249-b508d8d2d21c">
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<horizontal>
-<val>0</val>
-</horizontal>
-<orthogonal>
-<val>0</val>
-</orthogonal>
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 736.1502841876588, 337.3290070776025)</val>
-</matrix>
-<points>
-<val>[(3.434275386534523, 0.0), (79.46409866440104, 0.0)]</val>
-</points>
-<head-connection>
-<ref refid="65acfdd4-0318-11f0-8f5d-b508d8d2d21c"/>
 </head-connection>
 </UML:ObjectFlowItem>
 <UML:DecisionNode id="63a8d04c-031b-11f0-810d-b508d8d2d21c">
@@ -1021,19 +987,17 @@ action[name = "Kelola Kategori"] {
 </activity>
 <incoming>
 <reflist>
-<ref refid="6c9c035d-031b-11f0-a00d-b508d8d2d21c"/>
+<ref refid="086c552b-04af-11f0-bc0c-d8c4974f8672"/>
 </reflist>
 </incoming>
 <outgoing>
 <reflist>
-<ref refid="8645a31b-031b-11f0-9658-b508d8d2d21c"/>
-<ref refid="87e37d54-031b-11f0-8edc-b508d8d2d21c"/>
 <ref refid="89b6d4c0-031b-11f0-87a3-b508d8d2d21c"/>
-<ref refid="8de54171-031b-11f0-a79d-b508d8d2d21c"/>
 <ref refid="c5c245e5-031e-11f0-a978-b508d8d2d21c"/>
 <ref refid="d448ba56-031f-11f0-8c93-b508d8d2d21c"/>
-<ref refid="e03dde30-031f-11f0-8560-b508d8d2d21c"/>
 <ref refid="146086fd-0320-11f0-a41a-b508d8d2d21c"/>
+<ref refid="313b0199-04af-11f0-8afd-d8c4974f8672"/>
+<ref refid="21b55768-04b1-11f0-a9cc-d8c4974f8672"/>
 </reflist>
 </outgoing>
 <presentation>
@@ -1044,7 +1008,7 @@ action[name = "Kelola Kategori"] {
 </UML:DecisionNode>
 <UML:DecisionNodeItem id="63a954fe-031b-11f0-8b29-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 992.2803873190801, 322.043826241689)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 994.4547569954817, 332.940438473746)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -1073,166 +1037,21 @@ action[name = "Kelola Kategori"] {
 <val>0</val>
 </orthogonal>
 <subject>
-<ref refid="6c9c035d-031b-11f0-a00d-b508d8d2d21c"/>
+<ref refid="086c552b-04af-11f0-bc0c-d8c4974f8672"/>
 </subject>
 <matrix>
 <val>(1.0, 0.0, 0.0, 1.0, 921.4919331358077, 335.8091246670742)</val>
 </matrix>
 <points>
-<val>[(-0.8775502837477234, 0.0), (70.78845418327239, -3.8966122320568957)]</val>
+<val>[(-134.8205428390395, 12.131313806671699), (72.96282385967402, 12.131313806671756)]</val>
 </points>
 <head-connection>
-<ref refid="a2e9eb3d-031a-11f0-bd1e-b508d8d2d21c"/>
+<ref refid="65acfdd4-0318-11f0-8f5d-b508d8d2d21c"/>
 </head-connection>
 <tail-connection>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
 </tail-connection>
 </UML:ObjectFlowItem>
-<UML:ObjectFlow id="6c9c035d-031b-11f0-a00d-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="6bc7cef6-031b-11f0-b7d6-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="a2e93c71-031a-11f0-a2d2-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
-<UML:Action id="75d6512e-031b-11f0-b939-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<incoming>
-<reflist>
-<ref refid="8645a31b-031b-11f0-9658-b508d8d2d21c"/>
-</reflist>
-</incoming>
-<name>
-<val>Membuat tugas baru</val>
-</name>
-<outgoing>
-<reflist>
-<ref refid="f2aeb1c7-031f-11f0-a4b6-b508d8d2d21c"/>
-</reflist>
-</outgoing>
-<presentation>
-<reflist>
-<ref refid="75d7238d-031b-11f0-9307-b508d8d2d21c"/>
-</reflist>
-</presentation>
-</UML:Action>
-<UML:ActionItem id="75d7238d-031b-11f0-9307-b508d8d2d21c">
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1086.4799999999996, 107.88615692759222)</val>
-</matrix>
-<top-left>
-<val>(0.0, 0.0)</val>
-</top-left>
-<width>
-<val>100.0</val>
-</width>
-<height>
-<val>44.0</val>
-</height>
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<subject>
-<ref refid="75d6512e-031b-11f0-b939-b508d8d2d21c"/>
-</subject>
-</UML:ActionItem>
-<UML:Action id="77648197-031b-11f0-9dc1-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<incoming>
-<reflist>
-<ref refid="8de54171-031b-11f0-a79d-b508d8d2d21c"/>
-</reflist>
-</incoming>
-<name>
-<val>Menampilkan Daftar Kategori</val>
-</name>
-<outgoing>
-<reflist>
-<ref refid="f7a2cbe5-031f-11f0-b2b9-b508d8d2d21c"/>
-</reflist>
-</outgoing>
-<presentation>
-<reflist>
-<ref refid="776538d4-031b-11f0-b527-b508d8d2d21c"/>
-</reflist>
-</presentation>
-</UML:Action>
-<UML:ActionItem id="776538d4-031b-11f0-b527-b508d8d2d21c">
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1102.1403444492814, 430.84785794657637)</val>
-</matrix>
-<top-left>
-<val>(0.0, 0.0)</val>
-</top-left>
-<width>
-<val>105.0</val>
-</width>
-<height>
-<val>62.0</val>
-</height>
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<subject>
-<ref refid="77648197-031b-11f0-9dc1-b508d8d2d21c"/>
-</subject>
-</UML:ActionItem>
-<UML:Action id="78c66af6-031b-11f0-9144-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<incoming>
-<reflist>
-<ref refid="87e37d54-031b-11f0-8edc-b508d8d2d21c"/>
-</reflist>
-</incoming>
-<name>
-<val>Mengedit tugas </val>
-</name>
-<outgoing>
-<reflist>
-<ref refid="f4281526-031f-11f0-ae30-b508d8d2d21c"/>
-</reflist>
-</outgoing>
-<presentation>
-<reflist>
-<ref refid="78c6f801-031b-11f0-b9ad-b508d8d2d21c"/>
-</reflist>
-</presentation>
-</UML:Action>
-<UML:ActionItem id="78c6f801-031b-11f0-b9ad-b508d8d2d21c">
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1095.2228845903778, 215.40224758035535)</val>
-</matrix>
-<top-left>
-<val>(0.0, 0.0)</val>
-</top-left>
-<width>
-<val>115.66034444928181</val>
-</width>
-<height>
-<val>44.0</val>
-</height>
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<subject>
-<ref refid="78c66af6-031b-11f0-9144-b508d8d2d21c"/>
-</subject>
-</UML:ActionItem>
 <UML:Action id="7b92ef2a-031b-11f0-9c83-b508d8d2d21c">
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
@@ -1258,13 +1077,13 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="7b93c025-031b-11f0-8d5a-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1102.1403444492814, 352.0438262416889)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1103.0530568150193, 325.6552576378323)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>100.0</val>
+<val>115.99999999999972</val>
 </width>
 <height>
 <val>44.0</val>
@@ -1276,51 +1095,6 @@ action[name = "Kelola Kategori"] {
 <ref refid="7b92ef2a-031b-11f0-9c83-b508d8d2d21c"/>
 </subject>
 </UML:ActionItem>
-<UML:ObjectFlowItem id="857acb3d-031b-11f0-b612-b508d8d2d21c">
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<horizontal>
-<val>0</val>
-</horizontal>
-<orthogonal>
-<val>0</val>
-</orthogonal>
-<subject>
-<ref refid="8645a31b-031b-11f0-9658-b508d8d2d21c"/>
-</subject>
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1008.7199999999997, 323.57525763783235)</val>
-</matrix>
-<points>
-<val>[(-5.759530768673699, -1.5314313961434323), (93.42034444928174, -171.6891007102402)]</val>
-</points>
-<head-connection>
-<ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
-</head-connection>
-<tail-connection>
-<ref refid="75d7238d-031b-11f0-9307-b508d8d2d21c"/>
-</tail-connection>
-</UML:ObjectFlowItem>
-<UML:ObjectFlow id="8645a31b-031b-11f0-9658-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<guard>
-<val></val>
-</guard>
-<presentation>
-<reflist>
-<ref refid="857acb3d-031b-11f0-b612-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="75d6512e-031b-11f0-b939-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
 <UML:ObjectFlowItem id="8771de46-031b-11f0-aba3-b508d8d2d21c">
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1332,37 +1106,21 @@ action[name = "Kelola Kategori"] {
 <val>0</val>
 </orthogonal>
 <subject>
-<ref refid="87e37d54-031b-11f0-8edc-b508d8d2d21c"/>
+<ref refid="21b55768-04b1-11f0-a9cc-d8c4974f8672"/>
 </subject>
 <matrix>
 <val>(1.0, 0.0, 0.0, 1.0, 1013.0399999999996, 333.6552576378323)</val>
 </matrix>
 <points>
-<val>[(-0.7596126809195312, 3.1033877679430475), (82.1828845903782, -96.25301005747693)]</val>
+<val>[(1.4147569954820938, 14.0), (90.01305681501947, -62.7149708183332)]</val>
 </points>
 <head-connection>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
 </head-connection>
 <tail-connection>
-<ref refid="78c6f801-031b-11f0-b9ad-b508d8d2d21c"/>
+<ref refid="63a0096a-0415-11f0-aaa1-d8c4974f8672"/>
 </tail-connection>
 </UML:ObjectFlowItem>
-<UML:ObjectFlow id="87e37d54-031b-11f0-8edc-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="8771de46-031b-11f0-aba3-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="78c66af6-031b-11f0-9144-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
 <UML:ObjectFlowItem id="8919ff7d-031b-11f0-9b7d-b508d8d2d21c">
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1380,7 +1138,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 1009.4399999999997, 343.0152576378323)</val>
 </matrix>
 <points>
-<val>[(2.840387319080378, -2.5828627922867327), (92.70034444928172, 31.02856860385674)]</val>
+<val>[(5.014756995482003, 4.639999999999986), (93.61305681501688, 4.6400000000001)]</val>
 </points>
 <head-connection>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
@@ -1393,6 +1151,9 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<guard>
+<val>Status</val>
+</guard>
 <presentation>
 <reflist>
 <ref refid="8919ff7d-031b-11f0-9b7d-b508d8d2d21c"/>
@@ -1416,37 +1177,21 @@ action[name = "Kelola Kategori"] {
 <val>0</val>
 </orthogonal>
 <subject>
-<ref refid="8de54171-031b-11f0-a79d-b508d8d2d21c"/>
+<ref refid="313b0199-04af-11f0-8afd-d8c4974f8672"/>
 </subject>
 <matrix>
 <val>(1.0, 0.0, 0.0, 1.0, 1008.4685313751003, 347.566082737913)</val>
 </matrix>
 <points>
-<val>[(-5.759530768673699, 4.477743503775912), (93.67181307418116, 103.98517979579663)]</val>
+<val>[(-3.585161092272074, 15.374355735832921), (94.58452543991814, 71.56141558280478)]</val>
 </points>
 <head-connection>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
 </head-connection>
 <tail-connection>
-<ref refid="776538d4-031b-11f0-b527-b508d8d2d21c"/>
+<ref refid="6a38720b-0415-11f0-b59c-d8c4974f8672"/>
 </tail-connection>
 </UML:ObjectFlowItem>
-<UML:ObjectFlow id="8de54171-031b-11f0-a79d-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="8d5a764f-031b-11f0-bf56-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="77648197-031b-11f0-9dc1-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
 <UML:Action id="ad84fd1b-031e-11f0-8bd0-b508d8d2d21c">
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
@@ -1472,13 +1217,13 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="ad85812e-031e-11f0-8be3-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1080.1830255621342, 12.625589396601523)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1104.8798880952543, 136.49867811007329)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>100.0</val>
+<val>112.34633743952836</val>
 </width>
 <height>
 <val>44.0</val>
@@ -1507,7 +1252,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 959.2669975259296, 299.0788739143114)</val>
 </matrix>
 <points>
-<val>[(42.71890044546808, 22.964952327377546), (120.91602803620458, -264.45328451770985)]</val>
+<val>[(44.893270121869705, 33.861564559434555), (145.61289056932537, -140.5801958042381)]</val>
 </points>
 <head-connection>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
@@ -1521,7 +1266,7 @@ action[name = "Kelola Kategori"] {
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
 <guard>
-<val></val>
+<val>Mencari</val>
 </guard>
 <name>
 <val></val>
@@ -1541,49 +1286,6 @@ action[name = "Kelola Kategori"] {
 <ref refid="ad84fd1b-031e-11f0-8bd0-b508d8d2d21c"/>
 </target>
 </UML:ObjectFlow>
-<UML:Action id="6c4a7efa-031f-11f0-8c2a-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<incoming>
-<reflist>
-<ref refid="e03dde30-031f-11f0-8560-b508d8d2d21c"/>
-</reflist>
-</incoming>
-<name>
-<val>Menghapus Tugas</val>
-</name>
-<outgoing>
-<reflist>
-<ref refid="f52c84b1-031f-11f0-8e89-b508d8d2d21c"/>
-</reflist>
-</outgoing>
-<presentation>
-<reflist>
-<ref refid="6c4b3b29-031f-11f0-9468-b508d8d2d21c"/>
-</reflist>
-</presentation>
-</UML:Action>
-<UML:ActionItem id="6c4b3b29-031f-11f0-9468-b508d8d2d21c">
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1100.2228845903776, 287.9125124350174)</val>
-</matrix>
-<top-left>
-<val>(0.0, 0.0)</val>
-</top-left>
-<width>
-<val>95.0</val>
-</width>
-<height>
-<val>44.0</val>
-</height>
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<subject>
-<ref refid="6c4a7efa-031f-11f0-8c2a-b508d8d2d21c"/>
-</subject>
-</UML:ActionItem>
 <UML:Action id="9c14d870-031f-11f0-be19-b508d8d2d21c">
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
@@ -1609,16 +1311,16 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="9c155940-031f-11f0-9404-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1102.1403444492814, 526.0597661960658)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1109.240566443417, 500.17116834828033)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
 </top-left>
 <width>
-<val>100.0</val>
+<val>116.00000000000065</val>
 </width>
 <height>
-<val>62.0</val>
+<val>63.27980063476559</val>
 </height>
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1644,7 +1346,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 998.8970440792829, 349.399134321247)</val>
 </matrix>
 <points>
-<val>[(0.0, 2.6446919204419714), (103.24330036999856, 198.14956605101935)]</val>
+<val>[(6.237794828444841, 13.54130415249898), (110.34352236413417, 172.7045416161232)]</val>
 </points>
 <head-connection>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
@@ -1657,6 +1359,9 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<guard>
+<val>Notifikasi</val>
+</guard>
 <presentation>
 <reflist>
 <ref refid="d36a96f1-031f-11f0-b437-b508d8d2d21c"/>
@@ -1669,48 +1374,6 @@ action[name = "Kelola Kategori"] {
 <ref refid="9c14d870-031f-11f0-be19-b508d8d2d21c"/>
 </target>
 </UML:ObjectFlow>
-<UML:ObjectFlowItem id="dfaf72c0-031f-11f0-b7ee-b508d8d2d21c">
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<horizontal>
-<val>0</val>
-</horizontal>
-<orthogonal>
-<val>0</val>
-</orthogonal>
-<subject>
-<ref refid="e03dde30-031f-11f0-8560-b508d8d2d21c"/>
-</subject>
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1010.2735386431539, 334.8068459626603)</val>
-</matrix>
-<points>
-<val>[(2.0068486759262214, 0.0), (89.94934594722372, -15.86640748891432)]</val>
-</points>
-<head-connection>
-<ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
-</head-connection>
-<tail-connection>
-<ref refid="6c4b3b29-031f-11f0-9468-b508d8d2d21c"/>
-</tail-connection>
-</UML:ObjectFlowItem>
-<UML:ObjectFlow id="e03dde30-031f-11f0-8560-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="dfaf72c0-031f-11f0-b7ee-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="6c4a7efa-031f-11f0-8c2a-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
 <UML:MergeNode id="ee6e3188-031f-11f0-b982-b508d8d2d21c">
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
@@ -1718,12 +1381,10 @@ action[name = "Kelola Kategori"] {
 <incoming>
 <reflist>
 <ref refid="f11a825e-031f-11f0-9bc7-b508d8d2d21c"/>
-<ref refid="f2aeb1c7-031f-11f0-a4b6-b508d8d2d21c"/>
-<ref refid="f4281526-031f-11f0-ae30-b508d8d2d21c"/>
-<ref refid="f52c84b1-031f-11f0-8e89-b508d8d2d21c"/>
 <ref refid="f6766933-031f-11f0-9cfd-b508d8d2d21c"/>
-<ref refid="f7a2cbe5-031f-11f0-b2b9-b508d8d2d21c"/>
 <ref refid="fc84b259-031f-11f0-b647-b508d8d2d21c"/>
+<ref refid="33297b00-04af-11f0-8539-d8c4974f8672"/>
+<ref refid="231fe12a-04b1-11f0-bc89-d8c4974f8672"/>
 </reflist>
 </incoming>
 <outgoing>
@@ -1771,10 +1432,10 @@ action[name = "Kelola Kategori"] {
 <ref refid="f11a825e-031f-11f0-9bc7-b508d8d2d21c"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1180.3028228485773, 43.447223182372)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1180.3028228485775, 43.447223182372)</val>
 </matrix>
 <points>
-<val>[(-0.11979728644314491, 0.0), (135.8408028341795, 291.35962278028825)]</val>
+<val>[(36.92340268620569, 115.05145492770131), (145.84080283417947, 289.7990611117189)]</val>
 </points>
 <head-connection>
 <ref refid="ad85812e-031e-11f0-8be3-b508d8d2d21c"/>
@@ -1799,48 +1460,6 @@ action[name = "Kelola Kategori"] {
 <ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
 </target>
 </UML:ObjectFlow>
-<UML:ObjectFlowItem id="f1f93456-031f-11f0-9b92-b508d8d2d21c">
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<horizontal>
-<val>0</val>
-</horizontal>
-<orthogonal>
-<val>0</val>
-</orthogonal>
-<subject>
-<ref refid="f2aeb1c7-031f-11f0-a4b6-b508d8d2d21c"/>
-</subject>
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1183.2391441090729, 139.97878462116168)</val>
-</matrix>
-<points>
-<val>[(3.240855890926696, 0.0), (132.90448157368405, 205.17544807712326)]</val>
-</points>
-<head-connection>
-<ref refid="75d7238d-031b-11f0-9307-b508d8d2d21c"/>
-</head-connection>
-<tail-connection>
-<ref refid="ee6ea153-031f-11f0-838b-b508d8d2d21c"/>
-</tail-connection>
-</UML:ObjectFlowItem>
-<UML:ObjectFlow id="f2aeb1c7-031f-11f0-a4b6-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="f1f93456-031f-11f0-9b92-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="75d6512e-031b-11f0-b939-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
 <UML:ObjectFlowItem id="f3415c22-031f-11f0-b763-b508d8d2d21c">
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1852,79 +1471,21 @@ action[name = "Kelola Kategori"] {
 <val>0</val>
 </orthogonal>
 <subject>
-<ref refid="f4281526-031f-11f0-ae30-b508d8d2d21c"/>
+<ref refid="231fe12a-04b1-11f0-bc89-d8c4974f8672"/>
 </subject>
 <matrix>
 <val>(1.0, 0.0, 0.0, 1.0, 1212.6023567140278, 249.35675157461912)</val>
 </matrix>
 <points>
-<val>[(-1.719127674368167, 0.0), (103.54126896872913, 98.88953271947184)]</val>
+<val>[(6.450700100991071, 21.583535244879954), (103.54126896872913, 98.88953271947184)]</val>
 </points>
 <head-connection>
-<ref refid="78c6f801-031b-11f0-b9ad-b508d8d2d21c"/>
+<ref refid="63a0096a-0415-11f0-aaa1-d8c4974f8672"/>
 </head-connection>
 <tail-connection>
 <ref refid="ee6ea153-031f-11f0-838b-b508d8d2d21c"/>
 </tail-connection>
 </UML:ObjectFlowItem>
-<UML:ObjectFlow id="f4281526-031f-11f0-ae30-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="f3415c22-031f-11f0-b763-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="78c66af6-031b-11f0-9144-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
-<UML:ObjectFlowItem id="f4a0e590-031f-11f0-a712-b508d8d2d21c">
-<diagram>
-<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
-</diagram>
-<horizontal>
-<val>0</val>
-</horizontal>
-<orthogonal>
-<val>0</val>
-</orthogonal>
-<subject>
-<ref refid="f52c84b1-031f-11f0-8e89-b508d8d2d21c"/>
-</subject>
-<matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1188.37770631494, 322.7647830870067)</val>
-</matrix>
-<points>
-<val>[(6.845178275437547, 0.0), (127.76591936781688, 22.389449611278224)]</val>
-</points>
-<head-connection>
-<ref refid="6c4b3b29-031f-11f0-9468-b508d8d2d21c"/>
-</head-connection>
-<tail-connection>
-<ref refid="ee6ea153-031f-11f0-838b-b508d8d2d21c"/>
-</tail-connection>
-</UML:ObjectFlowItem>
-<UML:ObjectFlow id="f52c84b1-031f-11f0-8e89-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="f4a0e590-031f-11f0-a712-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="6c4a7efa-031f-11f0-8c2a-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
 <UML:ObjectFlowItem id="f5929921-031f-11f0-94ea-b508d8d2d21c">
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -1942,7 +1503,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 1200.1229913569218, 367.1766421520012)</val>
 </matrix>
 <points>
-<val>[(2.017353092359599, 0.0), (116.02063432583509, -18.93035785791028)]</val>
+<val>[(18.930065458094532, -19.521384514168915), (116.02063432583509, -18.93035785791028)]</val>
 </points>
 <head-connection>
 <ref refid="7b93c025-031b-11f0-8d5a-b508d8d2d21c"/>
@@ -1978,37 +1539,21 @@ action[name = "Kelola Kategori"] {
 <val>0</val>
 </orthogonal>
 <subject>
-<ref refid="f7a2cbe5-031f-11f0-b2b9-b508d8d2d21c"/>
+<ref refid="33297b00-04af-11f0-8539-d8c4974f8672"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1199.0218708842363, 437.6483524038933)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1199.0218708842367, 437.6483524038932)</val>
 </matrix>
 <points>
-<val>[(3.8857283377237763, -6.800494457316859), (117.12175479852067, -85.60452616220442)]</val>
+<val>[(20.031185930782158, -20.27942166635711), (127.12175479852036, -74.40206810980231)]</val>
 </points>
 <head-connection>
-<ref refid="776538d4-031b-11f0-b527-b508d8d2d21c"/>
+<ref refid="6a38720b-0415-11f0-b59c-d8c4974f8672"/>
 </head-connection>
 <tail-connection>
 <ref refid="ee6ea153-031f-11f0-838b-b508d8d2d21c"/>
 </tail-connection>
 </UML:ObjectFlowItem>
-<UML:ObjectFlow id="f7a2cbe5-031f-11f0-b2b9-b508d8d2d21c">
-<activity>
-<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
-</activity>
-<presentation>
-<reflist>
-<ref refid="f70498b9-031f-11f0-afae-b508d8d2d21c"/>
-</reflist>
-</presentation>
-<source>
-<ref refid="77648197-031b-11f0-9dc1-b508d8d2d21c"/>
-</source>
-<target>
-<ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
-</target>
-</UML:ObjectFlow>
 <UML:ObjectFlowItem id="fbb3bd8a-031f-11f0-a71c-b508d8d2d21c">
 <diagram>
 <ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
@@ -2023,10 +1568,10 @@ action[name = "Kelola Kategori"] {
 <ref refid="fc84b259-031f-11f0-b647-b508d8d2d21c"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1175.5313008002722, 756.7137379962226)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1175.5313008002722, 757.1399011972762)</val>
 </matrix>
 <points>
-<val>[(26.60904364900921, -207.604270585368), (140.6123248824847, -400.6780763143577)]</val>
+<val>[(49.70926564314482, -233.44324095282252), (150.6123248824847, -393.8936169031853)]</val>
 </points>
 <head-connection>
 <ref refid="9c155940-031f-11f0-9404-b508d8d2d21c"/>
@@ -2103,10 +1648,10 @@ action[name = "Kelola Kategori"] {
 <ref refid="146086fd-0320-11f0-a41a-b508d8d2d21c"/>
 </subject>
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 995.6563674784936, 323.60200341237805)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 996.2453461738584, 323.60200341237805)</val>
 </matrix>
 <points>
-<val>[(0.0, -1.5581771706890777), (-95.0270045126747, -200.7158464847858)]</val>
+<val>[(8.638024108969859, 9.338435061367932), (-95.61598320803944, -200.7158464847858)]</val>
 </points>
 <head-connection>
 <ref refid="63a954fe-031b-11f0-8b29-b508d8d2d21c"/>
@@ -2119,6 +1664,9 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<guard>
+<val>Log out</val>
+</guard>
 <presentation>
 <reflist>
 <ref refid="13c73bfd-0320-11f0-a62d-b508d8d2d21c"/>
@@ -2168,7 +1716,7 @@ action[name = "Kelola Kategori"] {
 </UML:ActivityFinalNode>
 <UML:ActivityFinalNodeItem id="8ac1066a-0320-11f0-af9c-b508d8d2d21c">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1467.338290261042, 336.7586454057754)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1474.699464154159, 337.17664215200125)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -2203,7 +1751,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 1328.603663731264, 344.9673721005419)</val>
 </matrix>
 <points>
-<val>[(7.539961951492842, 0.0), (138.73462652977787, 3.6346166660523522)]</val>
+<val>[(7.539961951492842, 3.278912193549047), (146.09580042289485, 4.052613412278163)]</val>
 </points>
 <head-connection>
 <ref refid="ee6ea153-031f-11f0-838b-b508d8d2d21c"/>
@@ -2252,9 +1800,19 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="21b55768-04b1-11f0-a9cc-d8c4974f8672"/>
+</reflist>
+</incoming>
 <name>
-<val>Kelola Tugas</val>
+<val>Kelola Todo</val>
 </name>
+<outgoing>
+<reflist>
+<ref refid="231fe12a-04b1-11f0-bc89-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="63a0096a-0415-11f0-aaa1-d8c4974f8672"/>
@@ -2263,7 +1821,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="63a0096a-0415-11f0-aaa1-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 820.7394602760996, 465.54307959129983)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1103.053056815019, 249.35675157461918)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -2285,9 +1843,19 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="313b0199-04af-11f0-8afd-d8c4974f8672"/>
+</reflist>
+</incoming>
 <name>
 <val>Kelola Kategori</val>
 </name>
+<outgoing>
+<reflist>
+<ref refid="33297b00-04af-11f0-8539-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="6a38720b-0415-11f0-b59c-d8c4974f8672"/>
@@ -2296,7 +1864,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="6a38720b-0415-11f0-b59c-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 820.7394602760996, 520.7662084362835)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1103.0530568150184, 396.7688703586947)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -2326,6 +1894,9 @@ action[name = "Kelola Kategori"] {
 <name>
 <val>Tampilkan Daftar Kategori</val>
 </name>
+<note>
+<val>K.1.</val>
+</note>
 <outgoing>
 <reflist>
 <ref refid="d6104c68-0416-11f0-abef-d8c4974f8672"/>
@@ -2339,7 +1910,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="581fcd04-0416-11f0-9e6c-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 224.31933594127676, 1100.5029781784426)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 224.31933594127673, 1100.436339565072)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -2502,7 +2073,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 103.99916643494907, 1132.1349229320494)</val>
 </matrix>
 <points>
-<val>[(14.435571675491488, 1.5932357649062396), (120.32016950632769, 1.5932357649062396)]</val>
+<val>[(14.435571675491488, 1.5932357649062396), (120.32016950632769, 1.526597151535725)]</val>
 </points>
 <head-connection>
 <ref refid="5a97b565-0415-11f0-8cdc-d8c4974f8672"/>
@@ -2544,7 +2115,7 @@ action[name = "Kelola Kategori"] {
 <val>(1.0, 0.0, 0.0, 1.0, 360.1913982408007, 1132.9557677929952)</val>
 </matrix>
 <points>
-<val>[(0.5240084206301105, 0.0), (131.1666815368048, 0.0)]</val>
+<val>[(0.5240084206301105, -0.06663861337051458), (131.1666815368048, 0.0)]</val>
 </points>
 <head-connection>
 <ref refid="581fcd04-0416-11f0-9e6c-d8c4974f8672"/>
@@ -2683,6 +2254,11 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<outgoing>
+<reflist>
+<ref refid="cca2bbd6-04b1-11f0-8aff-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="43d9f640-0417-11f0-91ec-d8c4974f8672"/>
@@ -2908,6 +2484,9 @@ action[name = "Kelola Kategori"] {
 <name>
 <val>Tambah Kategori</val>
 </name>
+<note>
+<val>K.2.</val>
+</note>
 <outgoing>
 <reflist>
 <ref refid="c06b40ea-0417-11f0-b874-d8c4974f8672"/>
@@ -3001,9 +2580,19 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="cca2bbd6-04b1-11f0-8aff-d8c4974f8672"/>
+</reflist>
+</incoming>
 <name>
-<val>Tampilkan Daftar Tugas</val>
+<val>Tampilkan todo</val>
 </name>
+<outgoing>
+<reflist>
+<ref refid="d0c5200a-04b1-11f0-87d6-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="f9f283d3-0417-11f0-9f4b-d8c4974f8672"/>
@@ -3012,7 +2601,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="f9f283d3-0417-11f0-9f4b-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 224.31933594127676, 1466.0938688383926)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 219.33173762000314, 1466.0938688383926)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -3034,9 +2623,22 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="d9e55da0-04b1-11f0-80f8-d8c4974f8672"/>
+</reflist>
+</incoming>
 <name>
 <val>Tambah Tugas</val>
 </name>
+<note>
+<val>T.1.</val>
+</note>
+<outgoing>
+<reflist>
+<ref refid="f4e04498-04b1-11f0-9763-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="0ae00621-0418-11f0-ad2d-d8c4974f8672"/>
@@ -3045,7 +2647,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="0ae00621-0418-11f0-ad2d-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 740.6392041434506, 1372.1901266221703)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 742.6392041434508, 1372.1901266221703)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -3067,9 +2669,19 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="dc960328-04b1-11f0-aede-d8c4974f8672"/>
+</reflist>
+</incoming>
 <name>
 <val>Edit Tugas</val>
 </name>
+<outgoing>
+<reflist>
+<ref refid="f6eab3f9-04b1-11f0-9958-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="1e117c47-0418-11f0-8745-d8c4974f8672"/>
@@ -3078,7 +2690,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="1e117c47-0418-11f0-8745-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 740.6392041434506, 1467.2376785521803)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 742.6392041434507, 1476.3862014487452)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -3100,9 +2712,19 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="ded9eb19-04b1-11f0-bbac-d8c4974f8672"/>
+</reflist>
+</incoming>
 <name>
 <val>Hapus Tugas</val>
 </name>
+<outgoing>
+<reflist>
+<ref refid="f90ebb35-04b1-11f0-a143-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="2452f038-0418-11f0-9993-d8c4974f8672"/>
@@ -3111,7 +2733,7 @@ action[name = "Kelola Kategori"] {
 </UML:Action>
 <UML:ActionItem id="2452f038-0418-11f0-9993-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 742.6392041434507, 1568.2941814337219)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 744.6392041434509, 1574.2398760408335)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -3133,6 +2755,18 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="d0c5200a-04b1-11f0-87d6-d8c4974f8672"/>
+</reflist>
+</incoming>
+<outgoing>
+<reflist>
+<ref refid="d9e55da0-04b1-11f0-80f8-d8c4974f8672"/>
+<ref refid="dc960328-04b1-11f0-aede-d8c4974f8672"/>
+<ref refid="ded9eb19-04b1-11f0-bbac-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="42bb4cd3-0418-11f0-80b6-d8c4974f8672"/>
@@ -3141,7 +2775,7 @@ action[name = "Kelola Kategori"] {
 </UML:DecisionNode>
 <UML:DecisionNodeItem id="42bb4cd3-0418-11f0-80b6-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 509.7722176199584, 1489.7244933412485)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 509.77221761995844, 1483.3862014487452)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -3159,16 +2793,28 @@ action[name = "Kelola Kategori"] {
 <ref refid="42bafc39-0418-11f0-83f5-d8c4974f8672"/>
 </subject>
 </UML:DecisionNodeItem>
-<UML:DecisionNode id="45a73d52-0418-11f0-9b60-d8c4974f8672">
+<UML:MergeNode id="45a73d52-0418-11f0-9b60-d8c4974f8672">
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="f4e04498-04b1-11f0-9763-d8c4974f8672"/>
+<ref refid="f6eab3f9-04b1-11f0-9958-d8c4974f8672"/>
+<ref refid="f90ebb35-04b1-11f0-a143-d8c4974f8672"/>
+</reflist>
+</incoming>
+<outgoing>
+<reflist>
+<ref refid="fb6ed692-04b1-11f0-ade3-d8c4974f8672"/>
+</reflist>
+</outgoing>
 <presentation>
 <reflist>
 <ref refid="45a789a5-0418-11f0-90f4-d8c4974f8672"/>
 </reflist>
 </presentation>
-</UML:DecisionNode>
+</UML:MergeNode>
 <UML:DecisionNodeItem id="45a789a5-0418-11f0-90f4-d8c4974f8672">
 <matrix>
 <val>(1.0, 0.0, 0.0, 1.0, 1076.533652756997, 1488.136926296047)</val>
@@ -3193,6 +2839,11 @@ action[name = "Kelola Kategori"] {
 <activity>
 <ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
 </activity>
+<incoming>
+<reflist>
+<ref refid="fb6ed692-04b1-11f0-ade3-d8c4974f8672"/>
+</reflist>
+</incoming>
 <presentation>
 <reflist>
 <ref refid="474b87a0-0418-11f0-bb17-d8c4974f8672"/>
@@ -3201,7 +2852,7 @@ action[name = "Kelola Kategori"] {
 </UML:ActivityFinalNode>
 <UML:ActivityFinalNodeItem id="474b87a0-0418-11f0-bb17-d8c4974f8672">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, 1247.9908936387906, 1474.7244933412483)</val>
+<val>(1.0, 0.0, 0.0, 1.0, 1210.6809889648155, 1490.3862014487452)</val>
 </matrix>
 <top-left>
 <val>(0.0, 0.0)</val>
@@ -3233,6 +2884,470 @@ action[name = "Kelola Kategori"] {
 </source>
 <target>
 <ref refid="553a8c11-0417-11f0-bc30-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlow id="086c552b-04af-11f0-bc0c-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="6bc7cef6-031b-11f0-b7d6-b508d8d2d21c"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="65abf577-0318-11f0-bae7-b508d8d2d21c"/>
+</source>
+<target>
+<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlow id="313b0199-04af-11f0-8afd-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<guard>
+<val>Kategori</val>
+</guard>
+<presentation>
+<reflist>
+<ref refid="8d5a764f-031b-11f0-bf56-b508d8d2d21c"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
+</source>
+<target>
+<ref refid="6a3827ed-0415-11f0-b676-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlow id="33297b00-04af-11f0-8539-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="f70498b9-031f-11f0-afae-b508d8d2d21c"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="6a3827ed-0415-11f0-b676-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlow id="21b55768-04b1-11f0-a9cc-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<guard>
+<val>todo</val>
+</guard>
+<presentation>
+<reflist>
+<ref refid="8771de46-031b-11f0-aba3-b508d8d2d21c"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="63a8d04c-031b-11f0-810d-b508d8d2d21c"/>
+</source>
+<target>
+<ref refid="639fbf61-0415-11f0-b72c-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlow id="231fe12a-04b1-11f0-bc89-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="f3415c22-031f-11f0-b763-b508d8d2d21c"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="639fbf61-0415-11f0-b72c-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="ee6e3188-031f-11f0-b982-b508d8d2d21c"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="cbfa8986-04b1-11f0-b05f-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="cca2bbd6-04b1-11f0-8aff-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 99.67397478605794, 1498.386201448745)</val>
+</matrix>
+<points>
+<val>[(8.898357746440766, 0.0), (119.65776283394514, 0.0)]</val>
+</points>
+<head-connection>
+<ref refid="43d9f640-0417-11f0-91ec-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="f9f283d3-0417-11f0-9f4b-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="cca2bbd6-04b1-11f0-8aff-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="cbfa8986-04b1-11f0-b05f-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="43d99373-0417-11f0-90eb-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="f9f234eb-0417-11f0-b368-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="d00f85b4-04b1-11f0-9647-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="d0c5200a-04b1-11f0-87d6-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 361.02412682079904, 1495.3936424559806)</val>
+</matrix>
+<points>
+<val>[(-5.296318480641958, 2.992558992764316), (148.7480907991594, 2.9925589927642022)]</val>
+</points>
+<head-connection>
+<ref refid="f9f283d3-0417-11f0-9f4b-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="42bb4cd3-0418-11f0-80b6-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="d0c5200a-04b1-11f0-87d6-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="d00f85b4-04b1-11f0-9647-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="f9f234eb-0417-11f0-b368-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="42bafc39-0418-11f0-83f5-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="d8f54f34-04b1-11f0-aa22-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="d9e55da0-04b1-11f0-80f8-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 517.6347141087927, 1482.4258868206691)</val>
+</matrix>
+<points>
+<val>[(1.9950393285095345, 0.9603146280760484), (225.00449003465815, -88.23576019849878)]</val>
+</points>
+<head-connection>
+<ref refid="42bb4cd3-0418-11f0-80b6-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="0ae00621-0418-11f0-ad2d-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="d9e55da0-04b1-11f0-80f8-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="d8f54f34-04b1-11f0-aa22-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="42bafc39-0418-11f0-83f5-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="0adfaa4c-0418-11f0-8d9a-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="db5efe70-04b1-11f0-9e7e-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="dc960328-04b1-11f0-aede-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 526.6123910870854, 1494.8817571421735)</val>
+</matrix>
+<points>
+<val>[(3.159826532873069, 3.504444306571628), (216.0268130563653, 3.504444306571031)]</val>
+</points>
+<head-connection>
+<ref refid="42bb4cd3-0418-11f0-80b6-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="1e117c47-0418-11f0-8745-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="dc960328-04b1-11f0-aede-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="db5efe70-04b1-11f0-9e7e-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="42bafc39-0418-11f0-83f5-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="16563d32-0418-11f0-a14e-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="dde124d0-04b1-11f0-a99f-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="ded9eb19-04b1-11f0-bbac-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 519.6297534373022, 1511.3539570840564)</val>
+</matrix>
+<points>
+<val>[(0.0, 2.0322443646887223), (225.00945070614875, 84.88591895677723)]</val>
+</points>
+<head-connection>
+<ref refid="42bb4cd3-0418-11f0-80b6-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="2452f038-0418-11f0-9993-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="ded9eb19-04b1-11f0-bbac-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="dde124d0-04b1-11f0-a99f-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="42bafc39-0418-11f0-83f5-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="2452a024-0418-11f0-b0bf-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="f4569637-04b1-11f0-a389-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="f4e04498-04b1-11f0-9763-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 857.2393545067966, 1388.4199930104296)</val>
+</matrix>
+<points>
+<val>[(1.39984963665421, 5.770133611740789), (229.29429825020028, 99.71693328561742)]</val>
+</points>
+<head-connection>
+<ref refid="0ae00621-0418-11f0-ad2d-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="45a789a5-0418-11f0-90f4-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="f4e04498-04b1-11f0-9763-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="f4569637-04b1-11f0-a389-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="0adfaa4c-0418-11f0-8d9a-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="45a73d52-0418-11f0-9b60-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="f6118d0e-04b1-11f0-a4ad-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="f6eab3f9-04b1-11f0-9958-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 857.2393545067966, 1494.2533570170185)</val>
+</matrix>
+<points>
+<val>[(1.39984963665421, 4.132844431726596), (219.29429825020043, 8.883569279028507)]</val>
+</points>
+<head-connection>
+<ref refid="1e117c47-0418-11f0-8745-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="45a789a5-0418-11f0-90f4-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="f6eab3f9-04b1-11f0-9958-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="f6118d0e-04b1-11f0-a4ad-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="16563d32-0418-11f0-a14e-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="45a73d52-0418-11f0-9b60-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="f856c98c-04b1-11f0-a742-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="f90ebb35-04b1-11f0-a143-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 854.861076663952, 1591.7627485736507)</val>
+</matrix>
+<points>
+<val>[(3.7781274794989486, 4.477127467182868), (231.67257609304505, -73.62582227760367)]</val>
+</points>
+<head-connection>
+<ref refid="2452f038-0418-11f0-9993-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="45a789a5-0418-11f0-90f4-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="f90ebb35-04b1-11f0-a143-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="f856c98c-04b1-11f0-a742-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="2452a024-0418-11f0-b0bf-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="45a73d52-0418-11f0-9b60-d8c4974f8672"/>
+</target>
+</UML:ObjectFlow>
+<UML:ObjectFlowItem id="faa5a3b9-04b1-11f0-a430-d8c4974f8672">
+<diagram>
+<ref refid="58d6c536-66f8-11ec-b4c8-0456e5e540ed"/>
+</diagram>
+<horizontal>
+<val>0</val>
+</horizontal>
+<orthogonal>
+<val>0</val>
+</orthogonal>
+<subject>
+<ref refid="fb6ed692-04b1-11f0-ade3-d8c4974f8672"/>
+</subject>
+<matrix>
+<val>(1.0, 0.0, 0.0, 1.0, 1093.8779998698435, 1504.9556073098197)</val>
+</matrix>
+<points>
+<val>[(2.6556528871535647, 0.0), (116.80298909497196, 0.43059413892547127)]</val>
+</points>
+<head-connection>
+<ref refid="45a789a5-0418-11f0-90f4-d8c4974f8672"/>
+</head-connection>
+<tail-connection>
+<ref refid="474b87a0-0418-11f0-bb17-d8c4974f8672"/>
+</tail-connection>
+</UML:ObjectFlowItem>
+<UML:ObjectFlow id="fb6ed692-04b1-11f0-ade3-d8c4974f8672">
+<activity>
+<ref refid="4d292192-0312-11f0-919e-b508d8d2d21c"/>
+</activity>
+<presentation>
+<reflist>
+<ref refid="faa5a3b9-04b1-11f0-a430-d8c4974f8672"/>
+</reflist>
+</presentation>
+<source>
+<ref refid="45a73d52-0418-11f0-9b60-d8c4974f8672"/>
+</source>
+<target>
+<ref refid="474b31ac-0418-11f0-b4e0-d8c4974f8672"/>
 </target>
 </UML:ObjectFlow>
 </model>
