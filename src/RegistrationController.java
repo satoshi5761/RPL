@@ -1,9 +1,13 @@
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import java.io.IOException;
+
+import javax.swing.Action;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
@@ -24,12 +28,19 @@ public class RegistrationController {
     private Hyperlink login;
 
     @FXML
-    void ClickedMulai() {
+    public void ClickedMulai(ActionEvent e) {
+        /*
+         * User melakukan registrasi akun
+         */
         String name = name_input.getText();
         String pass = password_input.getText();
 
-        System.out.println(name);
-        System.out.println(pass);
+        if (name.trim() == "" || pass.trim() == "") {
+            // pesan error 
+        } else {
+            // into database
+            
+        }
     }
 
     Stage getStage(ActionEvent e) {
@@ -38,7 +49,7 @@ public class RegistrationController {
     }
 
     @FXML
-    void ClickedLoginDisini(ActionEvent e) throws IOException {
+    public void ClickedLoginDisini(ActionEvent e) throws IOException {
         /* User yang sudah memiliki akun */
         System.out.println("Login clicked");
 

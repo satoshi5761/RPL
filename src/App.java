@@ -1,4 +1,4 @@
-
+    
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,12 +16,14 @@ public class App extends Application {
 
             primaryStage.show();
         } catch (Exception e) {
+            e.printStackTrace();
             // TODO: handle exception
         }
 
     }
 
     public static void main(String[] args) {
+        System.out.println("Running ... ");
         launch(args);
     }
 }
