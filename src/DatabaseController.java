@@ -9,12 +9,46 @@ import java.sql.*;
  */
 
 public class DatabaseController {
-    private static Connection con;
+    private Connection con;
+
+    DatabaseController() throws Exception {
+        this.con = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
+        System.out.println("database connected");
+    }
+
+    public boolean register(String username, String passwd) {
+        String query = "INSERT INTO account (username, password) VALUES (?, ?);";
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+
+            stmt.setString(1, username);
+            stmt.setString(2, passwd);
+            
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Presumably, UNIQUE entry condition has been breached");
+            /* Note: NEED TO HANDLE THIS ON JAVAFX GUI POP UP */
+            return false;
+        }
+    }
+
+    public boolean login(String username, String passwd) throws SQLException{
+        String query = "SELECT (username, password) FROM account WHERE username=? AND password=?;";
+
+        PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setString(1, username);
+        stmt.setString(2, passwd);
+
+        ResultSet res = stmt.executeQuery();
+        return res.next();
+
+    }
 
     public static void main(String[] args) throws Exception {
 
-        Connection con = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
-        System.out.println("database connected");
+        DatabaseController db = new DatabaseController();
+        System.out.println(db.login("ur1", "1"));
 
     }
 

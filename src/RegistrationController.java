@@ -38,7 +38,7 @@ public class RegistrationController {
         if (name.trim() == "" || pass.trim() == "") {
             // pesan error 
         } else {
-            // into database
+            // verifikasi database
             
         }
     }
@@ -50,7 +50,7 @@ public class RegistrationController {
 
     @FXML
     public void ClickedLoginDisini(ActionEvent e) throws IOException {
-        /* User yang sudah memiliki akun */
+        /* User yang sudah memiliki akun pindah ke Login.fxml*/
         System.out.println("Login clicked");
 
         FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("Login.fxml"));
