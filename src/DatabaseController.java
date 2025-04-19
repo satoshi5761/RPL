@@ -13,7 +13,7 @@ public class DatabaseController {
 
     DatabaseController() throws Exception {
         this.con = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
-        System.out.println("database connected");
+        System.out.println("DB connected");
     }
 
     public boolean register(String username, String passwd) {
@@ -25,6 +25,7 @@ public class DatabaseController {
             stmt.setString(2, passwd);
             
             stmt.executeUpdate();
+            System.out.println("Registration successfull");
             return true;
         } catch (SQLException e) {
             System.out.println("Presumably, UNIQUE entry condition has been breached");
@@ -34,15 +35,27 @@ public class DatabaseController {
     }
 
     public boolean login(String username, String passwd) throws SQLException{
-        String query = "SELECT (username, password) FROM account WHERE username=? AND password=?;";
+        String query = "SELECT COUNT(*) FROM account WHERE username=? AND password=?;";
 
         PreparedStatement stmt = con.prepareStatement(query);
         stmt.setString(1, username);
         stmt.setString(2, passwd);
 
         ResultSet res = stmt.executeQuery();
-        return res.next();
+        return res.getInt(1) >= 1;
 
+    }
+
+    public void tutup_cinta() {
+        /* cintaku bukan di database uhuk uhuk */
+        try {
+            if (!con.isClosed()) {
+                con.close();
+                System.out.println("DB closed\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void main(String[] args) throws Exception {
