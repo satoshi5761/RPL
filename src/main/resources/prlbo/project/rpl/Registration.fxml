@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.RegistrationController">
+    <left>
+        <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #0698ff;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="256.0" fitWidth="242.0" layoutX="54.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Asset/To-Do-List.png" />
+                    </image>
+                </ImageView>
+                <Text fill="WHITE" layoutX="110.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JADWALIN">
+                    <font>
+                        <Font name="System Bold Italic" size="25.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </left>
+   <center>
+        <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="#0698ff" layoutX="44.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRASI">
+                    <font>
+                        <Font name="System Bold" size="47.0" />
+                    </font>
+                </Text>
+                <Button fx:id="btnRegis" layoutX="80.0" layoutY="340.0" mnemonicParsing="false" onAction="#Registrasi" prefHeight="37.0" prefWidth="191.0" style="-fx-background-color: #0698ff;" styleClass="Buttonkeren" stylesheets="@../../../Asset/Style.css" text="Registrasi" textFill="WHITE">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <TextField fx:id="txtNama" layoutX="92.0" layoutY="164.0" prefWidth="168.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                <ImageView fitHeight="43.0" fitWidth="25.0" layoutX="55.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Asset/User.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="43.0" fitWidth="25.0" layoutX="55.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Asset/Pass.png" />
+                    </image>
+                </ImageView>
+                <Text layoutX="92.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sudah punya akun ?" wrappingWidth="124.5703125" />
+                <Button fx:id="btnLogin" layoutX="203.0" layoutY="410.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="57.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Login" textFill="#0698ff">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <PasswordField fx:id="txtPassword" layoutX="91.0" layoutY="222.0" prefHeight="27.0" prefWidth="171.0" promptText="Password" style="-fx-background-color: transparant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="txtPassword1" layoutX="90.0" layoutY="276.0" prefHeight="27.0" prefWidth="171.0" promptText="Konfirmasi Password" style="-fx-background-color: transparant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <ImageView fitHeight="43.0" fitWidth="25.0" layoutX="55.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Asset/Pass.png" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+   </center>
+</BorderPane>
