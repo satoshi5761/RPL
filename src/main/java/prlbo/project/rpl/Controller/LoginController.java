@@ -1,4 +1,5 @@
 package prlbo.project.rpl.Controller;
+import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,19 +45,29 @@ public class LoginController {
             txtNama.clear();
             txtPassword.clear();
 
-            FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/TambahTugas.fxml"));
+            FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
             Parent root = fxml_load.load();
-
-//            Coba tambah tugas
-            TambahTugasController loadtugas = fxml_load.getController();
-            String query = "SELECT id_account FROM account WHERE username = '" + username + "'";
+            MainController main = fxml_load.getController();
+            String query = "SELECT id_account,username FROM account WHERE username = '" + username + "'";
             Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id_account");
-                loadtugas.set_idacc(id);
+                String nama = resultSet.getString("username");
+                main.set_idacc(id);
+                main.set_usser(nama);
             }
+////            Coba tambah tugas
+//            TambahTugasController loadtugas = fxml_load.getController();
+//            String query = "SELECT id_account FROM account WHERE username = '" + username + "'";
+//            Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
+//            PreparedStatement stmt = conn.prepareStatement(query);
+//            ResultSet resultSet = stmt.executeQuery();
+//            while (resultSet.next()) {
+//                int id = resultSet.getInt("id_account");
+//                loadtugas.set_idacc(id);
+//            }
 
             Stage currStage = getStage(event);
             currStage.setScene(new Scene(root));

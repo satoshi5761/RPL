@@ -14,6 +14,9 @@ public class App extends Application {
         try {
             Parent root = fxml_load.load();
             primaryStage.setScene(new Scene(root));
+            primaryStage.setWidth(725);
+            primaryStage.setHeight(535);
+            primaryStage.setResizable(false);
             primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/Asset/To-Do-List.png")));
             primaryStage.setTitle("JADWALIN");
             primaryStage.show();

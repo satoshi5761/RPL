@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class PesanMessage {
-    public static void tampilpesan(AlertType type, String title, String header, String pesan) {
+    public static Alert tampilpesan(AlertType type, String title, String header, String pesan) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -17,5 +17,6 @@ public class PesanMessage {
         dialogPane.getStylesheets().add(PesanMessage.class.getResource("/Asset/Style.css").toExternalForm());
         dialogPane.getStyleClass().add("CustomNotif");
         alert.showAndWait();
+        return alert;
     }
 }

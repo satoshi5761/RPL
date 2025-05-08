@@ -9,6 +9,13 @@
     -fx-font-size: 14px;
     -fx-background-image: url("Background.jpg");
 }
+.Main {
+    -fx-background-image: url("Background.jpg");;
+}
+
+.ViewMain {
+    -fx-background-image: url("BGView.jpg");
+}
 
 .dialog-pane .header-panel {
     -fx-background-color: #2196f3;
@@ -35,6 +42,20 @@
 
 .dialog-pane .button:hover {
     -fx-background-color: #1976d2;
+}
+
+.Searchbox {
+    -fx-background-image: transparant;
+}
+
+.ButtonMain {
+    -fx-background-color: white !important;
+    -fx-font-family: "Baskerville Old Face";
+}
+
+.ButtonMain:hover {
+    -fx-background-color: #000000 !important;
+    -fx-text-fill: white !important;
 }
 
 .Buttonkeren {

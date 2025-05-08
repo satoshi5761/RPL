@@ -49,6 +49,7 @@ public class TambahTugasController {
         } else {
             try {
                 DatabaseController db = new DatabaseController();
+                System.out.println(idacc);
                 if (db.TambahTugas(idacc, nama, tanggal, kategori)){
                     db.tutup_cinta();
                 }
