@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import prlbo.project.rpl.util.PesanMessage;
+
 import java.io.IOException;
 
 public class LupaPasswordController {
@@ -23,20 +25,6 @@ public class LupaPasswordController {
 
     @FXML
     private PasswordField txtPassword1;
-
-    private void Error(String pesan){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("INFORMASI");
-        alert.setHeaderText("Error");
-        alert.setContentText(pesan);
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Asset/To-Do-List.png")));
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
-        dialogPane.getStyleClass().add("CustomNotif");
-        alert.showAndWait();
-
-    }
 
     Stage getStage(ActionEvent e) {
         /* Mendapatkan Stage dari node objek e yang di lakukan action*/
@@ -58,7 +46,7 @@ public class LupaPasswordController {
         String password = txtPassword.getText();
         String password1 = txtPassword1.getText();
         if(nama.trim().isEmpty() || password.trim().isEmpty() || password1.trim().isEmpty()) {
-            Error("Inputan tidak sesuai");
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Inputan tidak sesuai");
         } else if(password.equals(password1)) {
             DatabaseController db = new DatabaseController();
             boolean sucess = db.forgot(nama, password); db.tutup_cinta();
@@ -70,10 +58,10 @@ public class LupaPasswordController {
                 currStage.setScene(new Scene(root));
                 currStage.show();
             } else {
-                Error("Gagal Ubah Password (Inputan Password Berbeda)");
+                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password (Inputan Password Berbeda)");
             }
         } else {
-            Error("Gagal Ubah Password");
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password");
         }
     }
 

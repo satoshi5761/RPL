@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import prlbo.project.rpl.util.PesanMessage;
 
 public class RegistrationController {
 
@@ -31,32 +32,6 @@ public class RegistrationController {
     Stage getStage(ActionEvent e) {
         /* Mendapatkan Stage dari node objek e yang di lakukan action*/
         return (Stage) ( ((Node) e.getSource()).getScene().getWindow() );
-    }
-
-    private void Error(String pesan){
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("INFORMASI");
-        alert.setHeaderText("Error");
-        alert.setContentText(pesan);
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Asset/To-Do-List.png")));
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
-        dialogPane.getStyleClass().add("CustomNotif");
-        alert.showAndWait();
-    }
-
-    private void Berhasil(String pesan){
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("INFORMASI");
-        alert.setHeaderText("Berhasil");
-        alert.setContentText(pesan);
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Asset/To-Do-List.png")));
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
-        dialogPane.getStyleClass().add("CustomNotif");
-        alert.showAndWait();
     }
 
     @FXML
@@ -83,10 +58,10 @@ public class RegistrationController {
 
         if (name.trim().isEmpty() || pass.trim().isEmpty() || pass1.trim().isEmpty()) {
             /* Ada field input yang belum diisi */
-            Error("Ada Field Yang Kosong");
+            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Ada Field Yang Kosong");
 
         } else if (!pass.equals(pass1)) {
-            Error("Inputan tidak sesuai (Password Berbeda)");
+            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Inputan tidak sesuai (Password Berbeda)");
         } else {
             // Register user ke dalam database;
             DatabaseController db = new DatabaseController();
@@ -94,7 +69,7 @@ public class RegistrationController {
             txtNama.clear();
             txtPassword.clear();
             txtPassword1.clear();
-            Berhasil("Berhasil Silahkan Lanjut Login");
+            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Berhasil", "Berhasil Silahkan Lanjut Login");
             try {
                 FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
                 Parent root = fxml_load.load();
@@ -107,7 +82,8 @@ public class RegistrationController {
             }
             if (!success) {
                 /* pop up GUI */
-                Error("Username Sudah Tersedia");
+                PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Username Sudah Tersedia");
+
             }
         }
     }

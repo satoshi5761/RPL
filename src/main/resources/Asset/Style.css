@@ -7,6 +7,7 @@
     -fx-padding: 20;
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 14px;
+    -fx-background-image: url("Background.jpg");
 }
 
 .dialog-pane .header-panel {

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import prlbo.project.rpl.util.PesanMessage;
 
 import java.time.LocalDate;
 
@@ -44,9 +45,8 @@ public class TambahTugasController {
         LocalDate tanggal = dateduedate.getValue();
         String waktu = combxwaktu.getValue();
         String kategori =  combxkategori.getValue();
-
         if (nama.isEmpty() || tanggal == null) {
-            Error("Pastikan semua data terisi!");
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Pastikan semua data terisi!");
         } else {
             try {
                 DatabaseController db = new DatabaseController();
@@ -54,7 +54,7 @@ public class TambahTugasController {
                     db.tutup_cinta();
                 }
             } catch (Exception e) {
-                Error("Terjadi kesalahan!");
+                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Terjadi Kesalahan!");
             }
         }
     }
@@ -75,18 +75,5 @@ public class TambahTugasController {
         catch (Exception e) {
             System.out.println("blog");
         }
-    }
-
-    private void Error(String pesan){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("INFORMASI");
-        alert.setHeaderText("Error");
-        alert.setContentText(pesan);
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Asset/To-Do-List.png")));
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
-        dialogPane.getStyleClass().add("CustomNotif");
-        alert.showAndWait();
     }
 }

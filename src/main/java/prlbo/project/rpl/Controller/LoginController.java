@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import prlbo.project.rpl.util.PesanMessage;
 
 public class LoginController {
 
@@ -33,21 +34,6 @@ public class LoginController {
     @FXML
     private PasswordField txtPassword;
 
-
-    private void Error(String pesan){
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("INFORMASI");
-        alert.setHeaderText("Error");
-        alert.setContentText(pesan);
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Asset/To-Do-List.png")));
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
-        dialogPane.getStyleClass().add("CustomNotif");
-        alert.showAndWait();
-
-    }
-
     @FXML
     void Login(ActionEvent event) throws Exception {
         String username = txtNama.getText();
@@ -55,7 +41,6 @@ public class LoginController {
         DatabaseController db = new DatabaseController();
         if ( db.login(username, passwd) == true ) {
             /* Masuk ke akun user */
-            System.out.println("Login Successful");
             txtNama.clear();
             txtPassword.clear();
 
@@ -73,12 +58,11 @@ public class LoginController {
                 loadtugas.set_idacc(id);
             }
 
-
             Stage currStage = getStage(event);
             currStage.setScene(new Scene(root));
             currStage.show();
         } else {
-            Error("Password / Username Salah");
+            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Login Gagal (Password atau Username Salah)");
             txtNama.clear();
             txtPassword.clear();
         }
@@ -87,11 +71,8 @@ public class LoginController {
 
     @FXML
     void Lupa(ActionEvent event) throws IOException{
-        System.out.println("Registration clicked");
-
         FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/LupaPassword.fxml"));
         Parent root = fxml_load.load();
-
         Stage currStage = getStage(event);
         currStage.setScene(new Scene(root));
         currStage.show();
@@ -104,7 +85,6 @@ public class LoginController {
 
     @FXML
     void Signup(ActionEvent event) throws IOException {
-        System.out.println("Registration clicked");
         FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/Registration.fxml"));
         Parent root = fxml_load.load();
         Stage currStage = getStage(event);
