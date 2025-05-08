@@ -1,6 +1,12 @@
 package prlbo.project.rpl.Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class DatabaseController {
     private Connection con;
@@ -82,6 +88,81 @@ public class DatabaseController {
             System.out.println(e.getMessage());
         }
     }
+
+    public ObservableList<String> loadcomboboxkat(){
+        ObservableList<String> kategori = FXCollections.observableArrayList();
+        String query = "SELECT namaKategori FROM kategori";
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                kategori.add(rs.getString("namaKategori"));
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Gagal Ambil Kategori.");
+        }
+        return kategori;
+    }
+
+    public boolean TambahTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
+        String query = "INSERT INTO daftartugas (namaTugas, tanggalTenggat, waktuTenggat, kategori) VALUES (?, ?, ?, ?);";
+        String query2 = "SELECT id_account, id_kategori FROM account natural join kategori WHEREa";
+
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, nama);
+            stmt.setDate(2, Date.valueOf(tanggal));
+            stmt.setString(3, waktu);
+            stmt.setString(4, kategori);
+
+            stmt.executeUpdate();
+            System.out.println("Tugas berhasil ditambahkan.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Tugas gagal ditambahkan.");
+            return false;
+        }
+
+    }
+
+//    public boolean EditTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
+//        String query = "INSERT INTO daftartugas (namaTugas, tanggalTenggat, waktuTenggat, kategori) VALUES (?, ?, ?, ?);";
+//
+//        try {
+//            PreparedStatement stmt = con.prepareStatement(query);
+//            stmt.setString(1, nama);
+//            stmt.setDate(2, Date.valueOf(tanggal));
+//            stmt.setString(3, waktu);
+//            stmt.setString(4, kategori);
+//
+//            stmt.executeUpdate();
+//            System.out.println("Tugas berhasil ditambahkan.");
+//            return true;
+//        } catch (SQLException e) {
+//            System.out.println("Tugas gagal ditambahkan.");
+//            return false;
+//        }
+//
+//    }
+//
+//    public boolean HapusTugas(String nama) {
+//        String query = "DELETE FROM daftartugas WHERE nama = ?;";
+//
+//        try {
+//            PreparedStatement stmt = con.prepareStatement(query);
+//            stmt.setString(1, nama);
+//
+//            stmt.executeUpdate();
+//            System.out.println("Tugas berhasil dihapus.");
+//            return true;
+//        } catch (SQLException e) {
+//            System.out.println("Tugas gagal dihapus.");
+//            return false;
+//        }
+//    }
 
     //Semisal Mau Testing DatabaseController :
 //    public static void main(String[] args) throws Exception {

@@ -1,0 +1,84 @@
+package prlbo.project.rpl.Controller;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
+import java.sql.PreparedStatement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class TambahTugasController {
+
+
+    @FXML
+    private Button btntambah;
+
+    @FXML
+    private ComboBox<String> combxkategori;
+
+    @FXML
+    private ComboBox<String> combxwaktu;
+
+    @FXML
+    private DatePicker dateduedate;
+
+    @FXML
+    private TextField txtnama;
+
+    public TambahTugasController() {
+        loadcomboboxkategori();
+    }
+
+    @FXML
+    void addTugas(ActionEvent event) {
+        String nama = txtnama.getText();
+        LocalDate tanggal = dateduedate.getValue();
+        String waktu = combxwaktu.getValue();
+        String kategori =  combxkategori.getValue();
+
+        if (nama.isEmpty() || tanggal == null || waktu == null) {
+            Error("Pastikan semua data terisi!");
+        } else {
+            try {
+                DatabaseController db = new DatabaseController();
+                if (db.TambahTugas(nama, tanggal, waktu, kategori)){
+                    db.tutup_cinta();
+                }
+            } catch (Exception e) {
+                Error("Terjadi kesalahan!");
+            }
+        }
+    }
+
+    private void loadcomboboxkategori(){
+        ObservableList<String> kategori = FXCollections.observableArrayList();
+        try {
+            DatabaseController db = new DatabaseController();
+            kategori = db.loadcomboboxkat();
+            if (!kategori.isEmpty()) {
+                combxkategori.setItems(kategori);
+            }
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    private void Error(String pesan){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("INFORMASI");
+        alert.setHeaderText("Error");
+        alert.setContentText(pesan);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Asset/To-Do-List.png")));
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("/Asset/Style.css").toExternalForm());
+        dialogPane.getStyleClass().add("CustomNotif");
+        alert.showAndWait();
+    }
+}
