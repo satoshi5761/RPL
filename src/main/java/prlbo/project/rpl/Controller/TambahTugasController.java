@@ -8,9 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.sql.PreparedStatement;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class TambahTugasController {
 
@@ -30,7 +28,13 @@ public class TambahTugasController {
     @FXML
     private TextField txtnama;
 
-    public TambahTugasController() {
+    private int idacc;
+
+    public void set_idacc(int id) {
+        idacc = id;
+    }
+
+    public void initialize(){
         loadcomboboxkategori();
     }
 
@@ -41,12 +45,12 @@ public class TambahTugasController {
         String waktu = combxwaktu.getValue();
         String kategori =  combxkategori.getValue();
 
-        if (nama.isEmpty() || tanggal == null || waktu == null) {
+        if (nama.isEmpty() || tanggal == null) {
             Error("Pastikan semua data terisi!");
         } else {
             try {
                 DatabaseController db = new DatabaseController();
-                if (db.TambahTugas(nama, tanggal, waktu, kategori)){
+                if (db.TambahTugas(idacc, nama, tanggal, waktu, kategori)){
                     db.tutup_cinta();
                 }
             } catch (Exception e) {
@@ -60,12 +64,16 @@ public class TambahTugasController {
         try {
             DatabaseController db = new DatabaseController();
             kategori = db.loadcomboboxkat();
-            if (!kategori.isEmpty()) {
+
+            if (kategori.size() > 0) {
                 combxkategori.setItems(kategori);
+            }
+            else{
+
             }
         }
         catch (Exception e) {
-
+            System.out.println("blog");
         }
     }
 

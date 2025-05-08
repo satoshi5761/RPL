@@ -91,11 +91,10 @@ public class DatabaseController {
 
     public ObservableList<String> loadcomboboxkat(){
         ObservableList<String> kategori = FXCollections.observableArrayList();
-        String query = "SELECT namaKategori FROM kategori";
+        String query = "SELECT * FROM kategori";
         try {
             PreparedStatement stmt = con.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery(query);
-
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 kategori.add(rs.getString("namaKategori"));
             }
@@ -106,17 +105,23 @@ public class DatabaseController {
         return kategori;
     }
 
-    public boolean TambahTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
-        String query = "INSERT INTO daftartugas (namaTugas, tanggalTenggat, waktuTenggat, kategori) VALUES (?, ?, ?, ?);";
-        String query2 = "SELECT id_account, id_kategori FROM account natural join kategori WHEREa";
+    public boolean TambahTugas(int id, String nama, LocalDate tanggal, String waktu, String kategori) {
+        String query = "INSERT INTO daftartugas (id_account, namaTugas, tanggalTenggat, waktuTenggat, kategori) VALUES (?, ?, ?, ?, ?, ?);";
+        String query2 = "SELECT * FROM kategori WHERE namaKategori = kategori;";
 
 
-        try {
+        try (PreparedStatement statement = con.prepareStatement(query2)) {
+            ResultSet rs = statement.executeQuery();
+            int idkategori = 0;
+            while (rs.next()) {
+                idkategori = rs.getInt(rs.getString("id_kategori"));
+            }
             PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1, nama);
-            stmt.setDate(2, Date.valueOf(tanggal));
-            stmt.setString(3, waktu);
-            stmt.setString(4, kategori);
+            stmt.setInt(1, id);
+            stmt.setInt(2, idkategori);
+            stmt.setString(2, nama);
+            stmt.setDate(3, Date.valueOf(tanggal));
+            stmt.setString(4, waktu);
 
             stmt.executeUpdate();
             System.out.println("Tugas berhasil ditambahkan.");

@@ -6,6 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javafx.scene.image.Image;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
@@ -47,14 +52,31 @@ public class LoginController {
     void Login(ActionEvent event) throws Exception {
         String username = txtNama.getText();
         String passwd = txtPassword.getText();
-        System.out.println(username);
-        System.out.println(passwd);
         DatabaseController db = new DatabaseController();
         if ( db.login(username, passwd) == true ) {
             /* Masuk ke akun user */
             System.out.println("Login Successful");
             txtNama.clear();
             txtPassword.clear();
+
+            FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/TambahTugas.fxml"));
+            Parent root = fxml_load.load();
+
+//            Coba tambah tugas
+            TambahTugasController loadtugas = fxml_load.getController();
+            String query = "SELECT id FROM account WHERE username = '" + username + "'";
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                loadtugas.set_idacc(id);
+            }
+
+
+            Stage currStage = getStage(event);
+            currStage.setScene(new Scene(root));
+            currStage.show();
         } else {
             Error("Password / Username Salah");
             txtNama.clear();
