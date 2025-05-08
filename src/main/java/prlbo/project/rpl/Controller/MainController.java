@@ -14,12 +14,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import prlbo.project.rpl.util.PesanMessage;
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -117,7 +113,6 @@ public class MainController {
     void Bersih(ActionEvent event) {
         searchBox.clear();
     }
-
     @FXML
     void EditKategori(ActionEvent event) {
 
@@ -136,8 +131,30 @@ public class MainController {
     }
 
     @FXML
-    void Hapus(ActionEvent event) {
-
+    void Hapus(ActionEvent event) throws Exception {
+        ///Seh Durung Dadi
+        if(tblTugas.getSelectionModel().getSelectedItem() != null) {
+            DatabaseController db = new DatabaseController();
+            String query = "SELECT namaTugas FROM tugas WHERE id_account = ?";
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, idacc);
+            ResultSet rs = stmt.executeQuery();
+            try {
+                if (rs.next()) {
+                    String nama = rs.getString("namaTugas");
+                    System.out.println(nama);
+                    FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+                    Parent root = fxml_load.load();
+                    Stage currStage = getStage(event);
+                    currStage.setScene(new Scene(root));
+                    currStage.show();
+            }
+            }catch (SQLException e) {
+                System.out.println("Gagal ambil nama tugas");
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

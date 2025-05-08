@@ -4,11 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import prlbo.project.rpl.util.PesanMessage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class TambahTugasController {
@@ -39,8 +44,13 @@ public class TambahTugasController {
         loadcomboboxkategori();
     }
 
+    Stage getStage(ActionEvent e) {
+        /* Mendapatkan Stage dari node objek e yang di lakukan action*/
+        return (Stage) ( ((Node) e.getSource()).getScene().getWindow() );
+    }
+
     @FXML
-    void addTugas(ActionEvent event) {
+    void addTugas(ActionEvent event) throws IOException {
         String nama = txtnama.getText();
         LocalDate tanggal = dateduedate.getValue();
         String kategori =  combxkategori.getValue();
@@ -53,6 +63,11 @@ public class TambahTugasController {
                 if (db.TambahTugas(idacc, nama, tanggal, kategori)){
                     db.tutup_cinta();
                 }
+                FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+                Parent root = fxml_load.load();
+                Stage currStage = getStage(event);
+                currStage.setScene(new Scene(root));
+                currStage.show();
             } catch (Exception e) {
                 PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Terjadi Kesalahan!");
             }

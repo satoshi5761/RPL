@@ -155,21 +155,21 @@ public class DatabaseController {
 //
 //    }
 //
-//    public boolean HapusTugas(String nama) {
-//        String query = "DELETE FROM daftartugas WHERE nama = ?;";
-//
-//        try {
-//            PreparedStatement stmt = con.prepareStatement(query);
-//            stmt.setString(1, nama);
-//
-//            stmt.executeUpdate();
-//            System.out.println("Tugas berhasil dihapus.");
-//            return true;
-//        } catch (SQLException e) {
-//            System.out.println("Tugas gagal dihapus.");
-//            return false;
-//        }
-//    }
+    public boolean HapusTugas(String nama) {
+        String query = "DELETE FROM tugas WHERE nama = ?;";
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, nama);
+
+            stmt.executeUpdate();
+            System.out.println("Tugas berhasil dihapus.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Tugas gagal dihapus.");
+            return false;
+        }
+    }
 
     //Semisal Mau Testing DatabaseController :
 //    public static void main(String[] args) throws Exception {
