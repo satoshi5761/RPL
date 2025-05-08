@@ -61,14 +61,18 @@ public class TambahTugasController {
                 DatabaseController db = new DatabaseController();
                 System.out.println(idacc);
                 if (db.TambahTugas(idacc, nama, tanggal, kategori)){
+                    FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+                    Parent root = fxml_load.load();
+                    MainController main = fxml_load.getController();
+                    int id = idacc;
+                    main.set_idacc(id);
+                    Stage currStage = getStage(event);
+                    currStage.setScene(new Scene(root));
+                    currStage.show();
                     db.tutup_cinta();
                 }
-                FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
-                Parent root = fxml_load.load();
-                Stage currStage = getStage(event);
-                currStage.setScene(new Scene(root));
-                currStage.show();
             } catch (Exception e) {
+                e.printStackTrace();
                 PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Terjadi Kesalahan!");
             }
         }
