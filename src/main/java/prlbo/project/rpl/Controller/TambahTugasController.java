@@ -43,14 +43,13 @@ public class TambahTugasController {
     void addTugas(ActionEvent event) {
         String nama = txtnama.getText();
         LocalDate tanggal = dateduedate.getValue();
-        String waktu = combxwaktu.getValue();
         String kategori =  combxkategori.getValue();
         if (nama.isEmpty() || tanggal == null) {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Pastikan semua data terisi!");
         } else {
             try {
                 DatabaseController db = new DatabaseController();
-                if (db.TambahTugas(idacc, nama, tanggal, waktu, kategori)){
+                if (db.TambahTugas(idacc, nama, tanggal, kategori)){
                     db.tutup_cinta();
                 }
             } catch (Exception e) {

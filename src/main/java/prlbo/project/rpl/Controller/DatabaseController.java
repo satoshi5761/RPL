@@ -105,23 +105,25 @@ public class DatabaseController {
         return kategori;
     }
 
-    public boolean TambahTugas(int id, String nama, LocalDate tanggal, String waktu, String kategori) {
-        String query = "INSERT INTO daftartugas (id_account, namaTugas, tanggalTenggat, waktuTenggat, kategori) VALUES (?, ?, ?, ?, ?, ?);";
-        String query2 = "SELECT * FROM kategori WHERE namaKategori = kategori;";
+    public boolean TambahTugas(int id, String nama, LocalDate tanggal, String kategori) {
+        String query = "INSERT INTO tugas (id_account, id_kategori, namaTugas, dueDate) VALUES (?, ?, ?, ?);";
+        String query2 = "SELECT * FROM kategori WHERE namaKategori = ?;";
 
 
-        try (PreparedStatement statement = con.prepareStatement(query2)) {
+        try {
+            PreparedStatement statement = con.prepareStatement(query2);
+            statement.setString(1, kategori);
             ResultSet rs = statement.executeQuery();
+
             int idkategori = 0;
             while (rs.next()) {
-                idkategori = rs.getInt(rs.getString("id_kategori"));
+                idkategori = rs.getInt("id_kategori");
             }
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, id);
             stmt.setInt(2, idkategori);
-            stmt.setString(2, nama);
-            stmt.setDate(3, Date.valueOf(tanggal));
-            stmt.setString(4, waktu);
+            stmt.setString(3, nama);
+            stmt.setDate(4, Date.valueOf(tanggal));
 
             stmt.executeUpdate();
             System.out.println("Tugas berhasil ditambahkan.");
@@ -133,8 +135,8 @@ public class DatabaseController {
 
     }
 
-//    public boolean EditTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
-//        String query = "INSERT INTO daftartugas (namaTugas, tanggalTenggat, waktuTenggat, kategori) VALUES (?, ?, ?, ?);";
+//   public boolean EditTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
+//        String query = "UPDATE daftartugas SET (namaTugas, dueDate, kategori) VALUES (?, ?, ?, ?);";
 //
 //        try {
 //            PreparedStatement stmt = con.prepareStatement(query);

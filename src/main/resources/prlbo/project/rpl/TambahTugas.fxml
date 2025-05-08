@@ -8,21 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="390.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.TambahTugasController">
+<AnchorPane prefHeight="311.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.TambahTugasController">
    <children>
-      <TextField fx:id="txtnama" layoutX="22.0" layoutY="81.0" prefHeight="25.0" prefWidth="262.0" />
-      <DatePicker fx:id="dateduedate" layoutX="23.0" layoutY="157.0" />
+      <TextField fx:id="txtnama" layoutX="22.0" layoutY="81.0" prefHeight="26.0" prefWidth="361.0" />
+      <DatePicker fx:id="dateduedate" layoutX="23.0" layoutY="157.0" prefHeight="26.0" prefWidth="213.0" />
       <Label layoutX="22.0" layoutY="14.0" text="Tambah Tugas">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="combxwaktu" layoutX="22.0" layoutY="231.0" prefWidth="150.0" />
       <Label layoutX="22.0" layoutY="54.0" text="Nama" />
       <Label layoutX="23.0" layoutY="127.0" text="Tanggal" />
-      <Label layoutX="21.0" layoutY="199.0" text="Waktu" />
-      <Label layoutX="23.0" layoutY="270.0" text="Kategori" />
-      <ComboBox fx:id="combxkategori" layoutX="22.0" layoutY="297.0" prefWidth="150.0" />
-      <Button fx:id="btntambah" layoutX="396.0" layoutY="336.0" mnemonicParsing="false" onAction="#addTugas" text="Tambah" />
+      <Label layoutX="23.0" layoutY="210.0" text="Kategori" />
+      <ComboBox fx:id="combxkategori" layoutX="23.0" layoutY="243.0" prefHeight="26.0" prefWidth="213.0" />
+      <Button fx:id="btntambah" layoutX="395.0" layoutY="269.0" mnemonicParsing="false" onAction="#addTugas" text="Tambah" />
    </children>
 </AnchorPane>

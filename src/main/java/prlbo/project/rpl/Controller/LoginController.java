@@ -49,12 +49,12 @@ public class LoginController {
 
 //            Coba tambah tugas
             TambahTugasController loadtugas = fxml_load.getController();
-            String query = "SELECT id FROM account WHERE username = '" + username + "'";
+            String query = "SELECT id_account FROM account WHERE username = '" + username + "'";
             Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                int id = resultSet.getInt("id_account");
                 loadtugas.set_idacc(id);
             }
 
