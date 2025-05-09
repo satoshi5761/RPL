@@ -15,7 +15,8 @@ public class DatabaseController {
         this.con = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
         System.out.println("DB connected");
     }
-    public boolean userValid(String username){
+
+    public boolean userValid(String username) {
         boolean valid = false;
         String query = "SELECT * FROM account WHERE username = ?";
         try {
@@ -24,14 +25,14 @@ public class DatabaseController {
             ResultSet rs = stmt.executeQuery();
             valid = rs.next();
             stmt.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return valid;
     }
 
     public boolean forgot(String username, String password) {
-        if(!userValid(username)){
+        if (!userValid(username)) {
             return false;
         }
         String query = "UPDATE account SET password=? WHERE username=?";
@@ -65,7 +66,7 @@ public class DatabaseController {
         }
     }
 
-    public boolean login(String username, String passwd) throws SQLException{
+    public boolean login(String username, String passwd) throws SQLException {
         String query = "SELECT COUNT(*) FROM account WHERE username=? AND password=?;";
 
         PreparedStatement stmt = con.prepareStatement(query);
@@ -89,7 +90,7 @@ public class DatabaseController {
         }
     }
 
-    public ObservableList<String> loadcomboboxkat(){
+    public ObservableList<String> loadcomboboxkat() {
         ObservableList<String> kategori = FXCollections.observableArrayList();
         String query = "SELECT * FROM kategori";
         try {
@@ -98,8 +99,7 @@ public class DatabaseController {
             while (rs.next()) {
                 kategori.add(rs.getString("namaKategori"));
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Gagal Ambil Kategori.");
         }
         return kategori;
@@ -132,10 +132,35 @@ public class DatabaseController {
             System.out.println("Tugas gagal ditambahkan.");
             return false;
         }
-
     }
 
-//   public boolean EditTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
+    public boolean TambahKategori(int accountId, String kategoriName) throws SQLException {
+        String insertQuery = "INSERT INTO kategori (namaKategori, id_account) VALUES (?, ?)";
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(insertQuery);
+            // Set parameters
+            stmt.setString(1, kategoriName);
+            stmt.setInt(2, accountId);
+
+            // Execute update
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows > 0) {
+                System.out.println("Kategori berhasil ditambahkan.");
+                return true;
+            } else {
+                System.out.println("Gagal menambahkan kategori.");
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error menambahkan kategori: " + e.getMessage());
+            throw e; // Re-throw the exception for proper handling in the caller
+        }
+    }
+
+    //   public boolean EditTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
 //        String query = "UPDATE daftartugas SET (namaTugas, dueDate, kategori) VALUES (?, ?, ?, ?);";
 //
 //        try {

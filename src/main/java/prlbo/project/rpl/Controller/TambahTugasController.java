@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class TambahTugasController {
-
-
     @FXML
     private Button btntambah;
 
@@ -40,32 +38,30 @@ public class TambahTugasController {
         idacc = id;
     }
 
-    public void initialize(){
+    public void initialize() {
         loadcomboboxkategori();
     }
 
     Stage getStage(ActionEvent e) {
         /* Mendapatkan Stage dari node objek e yang di lakukan action*/
-        return (Stage) ( ((Node) e.getSource()).getScene().getWindow() );
+        return (Stage) (((Node) e.getSource()).getScene().getWindow());
     }
 
     @FXML
     void addTugas(ActionEvent event) throws IOException {
         String nama = txtnama.getText();
         LocalDate tanggal = dateduedate.getValue();
-        String kategori =  combxkategori.getValue();
+        String kategori = combxkategori.getValue();
         if (nama.isEmpty() || tanggal == null) {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Pastikan semua data terisi!");
         } else {
             try {
                 DatabaseController db = new DatabaseController();
                 System.out.println(idacc);
-                if (db.TambahTugas(idacc, nama, tanggal, kategori)){
+                if (db.TambahTugas(idacc, nama, tanggal, kategori)) {
                     FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
                     Parent root = fxml_load.load();
                     MainController main = fxml_load.getController();
-                    int id = idacc;
-                    main.set_idacc(id);
                     Stage currStage = getStage(event);
                     currStage.setScene(new Scene(root));
                     currStage.show();
@@ -78,7 +74,7 @@ public class TambahTugasController {
         }
     }
 
-    private void loadcomboboxkategori(){
+    private void loadcomboboxkategori() {
         ObservableList<String> kategori = FXCollections.observableArrayList();
         try {
             DatabaseController db = new DatabaseController();
@@ -86,12 +82,10 @@ public class TambahTugasController {
 
             if (kategori.size() > 0) {
                 combxkategori.setItems(kategori);
-            }
-            else{
+            } else {
 
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("blog");
         }
     }

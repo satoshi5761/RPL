@@ -13,11 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import prlbo.project.rpl.UserManager;
+import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.function.Consumer;
 
 public class MainController {
 
@@ -62,6 +65,21 @@ public class MainController {
 
     private int idacc;
     private int user;
+
+    @FXML
+    public void initialize() {
+        User user = UserManager.currentUser;
+        String name = "";
+        int id = 0;
+        if (user != null) {
+            name = user.getUsername();
+            id = user.getId();
+        }
+        set_usser(name);
+        set_idacc(id);
+//        System.out.println(user.getUsername());
+    }
+
     public void set_usser(String user) {
         user = user;
         lblNama.setText(user);
@@ -73,8 +91,11 @@ public class MainController {
 
     public void AmbilData() {
         ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
-//        String query = "SELECT tugas.namaTugas, tugas.id_kategori, tugas.dueDate, kategori.namaKategori FROM tugas NATURAL JOIN kategori WHERE tugas.id_account = ?";
-        String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
+//        String query = "SELECT tugas.namaTugas, tugas.id_kategori, tugas.dueDate, kategori.namaKategori
+//        FROM tugas NATURAL JOIN kategori WHERE tugas.id_account = ?";
+        String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori " +
+                "FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori " +
+                "WHERE tugas.id_account = ?";
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -88,7 +109,9 @@ public class MainController {
                 row.add(rs.getString("dueDate"));
                 data.add(row);
             }
-            colNo.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(tblTugas.getItems().indexOf(cellData.getValue()) + 1))
+            colNo.setCellValueFactory(
+                    cellData ->
+                            new SimpleStringProperty(String.valueOf(tblTugas.getItems().indexOf(cellData.getValue()) + 1))
             );
             colNama.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0))
             );
@@ -114,8 +137,16 @@ public class MainController {
         searchBox.clear();
     }
     @FXML
-    void EditKategori(ActionEvent event) {
 
+    void EditKategori(ActionEvent event) throws IOException {
+        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/EditKategori.fxml"));
+        Parent root = fxml_load.load();
+        Stage currStage = getStage(event);
+        currStage.setScene(new Scene(root));
+        currStage.show();
+        EditKategoriController main = fxml_load.getController();
+        int id = idacc;
+        main.set_idacc(id);
     }
 
     @FXML

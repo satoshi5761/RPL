@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.EditKategoriController">
+    <top>
+        <ToolBar>
+            <Button onAction="#BackBtn" text="Kembali" />
+            <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Edit Kategori" />
+        </ToolBar>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" prefHeight="29.0" prefWidth="382.0" spacing="20" style="-fx-padding: 20;">
+            <GridPane alignment="CENTER" hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
+                    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
+                </columnConstraints>
+
+                <Label text="Nama Kategori:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="categoryNameField" style="-fx-pref-width: 250;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="10">
+                <Button onAction="#SaveCategoryBtn" style="-fx-pref-width: 100; -fx-font-weight: bold;" text="Simpan" />
+                <Button onAction="#handleCancelBtn" style="-fx-pref-width: 100;" text="Hapus" />
+            </HBox>
+            <TableView fx:id="KategoriTable" prefHeight="400.0" prefWidth="143.0">
+                <columns>
+                    <TableColumn fx:id="NoColumn" minWidth="0.666656494140625" prefWidth="38.66665458679199" text="No" />
+                    <TableColumn fx:id="KategoriColumn" minWidth="0.0" prefWidth="302.0000114440918" text="Kategori" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+<!--        <StatusBar>-->
+<!--            <Label fx:id="statusLabel" text="" />-->
+<!--        </StatusBar>-->
+    </bottom>
+</BorderPane>
