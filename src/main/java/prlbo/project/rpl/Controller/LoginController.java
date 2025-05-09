@@ -1,6 +1,5 @@
 package prlbo.project.rpl.Controller;
 
-import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +13,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javafx.scene.image.Image;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import prlbo.project.rpl.UserManager;
+import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
 

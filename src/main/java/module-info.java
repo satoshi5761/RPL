@@ -10,4 +10,6 @@ module prlbo.project.rpl {
     exports prlbo.project.rpl;
     exports prlbo.project.rpl.Controller;
     opens prlbo.project.rpl.Controller to javafx.fxml;
+    exports prlbo.project.rpl.Manager;
+    opens prlbo.project.rpl.Manager to javafx.fxml;
 }

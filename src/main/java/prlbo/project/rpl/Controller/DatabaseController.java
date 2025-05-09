@@ -130,11 +130,10 @@ public class DatabaseController {
 
         try {
             PreparedStatement stmt = con.prepareStatement(insertQuery);
-            // Set parameters
             stmt.setString(1, kategoriName);
             stmt.setInt(2, accountId);
 
-            // Execute update
+
             int affectedRows = stmt.executeUpdate();
 
             if (affectedRows > 0) {
@@ -150,22 +149,6 @@ public class DatabaseController {
             throw e; // Re-throw the exception for proper handling in the caller
         }
     }
-
-//    public ObservableList<String> loaddatatgs(String nama, String duedate, String kategori){
-//        ObservableList<String> data = FXCollections.observableArrayList();
-//        String query = "SELECT * FROM kategori WHERE id_account = ?;";
-//        try {
-//            PreparedStatement stmt = con.prepareStatement(query);
-//            stmt.setInt(1, id);
-//            ResultSet rs = stmt.executeQuery();
-//            while (rs.next()) {
-//                kategori.add(rs.getString("namaKategori"));
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Gagal Ambil Kategori.");
-//        }
-//        return kategori;
-//    }
 
     public boolean EditTugas(int id, String namaold, String duedateold, String kategoriold, String nama, String duedate, String kategori) throws SQLException {
         String query = "UPDATE tugas SET id_kategori = ?, namaTugas = ?, dueDate = ? WHERE " +

@@ -1,4 +1,4 @@
-package prlbo.project.rpl;
+package prlbo.project.rpl.Manager;
 
 import prlbo.project.rpl.data.User;
 

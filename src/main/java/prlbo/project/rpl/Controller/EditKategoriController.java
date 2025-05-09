@@ -40,7 +40,6 @@ public class EditKategoriController {
     }
 
     public void AmbilData() {
-        // Fixed SQL query - added FROM clause
         String query = "SELECT id_kategori, namaKategori FROM kategori WHERE id_account = ?";
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
@@ -49,12 +48,12 @@ public class EditKategoriController {
             stmt.setInt(1, idacc);
             ResultSet rs = stmt.executeQuery();
 
-            kategoriData.clear(); // Clear existing data before loading new
+            kategoriData.clear();
 
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
-                row.add(String.valueOf(rs.getInt("id_kategori"))); // Store ID (hidden)
-                row.add(rs.getString("namaKategori")); // Store category name
+                row.add(String.valueOf(rs.getInt("id_kategori")));
+                row.add(rs.getString("namaKategori"));
                 kategoriData.add(row);
             }
 
@@ -63,7 +62,7 @@ public class EditKategoriController {
                     new SimpleStringProperty(String.valueOf(kategoriData.indexOf(cellData.getValue()) + 1)));
 
             KategoriColumn.setCellValueFactory(cellData ->
-                    new SimpleStringProperty(cellData.getValue().get(1))); // Display category name
+                    new SimpleStringProperty(cellData.getValue().get(1)));
 
             KategoriTable.setItems(kategoriData);
 
@@ -123,8 +122,6 @@ public class EditKategoriController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
             Parent root = loader.load();
             MainController mainController = loader.getController();
-//            mainController.set_idacc(idacc);
-
             Stage stage = getStage(event);
             stage.setScene(new Scene(root));
             stage.show();

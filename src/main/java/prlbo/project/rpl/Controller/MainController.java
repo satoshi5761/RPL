@@ -1,6 +1,5 @@
 package prlbo.project.rpl.Controller;
 
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,14 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-import prlbo.project.rpl.UserManager;
+import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
 import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.function.Consumer;
 
 public class MainController {
 
@@ -77,7 +73,6 @@ public class MainController {
         }
         set_usser(name);
         set_idacc(id);
-//        System.out.println(user.getUsername());
     }
 
     public void set_usser(String user) {
@@ -91,17 +86,12 @@ public class MainController {
 
     public void AmbilData() {
         ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
-//        String query = "SELECT tugas.namaTugas, tugas.id_kategori, tugas.dueDate, kategori.namaKategori
-//        FROM tugas NATURAL JOIN kategori WHERE tugas.id_account = ?";
-        String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori " +
-                "FROM tugas NATURAL JOIN kategori " +
-                "WHERE tugas.id_account = ?";
+//        String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori " + "FROM tugas NATURAL JOIN kategori " + "WHERE tugas.id_account = ?";
+        String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
             stmt.setInt(1, idacc);
             ResultSet rs = stmt.executeQuery();
-
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 row.add(rs.getString("namaTugas"));
@@ -136,8 +126,8 @@ public class MainController {
     void Bersih(ActionEvent event) {
         searchBox.clear();
     }
-    @FXML
 
+    @FXML
     void EditKategori(ActionEvent event) throws IOException {
         FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/EditKategori.fxml"));
         Parent root = fxml_load.load();
@@ -146,7 +136,6 @@ public class MainController {
         currStage.show();
         EditKategoriController main = fxml_load.getController();
         int id = idacc;
-        main.set_idacc(id);
     }
 
     @FXML

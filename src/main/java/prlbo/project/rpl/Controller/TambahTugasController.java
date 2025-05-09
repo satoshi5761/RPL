@@ -23,14 +23,14 @@ public class TambahTugasController {
     @FXML
     private ComboBox<String> combxkategori;
 
-//    @FXML
-//    private ComboBox<String> combxwaktu;
-
     @FXML
     private DatePicker dateduedate;
 
     @FXML
     private TextField txtnama;
+
+    @FXML
+    private Button btnKembali;
 
     private int idacc;
     private String nama;
@@ -70,13 +70,22 @@ public class TambahTugasController {
     }
 
     @FXML
+    void Kembali(ActionEvent event) throws Exception {
+        DatabaseController db = new DatabaseController();
+        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+        Parent root = fxml_load.load();
+        MainController main = fxml_load.getController();
+        Stage currStage = getStage(event);
+        currStage.setScene(new Scene(root));
+        currStage.show();
+        db.tutup_cinta();
+    }
+
+    @FXML
     void addTugas(ActionEvent event) throws IOException {
         String nama1 = txtnama.getText();
         LocalDate tanggal = dateduedate.getValue();
         String kategori1 = combxkategori.getValue();
-
-
-
         if (nama1.isEmpty() || tanggal == null) {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Pastikan semua data terisi!");
         } else {
@@ -117,7 +126,6 @@ public class TambahTugasController {
         try {
             DatabaseController db = new DatabaseController();
             kategori = db.loadcomboboxkat(idacc);
-
             if (kategori.size() > 0) {
                 combxkategori.setItems(kategori);
             } else {

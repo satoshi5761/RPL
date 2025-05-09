@@ -30,7 +30,10 @@
                   <Font name="Gloucester MT Extra Condensed" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="lblNama" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="149.0" prefHeight="40.0" prefWidth="97.0" text="Label" />
+            <Label fx:id="lblNama" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="149.0" prefHeight="40.0" prefWidth="97.0" text="Label">
+               <font>
+                  <Font name="Bodoni MT Condensed Bold" size="19.0" />
+               </font></Label>
          </children></AnchorPane>
    </left>
    <center>
