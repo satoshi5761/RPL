@@ -56,7 +56,7 @@ public class LoginController {
             PreparedStatement stmt = conn.prepareStatement(query);
 
             ResultSet resultSet = stmt.executeQuery();
-            System.out.println("Jello");
+            System.out.println("Hello");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id_account");
                 User user = new User(id, username, passwd);

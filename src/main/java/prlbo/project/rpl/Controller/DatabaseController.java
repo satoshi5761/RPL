@@ -90,11 +90,12 @@ public class DatabaseController {
         }
     }
 
-    public ObservableList<String> loadcomboboxkat() {
+    public ObservableList<String> loadcomboboxkat(int id) {
         ObservableList<String> kategori = FXCollections.observableArrayList();
-        String query = "SELECT * FROM kategori";
+        String query = "SELECT * FROM kategori WHERE id_account = ?;";
         try {
             PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 kategori.add(rs.getString("namaKategori"));
@@ -105,26 +106,16 @@ public class DatabaseController {
         return kategori;
     }
 
-    public boolean TambahTugas(int id, String nama, LocalDate tanggal, String kategori) {
+    public boolean TambahTugas(int id, String nama, LocalDate duedate, String kategori) {
         String query = "INSERT INTO tugas (id_account, id_kategori, namaTugas, dueDate) VALUES (?, ?, ?, ?);";
-        String query2 = "SELECT * FROM kategori WHERE namaKategori = ?;";
-
+        int idkategori = getidkategori(kategori);
 
         try {
-            PreparedStatement statement = con.prepareStatement(query2);
-            statement.setString(1, kategori);
-            ResultSet rs = statement.executeQuery();
-
-            int idkategori = 0;
-            while (rs.next()) {
-                idkategori = rs.getInt("id_kategori");
-            }
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, id);
             stmt.setInt(2, idkategori);
             stmt.setString(3, nama);
-            stmt.setDate(4, Date.valueOf(tanggal));
-
+            stmt.setString(4, duedate.toString());
             stmt.executeUpdate();
             System.out.println("Tugas berhasil ditambahkan.");
             return true;
@@ -160,32 +151,59 @@ public class DatabaseController {
         }
     }
 
-    //   public boolean EditTugas(String nama, LocalDate tanggal, String waktu, String kategori) {
-//        String query = "UPDATE daftartugas SET (namaTugas, dueDate, kategori) VALUES (?, ?, ?, ?);";
-//
+//    public ObservableList<String> loaddatatgs(String nama, String duedate, String kategori){
+//        ObservableList<String> data = FXCollections.observableArrayList();
+//        String query = "SELECT * FROM kategori WHERE id_account = ?;";
 //        try {
 //            PreparedStatement stmt = con.prepareStatement(query);
-//            stmt.setString(1, nama);
-//            stmt.setDate(2, Date.valueOf(tanggal));
-//            stmt.setString(3, waktu);
-//            stmt.setString(4, kategori);
-//
-//            stmt.executeUpdate();
-//            System.out.println("Tugas berhasil ditambahkan.");
-//            return true;
-//        } catch (SQLException e) {
-//            System.out.println("Tugas gagal ditambahkan.");
-//            return false;
+//            stmt.setInt(1, id);
+//            ResultSet rs = stmt.executeQuery();
+//            while (rs.next()) {
+//                kategori.add(rs.getString("namaKategori"));
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Gagal Ambil Kategori.");
 //        }
-//
+//        return kategori;
 //    }
-//
-    public boolean HapusTugas(String nama) {
-        String query = "DELETE FROM tugas WHERE nama = ?;";
+
+    public boolean EditTugas(int id, String namaold, String duedateold, String kategoriold, String nama, String duedate, String kategori) throws SQLException {
+        String query = "UPDATE tugas SET id_kategori = ?, namaTugas = ?, dueDate = ? WHERE " +
+                "id_account = ? AND id_kategori = ? AND namaTugas = ? AND dueDate = ?;";
+        int idkategori = getidkategori(kategori);
+        int idkategoriold = getidkategori(kategoriold);
+
 
         try {
             PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1, nama);
+            stmt.setInt(1, idkategori);
+            stmt.setString(2, nama);
+            stmt.setString(3, duedate);
+            stmt.setInt(4, id);
+            stmt.setInt(5, idkategoriold);
+            stmt.setString(6, namaold);
+            stmt.setString(7, duedateold);
+
+
+            stmt.executeUpdate();
+            System.out.println("Tugas berhasil diedit.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Tugas gagal diedit.");
+            return false;
+        }
+
+    }
+
+    public boolean HapusTugas(int id, String nama, String duedate, String kategori) {
+        String query = "DELETE FROM tugas WHERE id_account = ? AND id_kategori = ? AND namaTugas = ? AND dueDate = ?;";
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.setInt(2, getidkategori(kategori));
+            stmt.setString(3, nama);
+            stmt.setString(4, duedate);
+
 
             stmt.executeUpdate();
             System.out.println("Tugas berhasil dihapus.");
@@ -194,6 +212,25 @@ public class DatabaseController {
             System.out.println("Tugas gagal dihapus.");
             return false;
         }
+    }
+
+
+    public int getidkategori(String kategori) {
+        String query = "SELECT * FROM kategori WHERE namaKategori = ?;";
+        int idkategori = 0;
+
+        try {
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, kategori);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                idkategori = rs.getInt("id_kategori");
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Ada error");
+        }
+        return idkategori;
     }
 
     //Semisal Mau Testing DatabaseController :

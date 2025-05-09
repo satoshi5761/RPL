@@ -23,8 +23,8 @@ public class TambahTugasController {
     @FXML
     private ComboBox<String> combxkategori;
 
-    @FXML
-    private ComboBox<String> combxwaktu;
+//    @FXML
+//    private ComboBox<String> combxwaktu;
 
     @FXML
     private DatePicker dateduedate;
@@ -33,14 +33,36 @@ public class TambahTugasController {
     private TextField txtnama;
 
     private int idacc;
+    private String nama;
+    private String duedate;
+    private String kategori;
+    private boolean isEdit = false;
 
     public void set_idacc(int id) {
         idacc = id;
-    }
-
-    public void initialize() {
         loadcomboboxkategori();
     }
+
+    public void set_nama (String nama){
+        this.nama = nama;
+    }
+
+    public void set_duedate (String duedate){
+        this.duedate = duedate;
+
+    }
+
+    public void set_kategori (String kategori){
+        this.kategori = kategori;
+        isEdit = true;
+        loaddatatugas();
+    }
+
+
+    public void initialize() {
+
+    }
+
 
     Stage getStage(ActionEvent e) {
         /* Mendapatkan Stage dari node objek e yang di lakukan action*/
@@ -49,16 +71,32 @@ public class TambahTugasController {
 
     @FXML
     void addTugas(ActionEvent event) throws IOException {
-        String nama = txtnama.getText();
+        String nama1 = txtnama.getText();
         LocalDate tanggal = dateduedate.getValue();
-        String kategori = combxkategori.getValue();
-        if (nama.isEmpty() || tanggal == null) {
+        String kategori1 = combxkategori.getValue();
+
+
+
+        if (nama1.isEmpty() || tanggal == null) {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Pastikan semua data terisi!");
         } else {
             try {
                 DatabaseController db = new DatabaseController();
-                System.out.println(idacc);
-                if (db.TambahTugas(idacc, nama, tanggal, kategori)) {
+                if (isEdit) {
+                    if(db.EditTugas(idacc, nama, duedate, kategori, nama1, String.valueOf(tanggal), kategori1)){
+                        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+                        Parent root = fxml_load.load();
+                        MainController main = fxml_load.getController();
+                        Stage currStage = getStage(event);
+                        currStage.setScene(new Scene(root));
+                        currStage.show();
+                        db.tutup_cinta();
+                    }
+                    else{
+                        System.out.println("Gagal update");
+                    }
+                }
+                if (db.TambahTugas(idacc, nama1, tanggal, kategori1)) {
                     FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
                     Parent root = fxml_load.load();
                     MainController main = fxml_load.getController();
@@ -78,7 +116,7 @@ public class TambahTugasController {
         ObservableList<String> kategori = FXCollections.observableArrayList();
         try {
             DatabaseController db = new DatabaseController();
-            kategori = db.loadcomboboxkat();
+            kategori = db.loadcomboboxkat(idacc);
 
             if (kategori.size() > 0) {
                 combxkategori.setItems(kategori);
@@ -86,7 +124,14 @@ public class TambahTugasController {
 
             }
         } catch (Exception e) {
-            System.out.println("blog");
+            System.out.println("gagal");
         }
+    }
+
+    private void loaddatatugas() {
+        txtnama.setText(nama);
+        dateduedate.setValue(LocalDate.parse(duedate));
+        loadcomboboxkategori();
+        combxkategori.setValue(kategori);
     }
 }

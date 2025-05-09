@@ -94,7 +94,7 @@ public class MainController {
 //        String query = "SELECT tugas.namaTugas, tugas.id_kategori, tugas.dueDate, kategori.namaKategori
 //        FROM tugas NATURAL JOIN kategori WHERE tugas.id_account = ?";
         String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori " +
-                "FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori " +
+                "FROM tugas NATURAL JOIN kategori " +
                 "WHERE tugas.id_account = ?";
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -151,6 +151,20 @@ public class MainController {
 
     @FXML
     void EditTugas(ActionEvent event) throws IOException {
+        ObservableList selectedrow = (ObservableList) tblTugas.getSelectionModel().getSelectedItem();
+        String namaold = "";
+        String kategoriold = "";
+        String duedateold = "";
+
+        if (selectedrow != null) {
+           namaold = selectedrow.get(0).toString();
+           kategoriold = selectedrow.get(1).toString();
+           duedateold = selectedrow.get(2).toString();
+        }
+        else{
+           PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
+        }
+
         FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/TambahTugas.fxml"));
         Parent root = fxml_load.load();
         Stage currStage = getStage(event);
@@ -159,40 +173,30 @@ public class MainController {
         TambahTugasController main = fxml_load.getController();
         int id = idacc;
         main.set_idacc(id);
+        main.set_nama(namaold);
+        main.set_duedate(duedateold);
+        main.set_kategori(kategoriold);
     }
 
     @FXML
     void Hapus(ActionEvent event) throws Exception {
-        ///Seh Durung Dadi
-        if (tblTugas.getSelectionModel().getSelectedItem() != null) {
-            ObservableList<String> selectedRow = tblTugas.getSelectionModel().getSelectedItem();
-            String namaTugas = selectedRow.get(0);
-            DatabaseController db = new DatabaseController();
-            db.HapusTugas(namaTugas);
-            AmbilData();
+        DatabaseController db = new DatabaseController();
+        String nama = "";
+        String duedate = "";
+        String kategori = "";
+
+        ObservableList selectedrow = (ObservableList) tblTugas.getSelectionModel().getSelectedItem();
+        if (selectedrow != null) {
+            nama = selectedrow.get(0).toString();
+            kategori = selectedrow.get(1).toString();
+            duedate = selectedrow.get(2).toString();
         }
-//        if(tblTugas.getSelectionModel().getSelectedItem() != null) {
-//            DatabaseController db = new DatabaseController();
-//            String query = "SELECT namaTugas FROM tugas WHERE id_account = ?";
-//            Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
-//            PreparedStatement stmt = conn.prepareStatement(query);
-//            stmt.setInt(1, idacc);
-//            ResultSet rs = stmt.executeQuery();
-//            try {
-//                if (rs.next()) {
-//                    String nama = rs.getString("namaTugas");
-//                    System.out.println(nama);
-//                    FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
-//                    Parent root = fxml_load.load();
-//                    Stage currStage = getStage(event);
-//                    currStage.setScene(new Scene(root));
-//                    currStage.show();
-//            }
-//            }catch (SQLException e) {
-//                System.out.println("Gagal ambil nama tugas");
-//                e.printStackTrace();
-//            }
-//        }
+        else{
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
+        }
+        db.HapusTugas(idacc, nama, duedate, kategori);
+        AmbilData();
+
     }
 
     @FXML
@@ -230,6 +234,7 @@ public class MainController {
         currStage.setScene(new Scene(root));
         currStage.show();
         TambahTugasController main = fxml_load.getController();
+        System.out.println(idacc);
         int id = idacc;
         main.set_idacc(id);
     }
