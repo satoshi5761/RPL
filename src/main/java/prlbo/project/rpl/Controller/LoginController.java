@@ -63,7 +63,7 @@ public class LoginController {
             Parent root = fxml_load.load();
 
 //            Coba tambah tugas
-            TambahTugasController loadtugas = fxml_load.getController();
+            TambahKategoriController loadtugas = fxml_load.getController();
             String query = "SELECT id FROM account WHERE username = '" + username + "'";
             Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
             PreparedStatement stmt = conn.prepareStatement(query);
