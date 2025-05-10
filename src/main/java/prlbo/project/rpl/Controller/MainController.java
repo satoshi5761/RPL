@@ -76,6 +76,8 @@ public class MainController {
         }
         set_usser(name);
         set_idacc(id);
+        searchBox.textProperty().addListener((observable, oldValue, newValue)
+                -> {AmbilData(newValue);});
     }
 
     public void set_usser(String user) {
@@ -84,15 +86,22 @@ public class MainController {
     }
     public void set_idacc(int id) {
         idacc = id;
-        AmbilData();
+        AmbilData("");
     }
 
-    public void AmbilData() {
+    public void AmbilData(String search) {
         ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
         String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
+        if (search!= null && !search.isEmpty()) {
+            query += " AND (LOWER(tugas.namaTugas) LIKE ? OR LOWER(kategori.namaKategori) LIKE ?)";
+        }
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, idacc);
+            if (search!= null && !search.isEmpty()) {
+                stmt.setString(2, "%" + search.toLowerCase() + "%");
+                stmt.setString(3, "%" + search.toLowerCase() + "%");
+            }
             ResultSet rs = stmt.executeQuery();
             SimpleDateFormat masuk = new SimpleDateFormat("yyyy-MM-dd");
             while (rs.next()) {
@@ -147,6 +156,7 @@ public class MainController {
         currStage.show();
         EditKategoriController main = fxml_load.getController();
         int id = idacc;
+        main.set_idacc(id);
     }
 
     @FXML
@@ -160,22 +170,21 @@ public class MainController {
            namaold = selectedrow.get(0).toString();
            kategoriold = selectedrow.get(1).toString();
            duedateold = selectedrow.get(2).toString();
+            FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/TambahTugas.fxml"));
+            Parent root = fxml_load.load();
+            Stage currStage = getStage(event);
+            currStage.setScene(new Scene(root));
+            currStage.show();
+            TambahTugasController main = fxml_load.getController();
+            int id = idacc;
+            main.set_idacc(id);
+            main.set_nama(namaold);
+            main.set_duedate(duedateold);
+            main.set_kategori(kategoriold);
         }
         else{
            PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
         }
-
-        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/TambahTugas.fxml"));
-        Parent root = fxml_load.load();
-        Stage currStage = getStage(event);
-        currStage.setScene(new Scene(root));
-        currStage.show();
-        TambahTugasController main = fxml_load.getController();
-        int id = idacc;
-        main.set_idacc(id);
-        main.set_nama(namaold);
-        main.set_duedate(duedateold);
-        main.set_kategori(kategoriold);
     }
 
     @FXML
@@ -190,13 +199,12 @@ public class MainController {
             nama = selectedrow.get(0).toString();
             kategori = selectedrow.get(1).toString();
             duedate = selectedrow.get(2).toString();
+            db.HapusTugas(idacc, nama, duedate, kategori);
+            AmbilData("");
         }
         else{
             PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
         }
-        db.HapusTugas(idacc, nama, duedate, kategori);
-        AmbilData();
-
     }
 
     @FXML
@@ -237,6 +245,10 @@ public class MainController {
         System.out.println(idacc);
         int id = idacc;
         main.set_idacc(id);
+    }
+
+    public void Search(){
+        searchBox.getText();
     }
 
 }

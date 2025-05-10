@@ -113,8 +113,25 @@ public class EditKategoriController {
     }
 
     @FXML
-    public void handleCancelBtn(ActionEvent actionEvent) {
-        closeWindow(actionEvent);
+    public void hapusBtn(ActionEvent actionEvent) {
+        try {
+            DatabaseController db = new DatabaseController();
+            int idkategori = 0;
+
+            ObservableList selectedrow = (ObservableList) KategoriTable.getSelectionModel().getSelectedItem();
+            if (selectedrow != null) {
+                idkategori = Integer.parseInt((String) selectedrow.get(0));
+                db.HapusKategori(idacc, idkategori);
+            } else {
+                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Belum ada data yang dipilih.");
+            }
+            AmbilData();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Error",
+                    "Gagal Hapus", "Gagal hapus kategori");
+        }
     }
 
     private void navigateToMain(ActionEvent event) {

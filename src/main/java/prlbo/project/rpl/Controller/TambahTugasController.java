@@ -92,6 +92,7 @@ public class TambahTugasController {
             try {
                 DatabaseController db = new DatabaseController();
                 if (isEdit) {
+
                     if(db.EditTugas(idacc, nama, duedate, kategori, nama1, String.valueOf(tanggal), kategori1)){
                         FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
                         Parent root = fxml_load.load();

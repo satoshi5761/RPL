@@ -3,6 +3,8 @@ package prlbo.project.rpl.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import prlbo.project.rpl.util.PesanMessage;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -108,7 +110,7 @@ public class DatabaseController {
 
     public boolean TambahTugas(int id, String nama, LocalDate duedate, String kategori) {
         String query = "INSERT INTO tugas (id_account, id_kategori, namaTugas, dueDate) VALUES (?, ?, ?, ?);";
-        int idkategori = getidkategori(kategori);
+        int idkategori = getidkategori(id, kategori);
 
         try {
             PreparedStatement stmt = con.prepareStatement(query);
@@ -153,8 +155,8 @@ public class DatabaseController {
     public boolean EditTugas(int id, String namaold, String duedateold, String kategoriold, String nama, String duedate, String kategori) throws SQLException {
         String query = "UPDATE tugas SET id_kategori = ?, namaTugas = ?, dueDate = ? WHERE " +
                 "id_account = ? AND id_kategori = ? AND namaTugas = ? AND dueDate = ?;";
-        int idkategori = getidkategori(kategori);
-        int idkategoriold = getidkategori(kategoriold);
+        int idkategori = getidkategori(id, kategori);
+        int idkategoriold = getidkategori(id, kategoriold);
 
 
         try {
@@ -183,7 +185,7 @@ public class DatabaseController {
         try {
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, id);
-            stmt.setInt(2, getidkategori(kategori));
+            stmt.setInt(2, getidkategori(id, kategori));
             stmt.setString(3, nama);
             stmt.setString(4, duedate);
 
@@ -198,13 +200,14 @@ public class DatabaseController {
     }
 
 
-    public int getidkategori(String kategori) {
-        String query = "SELECT * FROM kategori WHERE namaKategori = ?;";
+    public int getidkategori(int id, String kategori) {
+        String query = "SELECT * FROM kategori WHERE id_account = ? AND namaKategori = ?;";
         int idkategori = 0;
 
         try {
             PreparedStatement statement = con.prepareStatement(query);
-            statement.setString(1, kategori);
+            statement.setInt(1, id);
+            statement.setString(2, kategori);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 idkategori = rs.getInt("id_kategori");
@@ -214,6 +217,53 @@ public class DatabaseController {
             System.out.println("Ada error");
         }
         return idkategori;
+    }
+
+    public void HapusKategori(int id, int idkategori) {
+        String query = "DELETE FROM kategori WHERE id_kategori = ? AND id_account = ?;";
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, idkategori);
+            stmt.setInt(2, id);
+            System.out.println(idkategori + id);
+            if(!cektugas(id, idkategori)) {
+                System.out.println("bb");
+                stmt.executeUpdate();
+                System.out.println("zz");
+                PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Hapus Kategori",
+                        "Berhasil hapus", "Kategori Terhapus!");
+            }
+            else{
+                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Error",
+                        "Gagal hapus", "Terdapat tugas dalam kategori tersebut!");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Hapus Kategori",
+                    "Gagal hapus", "Tidak dapat menghapus kategori.");
+
+        }
+    }
+
+    public boolean cektugas(int id, int idkategori) {
+        String query = "SELECT * FROM tugas WHERE id_kategori = ? AND id_account = ?;";
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, idkategori);
+            stmt.setInt(2, id);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("biar tau kalo gagal");
+            return false;
+        }
     }
 
     //Semisal Mau Testing DatabaseController :
