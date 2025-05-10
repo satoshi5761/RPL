@@ -242,7 +242,6 @@ public class MainController {
         currStage.setScene(new Scene(root));
         currStage.show();
         TambahTugasController main = fxml_load.getController();
-        System.out.println(idacc);
         int id = idacc;
         main.set_idacc(id);
     }

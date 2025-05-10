@@ -111,13 +111,16 @@ public class DatabaseController {
     public boolean TambahTugas(int id, String nama, LocalDate duedate, String kategori) {
         String query = "INSERT INTO tugas (id_account, id_kategori, namaTugas, dueDate) VALUES (?, ?, ?, ?);";
         int idkategori = getidkategori(id, kategori);
-
+        System.out.println(kategori);
         try {
+            System.out.println(kategori);
             PreparedStatement stmt = con.prepareStatement(query);
+            System.out.println(kategori);
             stmt.setInt(1, id);
             stmt.setInt(2, idkategori);
             stmt.setString(3, nama);
             stmt.setString(4, duedate.toString());
+            System.out.println(kategori);
             stmt.executeUpdate();
             System.out.println("Tugas berhasil ditambahkan.");
             return true;
@@ -225,11 +228,8 @@ public class DatabaseController {
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, idkategori);
             stmt.setInt(2, id);
-            System.out.println(idkategori + id);
             if(!cektugas(id, idkategori)) {
-                System.out.println("bb");
                 stmt.executeUpdate();
-                System.out.println("zz");
                 PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Hapus Kategori",
                         "Berhasil hapus", "Kategori Terhapus!");
             }

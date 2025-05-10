@@ -49,6 +49,7 @@ public class TambahTugasController {
 
     public void set_duedate (String duedate){
         this.duedate = duedate;
+        loadcomboboxkategori();
 
     }
 
@@ -56,11 +57,25 @@ public class TambahTugasController {
         this.kategori = kategori;
         isEdit = true;
         loaddatatugas();
+
+
+//        ObservableList<String> kategorilist = FXCollections.observableArrayList();
+//        try {
+//            DatabaseController db = new DatabaseController();
+//            kategorilist = db.loadcomboboxkat(idacc);
+//            if (kategorilist.size() <= 0) {
+//                db.TambahKategori(idacc, "Tugas");
+//                kategorilist = db.loadcomboboxkat(idacc);
+//                combxkategori.setItems(kategorilist);
+//
+//            }
+//        } catch (Exception e) {
+//            System.out.println("gagal");
+//        }
     }
 
 
     public void initialize() {
-
     }
 
 
@@ -86,9 +101,10 @@ public class TambahTugasController {
         String nama1 = txtnama.getText();
         LocalDate tanggal = dateduedate.getValue();
         String kategori1 = combxkategori.getValue();
-        if (nama1.isEmpty() || tanggal == null) {
+        if (nama1.isEmpty() || tanggal == null || kategori1 == null) {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Pastikan semua data terisi!");
-        } else {
+        }
+        else {
             try {
                 DatabaseController db = new DatabaseController();
                 if (isEdit) {
@@ -124,13 +140,16 @@ public class TambahTugasController {
 
     private void loadcomboboxkategori() {
         ObservableList<String> kategori = FXCollections.observableArrayList();
+
         try {
             DatabaseController db = new DatabaseController();
             kategori = db.loadcomboboxkat(idacc);
             if (kategori.size() > 0) {
                 combxkategori.setItems(kategori);
             } else {
-
+                db.TambahKategori(idacc, "Tugas");
+                kategori = db.loadcomboboxkat(idacc);
+                combxkategori.setItems(kategori);
             }
         } catch (Exception e) {
             System.out.println("gagal");
