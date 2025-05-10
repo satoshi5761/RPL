@@ -17,6 +17,9 @@ import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainController {
 
@@ -86,17 +89,25 @@ public class MainController {
 
     public void AmbilData() {
         ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
-//        String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori " + "FROM tugas NATURAL JOIN kategori " + "WHERE tugas.id_account = ?";
         String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, idacc);
             ResultSet rs = stmt.executeQuery();
+            SimpleDateFormat masuk = new SimpleDateFormat("yyyy-MM-dd");
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 row.add(rs.getString("namaTugas"));
                 row.add(rs.getString("namaKategori"));
-                row.add(rs.getString("dueDate"));
+                String ambil = rs.getString("dueDate");
+                String hasil;
+                if(ambil.contains("-")){
+                    hasil = ambil;
+                } else {
+                    long time = Long.parseLong(ambil);
+                    hasil = masuk.format(time);
+                }
+                row.add(hasil);
                 data.add(row);
             }
             colNo.setCellValueFactory(
