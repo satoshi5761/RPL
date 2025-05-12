@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="CompletedTable" layoutX="62.0" layoutY="83.0" prefHeight="235.0" prefWidth="477.0">
+              <columns>
+                  <TableColumn fx:id="No" prefWidth="34.0" text="No" />
+                <TableColumn fx:id="Namatugas" prefWidth="175.0" text="Nama Tugas" />
+                <TableColumn fx:id="Tenggat" prefWidth="134.0" text="Tenggat" />
+                  <TableColumn fx:id="Selesai" prefWidth="133.0" text="Selesai" />
+              </columns>
+            </TableView>
+            <Label layoutX="62.0" layoutY="36.0" prefHeight="19.0" prefWidth="256.0" text="Completed Tasks" textAlignment="JUSTIFY">
+               <font>
+                  <Font name="Tw Cen MT Condensed" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

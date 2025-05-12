@@ -201,6 +201,11 @@ public class MainController {
             duedate = selectedrow.get(2).toString();
             db.HapusTugas(idacc, nama, duedate, kategori);
             AmbilData("");
+
+           PesanMessage.selesai_atau_tidak("Task Status",
+                   "Apakah Anda sudah menyelesaikan tugas ini?",
+                   "Pilih salah satu:");
+
         }
         else{
             PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
