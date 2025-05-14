@@ -266,6 +266,10 @@ public class DatabaseController {
         }
     }
 
+    public boolean InsertTugasSelesai(int id, int kategori, String namaTugas, String dueDate) {
+        String query = ""
+    }
+
     //Semisal Mau Testing DatabaseController :
 //    public static void main(String[] args) throws Exception {
 //

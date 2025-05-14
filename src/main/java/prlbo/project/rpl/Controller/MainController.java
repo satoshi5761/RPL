@@ -15,6 +15,8 @@ import javafx.scene.image.Image;
 import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
 import java.text.ParseException;
@@ -40,6 +42,10 @@ public class MainController {
 
     @FXML
     private Button lblBersih;
+
+    @FXML
+    private Button btnCompletedTugas;
+
     @FXML
     private TableColumn<ObservableList<String>, String> colKategori;
 
@@ -202,14 +208,24 @@ public class MainController {
             db.HapusTugas(idacc, nama, duedate, kategori);
             AmbilData("");
 
-           PesanMessage.selesai_atau_tidak("Task Status",
+           boolean tugas_selesai = PesanMessage.selesai_atau_tidak("Task Status",
                    "Apakah Anda sudah menyelesaikan tugas ini?",
                    "Pilih salah satu:");
 
+           if (tugas_selesai) {
+
+           } else {
+
+           }
         }
         else{
             PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
         }
+    }
+
+    @FXML
+    void CompletedTugas(ActionEvent event) throws Exception {
+        FXMLLoader fxml_load ;
     }
 
     @FXML
