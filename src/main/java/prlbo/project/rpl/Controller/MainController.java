@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import org.w3c.dom.ls.LSOutput;
 import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
@@ -45,6 +46,7 @@ public class MainController {
 
     @FXML
     private Button btnCompletedTugas;
+
 
     @FXML
     private TableColumn<ObservableList<String>, String> colKategori;
@@ -213,19 +215,32 @@ public class MainController {
                    "Pilih salah satu:");
 
            if (tugas_selesai) {
-
-           } else {
-
+               boolean is_inserted = db.InsertTugasSelesai(idacc, kategori, nama, duedate);
+               if (is_inserted) System.out.println("selesai ditambahkan");
+               else System.out.println("tugas yang selesai gagal ditambahkan");
            }
+
+
         }
         else{
             PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
         }
+
+        db.tutup_cinta();
     }
 
     @FXML
     void CompletedTugas(ActionEvent event) throws Exception {
-        FXMLLoader fxml_load ;
+        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/CompletedTask.fxml"));
+        Parent root = fxml_load.load();
+
+        CompletedTaskController controller = fxml_load.getController();
+        controller.setIdacc(idacc);
+        controller.initialize();
+
+        Stage curstage = getStage(event);
+        curstage.setScene(new Scene(root));
+        curstage.show();
     }
 
     @FXML

@@ -266,8 +266,56 @@ public class DatabaseController {
         }
     }
 
-    public boolean InsertTugasSelesai(int id, int kategori, String namaTugas, String dueDate) {
-        String query = ""
+    public boolean InsertTugasSelesai(int id, String namaKategori, String namaTugas, String dueDate) {
+        String query = "INSERT INTO tugas_selesai (id_account, id_kategori, namaTugas, dueDate, completedDate)" +
+                "VALUES (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.setInt(2, getidkategori(id, namaKategori));
+            stmt.setString(3, namaTugas);
+            stmt.setString(4, dueDate);
+            stmt.setString(5, String.valueOf(LocalDate.now()));
+
+            stmt.executeUpdate();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public ObservableList<TugasSelesai> ShowCompletedTaskDB(int idacc) {
+        String query = "select t.namaTugas, k.namaKategori as kategori, t.dueDate, t.completedDate " +
+                "from tugas_selesai t join kategori k on t.id_kategori = k.id_kategori " +
+                "where t.id_account=?;";
+        ObservableList<TugasSelesai> list = FXCollections.observableArrayList();
+
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, String.valueOf(idacc));
+
+            ResultSet rs = stmt.executeQuery();
+            int cnt = 1;
+
+            while (rs.next()) {
+
+                list.add(
+                        new TugasSelesai(
+                                String.valueOf(cnt),
+                                rs.getString("namaTugas"),
+                                rs.getString("kategori"),
+                                rs.getString("dueDate"),
+                                rs.getString("completedDate")
+                        )
+                );
+
+                cnt++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } return list;
     }
 
     //Semisal Mau Testing DatabaseController :
