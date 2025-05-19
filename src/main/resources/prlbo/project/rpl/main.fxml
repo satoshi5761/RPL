@@ -34,7 +34,7 @@
                <font>
                   <Font name="Bodoni MT Condensed Bold" size="19.0" />
                </font></Label>
-            <Button fx:id="btnCompletedTugas" layoutX="30.0" layoutY="453.0" mnemonicParsing="false" onAction="#CompletedTugas" prefHeight="26.0" prefWidth="109.0" styleClass="ButtonMain" text="Completed Tugas" />
+            <Button fx:id="btnHistoryTugas" layoutX="30.0" layoutY="453.0" mnemonicParsing="false" onAction="#HistoryTugas" prefHeight="26.0" prefWidth="109.0" styleClass="ButtonMain" text="History Tugas" />
          </children></AnchorPane>
    </left>
    <center>

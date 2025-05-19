@@ -23,6 +23,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class MainController {
 
@@ -45,7 +46,7 @@ public class MainController {
     private Button lblBersih;
 
     @FXML
-    private Button btnCompletedTugas;
+    private Button btnHistoryTugas;
 
 
     @FXML
@@ -217,7 +218,11 @@ public class MainController {
            if (tugas_selesai) {
                boolean is_inserted = db.InsertTugasSelesai(idacc, kategori, nama, duedate);
                if (is_inserted) System.out.println("selesai ditambahkan");
-               else System.out.println("tugas yang selesai gagal ditambahkan");
+               else System.out.println("tugas yang selesai gagal untuk ditambahkan");
+           } else {
+                boolean is_inserted = db.InsertTugasTidakSelesai(idacc, kategori, nama, duedate);
+               if (is_inserted) System.out.println("selesai ditambahkan");
+               else System.out.println("tugas yang tidak selesai gagal untuk ditambahkan");
            }
 
 
@@ -230,13 +235,32 @@ public class MainController {
     }
 
     @FXML
-    void CompletedTugas(ActionEvent event) throws Exception {
-        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/CompletedTask.fxml"));
+    void HistoryTugas(ActionEvent e) throws  Exception {
+
+        boolean history_selesai_or_not = PesanMessage.selesai_atau_tidak("Lihat history tugas",
+                "Task History",
+                "Pilih salah satu:");
+
+        if (history_selesai_or_not) {
+            CompletedTugas(e, "CompletedTask.fxml");
+        } else {
+            CompletedTugas(e, "UncompletedTask.fxml");
+        }
+
+    }
+
+    void CompletedTugas(ActionEvent event, String sfxml) throws Exception {
+        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/" + sfxml));
         Parent root = fxml_load.load();
 
-        CompletedTaskController controller = fxml_load.getController();
-        controller.setIdacc(idacc);
-        controller.initialize();
+        Object controller = fxml_load.getController();
+        if (sfxml.startsWith("Complete")) {
+            ((CompletedTaskController) controller).setIdacc(idacc);
+            ((CompletedTaskController) controller).initialize();
+        } else {
+            ((UncompletedTaskController) controller).setIdacc(idacc);
+            ((UncompletedTaskController) controller).initialize();
+        }
 
         Stage curstage = getStage(event);
         curstage.setScene(new Scene(root));

@@ -7,7 +7,7 @@ public class TugasSelesai {
     private final SimpleStringProperty namaTugas;
     private final SimpleStringProperty kategori;
     private final SimpleStringProperty dueDate;
-    private final SimpleStringProperty completedDate;
+    private SimpleStringProperty completedDate;
 
     public TugasSelesai(String no, String namaTugas, String kategori, String dueDate, String completedDate) {
         this.no = new SimpleStringProperty(no);
@@ -15,6 +15,12 @@ public class TugasSelesai {
         this.kategori = new SimpleStringProperty(kategori);
         this.dueDate = new SimpleStringProperty(dueDate);
         this.completedDate = new SimpleStringProperty(completedDate);
+    }
+    public TugasSelesai(String no, String namaTugas, String kategori, String dueDate) {
+        this.no = new SimpleStringProperty(no);
+        this.namaTugas = new SimpleStringProperty(namaTugas);
+        this.kategori = new SimpleStringProperty(kategori);
+        this.dueDate = new SimpleStringProperty(dueDate);
     }
 
     public String getNo() { return no.get(); }

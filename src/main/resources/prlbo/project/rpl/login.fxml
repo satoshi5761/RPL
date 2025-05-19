@@ -31,11 +31,13 @@
   <right>
     <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
       <children>
-        <Text fill="#0698ff" layoutX="97.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
-          <font>
-            <Font name="System Bold" size="47.0" />
-          </font>
-        </Text>
+        <TextField fx:id="txtNama" layoutX="91.0" layoutY="196.0" prefWidth="168.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="txtPassword" layoutX="90.0" layoutY="244.0" prefHeight="27.0" prefWidth="171.0" promptText="Password" style="-fx-background-color: transparant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="btnLupa" layoutX="74.0" layoutY="279.0" mnemonicParsing="false" onAction="#Lupa" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Lupa Password ?" textFill="#0698ff">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
         <Button fx:id="btnLogin" layoutX="80.0" layoutY="328.0" mnemonicParsing="false" onAction="#Login" prefHeight="37.0" prefWidth="191.0" style="-fx-background-color: #0698ff; -fx-border-radius: 25;" styleClass="Buttonkeren" stylesheets="@../../../Asset/Style.css" text="Login" textFill="WHITE">
           <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
@@ -44,7 +46,16 @@
             <Font name="System Bold" size="12.0" />
           </font>
         </Button>
-        <TextField fx:id="txtNama" layoutX="91.0" layoutY="196.0" prefWidth="168.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+        <Button fx:id="btnSignUp" layoutX="195.0" layoutY="431.0" mnemonicParsing="false" onAction="#Signup" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Registrasi" textFill="#0698ff">
+          <font>
+            <Font name="System Bold" size="12.0" />
+          </font>
+        </Button>
+        <Text fill="#0698ff" layoutX="97.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+          <font>
+            <Font name="System Bold" size="47.0" />
+          </font>
+        </Text>
         <ImageView fitHeight="43.0" fitWidth="25.0" layoutX="55.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
           <image>
             <Image url="@../../../Asset/User.png" />
@@ -56,17 +67,6 @@
           </image>
         </ImageView>
         <Text layoutX="74.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tidak mempunyai akun?" />
-        <Button fx:id="btnSignUp" layoutX="195.0" layoutY="431.0" mnemonicParsing="false" onAction="#Signup" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Registrasi" textFill="#0698ff">
-          <font>
-            <Font name="System Bold" size="12.0" />
-          </font>
-        </Button>
-            <Button fx:id="btnLupa" layoutX="74.0" layoutY="279.0" mnemonicParsing="false" onAction="#Lupa" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Lupa Password ?" textFill="#0698ff">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Button>
-            <PasswordField fx:id="txtPassword" layoutX="90.0" layoutY="244.0" prefHeight="27.0" prefWidth="171.0" promptText="Password" style="-fx-background-color: transparant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
       </children>
     </AnchorPane>
   </right>
