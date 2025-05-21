@@ -57,6 +57,7 @@
                   <Font name="Tw Cen MT Condensed" size="24.0" />
                </font>
             </Label>
+            <Button fx:id="btnPieChart" layoutX="444.0" layoutY="453.0" mnemonicParsing="false" onAction="#switchPie" text="Pie Chart" />
          </children>
       </AnchorPane>
    </center>

@@ -3,6 +3,7 @@ package prlbo.project.rpl.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import prlbo.project.rpl.util.PesanMessage;
 
@@ -367,11 +368,91 @@ public class DatabaseController {
             e.printStackTrace();
         } return list;
     }
-    //Semisal Mau Testing DatabaseController :
+
+    public int getJumlahTask(int idacc, String table) {
+        String query = "SELECT COUNT(*) from " + table + " where id_account = ?;";
+
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, String.valueOf(idacc));
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {return res.getInt(1);}
+            else return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public ObservableList<PieChart.Data> getCompletedTaskBasedOnCategory(int idacc) {
+
+        String query = "select k.namaKategori as ktgr, count(*) as jmlh from\n" +
+                " tugas_selesai as t join kategori as k on t.id_kategori = k.id_kategori where t.id_account=?" +
+                "group by ktgr";
+
+        ObservableList<PieChart.Data> pie = FXCollections.observableArrayList();
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, String.valueOf(idacc));
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                String k = res.getString("ktgr");
+                int j = res.getInt("jmlh");
+
+                pie.add(new PieChart.Data(k, j));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pie;
+    }
+
+    public ObservableList<PieChart.Data> getAllTaskBasedOnCategory(int idacc) {
+        /* semua Task in a pie chart based on Category */
+        String query_completed = "select k.namaKategori as ktgr, count(*) as jmlh from" +
+                " tugas_selesai as t join kategori as k on t.id_kategori = k.id_kategori where t.id_account=?" +
+                "group by ktgr";
+
+        String query_uncompleted = "select k.namaKategori as ktgr, count(*) as jmlh from" +
+                " tugas_tidak_selesai as t join kategori as k on t.id_kategori = k.id_kategori where t.id_account=?" +
+                "group by ktgr";
+
+        String query_now = "select k.namaKategori as ktgr, count(*) as jmlh from" +
+                " tugas as t join kategori as k on t.id_kategori = k.id_kategori where t.id_account=?" +
+                "group by ktgr";
+
+        String query_combined = "SELECT ktgr, SUM(jmlh) as total FROM (" +
+                query_completed + " UNION ALL " +
+                query_uncompleted + " UNION ALL " +
+                query_completed  + " ) " +
+                " GROUP BY ktgr";
+
+        ObservableList<PieChart.Data> pie = FXCollections.observableArrayList();
+        try (PreparedStatement stmt = con.prepareStatement(query_combined)) {
+            stmt.setString(1, String.valueOf(idacc));
+            stmt.setString(2, String.valueOf(idacc));
+            stmt.setString(3, String.valueOf(idacc));
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                String k = res.getString("ktgr");
+                int j = res.getInt("total");
+
+                pie.add(new PieChart.Data(k, j));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pie;
+    }
+
+//    Semisal Mau Testing DatabaseController :
 //    public static void main(String[] args) throws Exception {
 //
 //        DatabaseController db = new DatabaseController();
-//        System.out.println(db.login("ur1", "1"));
+//        System.out.println(db.getJumlahCompletedTask(2));
 //
 //    }
 

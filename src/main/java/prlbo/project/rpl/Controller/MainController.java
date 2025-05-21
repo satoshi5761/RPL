@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import org.w3c.dom.ls.LSOutput;
@@ -48,6 +49,8 @@ public class MainController {
     @FXML
     private Button btnHistoryTugas;
 
+    @FXML
+    private Button btnPieChart;
 
     @FXML
     private TableColumn<ObservableList<String>, String> colKategori;
@@ -306,6 +309,24 @@ public class MainController {
         main.set_idacc(id);
     }
 
+    @FXML
+    void switchPie(ActionEvent e) throws IOException {
+        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/PieChart.fxml"));
+        Parent root = fxml_load.load();
+        PieChartController main = fxml_load.getController();
+
+        main.setIdacc(idacc);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initOwner(getStage(e));
+        stage.initModality(Modality.WINDOW_MODAL);
+
+        stage.showAndWait();
+    }
+
+
+//
     public void Search(){
         searchBox.getText();
     }
