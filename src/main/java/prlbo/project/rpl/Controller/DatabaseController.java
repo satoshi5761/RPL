@@ -161,8 +161,6 @@ public class DatabaseController {
                 "id_account = ? AND id_kategori = ? AND namaTugas = ? AND dueDate = ?;";
         int idkategori = getidkategori(id, kategori);
         int idkategoriold = getidkategori(id, kategoriold);
-
-
         try {
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, idkategori);
@@ -173,7 +171,6 @@ public class DatabaseController {
             stmt.setString(6, namaold);
             stmt.setString(7, duedateold);
 
-
             stmt.executeUpdate();
             System.out.println("Tugas berhasil diedit.");
             return true;
@@ -181,7 +178,6 @@ public class DatabaseController {
             System.out.println("Tugas gagal diedit.");
             return false;
         }
-
     }
 
     public boolean HapusTugas(int id, String nama, String duedate, String kategori) {
@@ -202,6 +198,20 @@ public class DatabaseController {
             return false;
         }
     }
+
+    public boolean EditKategori(int idacc, String kategoriLama, String kategoriBaru) {
+        String sql = "UPDATE kategori SET nama_kategori = ? WHERE id_akun = ? AND nama_kategori = ?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, kategoriBaru);
+            stmt.setInt(2, idacc);
+            stmt.setString(3, kategoriLama);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
     public int getidkategori(int id, String kategori) {

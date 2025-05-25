@@ -1,6 +1,8 @@
 package prlbo.project.rpl.Controller;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,13 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class EditKategoriController {
     @FXML
@@ -30,9 +35,23 @@ public class EditKategoriController {
     public TableColumn<ObservableList<String>, String> NoColumn;
     @FXML
     public TableColumn<ObservableList<String>, String> KategoriColumn;
+    private boolean isEditCategory = false;
+    private String kategoriLama = null;
+
 
     private int idacc;
     private ObservableList<ObservableList<String>> kategoriData = FXCollections.observableArrayList();
+
+    public void initialize(URL location, ResourceBundle resources) {
+        KategoriTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Catatan>() {
+            public void changed(ObservableValue<?> observableValue) {
+                if (observableValue.getValue() != null) {
+                    selectedCatatan = observableValue.getValue();
+                    txtFldJudul.setText(observableValue.getValue().getJudul());
+                }
+            }
+        }
+    }
 
     public void set_idacc(int id) {
         this.idacc = id;
@@ -72,6 +91,12 @@ public class EditKategoriController {
                     "Gagal Memuat Data", "Terjadi kesalahan saat memuat data kategori");
         }
     }
+    public void editKategori(String kategori) {
+        isEditCategory = true;
+        kategoriLama = kategori;
+        categoryNameField.setText(kategori);
+    }
+
 
     @FXML
     public void SaveCategoryBtn(ActionEvent actionEvent) {
@@ -85,16 +110,32 @@ public class EditKategoriController {
         DatabaseController db = null;
         try {
             db = new DatabaseController();
-            if (db.TambahKategori(idacc, kategori)) {
-                PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Sukses",
-                        "Kategori Ditambahkan", "Kategori berhasil ditambahkan");
-
-                AmbilData();
-                categoryNameField.clear();
+            if (isEditCategory) {
+                // Mode edit
+                boolean sukses = db.EditKategori(idacc, kategoriLama, kategori);
+                if (sukses) {
+                    PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Sukses",
+                            "Kategori Diperbarui", "Kategori berhasil diperbarui");
+                } else {
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Gagal",
+                            "Gagal Mengubah", "Perubahan gagal disimpan");
+                }
+                isEditCategory = false;
+                kategoriLama = null;
             } else {
-                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Database Error",
-                        "Gagal Menyimpan", "Gagal menambahkan kategori");
+                // Mode tambah
+                if (db.TambahKategori(idacc, kategori)) {
+                    PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Sukses",
+                            "Kategori Ditambahkan", "Kategori berhasil ditambahkan");
+                } else {
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Gagal",
+                            "Gagal Menyimpan", "Kategori gagal ditambahkan");
+                }
             }
+
+            AmbilData();
+            categoryNameField.clear();
+
         } catch (Exception e) {
             e.printStackTrace();
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Error",
@@ -105,6 +146,7 @@ public class EditKategoriController {
             }
         }
     }
+
 
 
     @FXML
