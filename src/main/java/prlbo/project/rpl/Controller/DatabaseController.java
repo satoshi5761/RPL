@@ -1,7 +1,6 @@
 package prlbo.project.rpl.Controller;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
@@ -9,7 +8,6 @@ import prlbo.project.rpl.util.PesanMessage;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class DatabaseController {
     private Connection con;
@@ -233,7 +231,7 @@ public class DatabaseController {
         return idkategori;
     }
 
-    public void HapusKategori(int id, int idkategori) {
+    public boolean HapusKategori(int id, int idkategori) {
         String query = "DELETE FROM kategori WHERE id_kategori = ? AND id_account = ?;";
         try {
             PreparedStatement stmt = con.prepareStatement(query);
@@ -255,6 +253,7 @@ public class DatabaseController {
                     "Gagal hapus", "Tidak dapat menghapus kategori.");
 
         }
+        return false;
     }
 
     public boolean cektugas(int id, int idkategori) {
