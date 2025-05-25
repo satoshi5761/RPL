@@ -16,9 +16,12 @@ import java.sql.ResultSet;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class LoginController {
 
@@ -43,6 +46,12 @@ public class LoginController {
         String passwd = txtPassword.getText();
         DatabaseController db = new DatabaseController();
         if (db.login(username, passwd) == true) {
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle("Welcome To Our ToDoListApp");
+            tray.setMessage("Hello " + username);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.seconds(3));
+
             /* Masuk ke akun user */
             txtNama.clear();
             txtPassword.clear();

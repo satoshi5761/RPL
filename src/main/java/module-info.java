@@ -4,6 +4,8 @@ module prlbo.project.rpl {
     requires javafx.controls;
     requires java.desktop;
     requires jdk.compiler;
+    requires java.management;
+    requires TrayNotification;
 
 
     opens prlbo.project.rpl to javafx.fxml;
