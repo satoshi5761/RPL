@@ -43,8 +43,6 @@ public class EditKategoriController implements Initializable { // Implement Init
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("EditKategoriController: initialize() CALLED.");
-
         if (KategoriTable == null) {
             System.err.println("EditKategoriController: KategoriTable is NULL in initialize(). Check FXML fx:id.");
             return;
@@ -81,13 +79,12 @@ public class EditKategoriController implements Initializable { // Implement Init
                     }
                 }
         );
-        // Set a placeholder for an empty table
         KategoriTable.setPlaceholder(new Label("Tidak ada kategori untuk ditampilkan."));
     }
 
     public void set_idacc(int id) {
         this.idacc = id;
-        AmbilData(); // Load data after idacc is set
+        AmbilData();
     }
 
     public void AmbilData() {
@@ -107,13 +104,7 @@ public class EditKategoriController implements Initializable { // Implement Init
                 row.add(rs.getString("namaKategori"));          // Column 1: namaKategori
                 kategoriData.add(row);
             }
-
-            // Set up table columns
-            // NoColumn.setCellValueFactory(cellData ->
-            //         new SimpleStringProperty(String.valueOf(kategoriData.indexOf(cellData.getValue()) + 1)));
-            // A slightly more robust way for row numbers if table can be sorted/filtered later:
             NoColumn.setCellValueFactory(cellDataFeatures -> {
-                // Get the index of the item in the TableView's items list
                 int index = KategoriTable.getItems().indexOf(cellDataFeatures.getValue());
                 return new SimpleStringProperty(String.valueOf(index + 1));
             });
@@ -131,12 +122,9 @@ public class EditKategoriController implements Initializable { // Implement Init
         }
     }
 
-    // This method is called by the listener to set up edit mode
     public void editKategori(String kategori) {
         isEditCategory = true;
         kategoriLama = kategori;
-        // The listener already sets categoryNameField.setText,
-        // but this ensures consistency if editKategori is called from elsewhere.
         if (categoryNameField != null) {
             categoryNameField.setText(kategori != null ? kategori : "");
         }
@@ -148,9 +136,6 @@ public class EditKategoriController implements Initializable { // Implement Init
         }
         isEditCategory = false;
         kategoriLama = null;
-        // KategoriTable.getSelectionModel().clearSelection(); // Be cautious: this can re-trigger the listener.
-        // Often better to let user click to clear or have a dedicated button.
-        // Or, if you must, use a flag to prevent re-entry in listener.
     }
 
 
@@ -168,8 +153,7 @@ public class EditKategoriController implements Initializable { // Implement Init
         try {
             db = new DatabaseController();
             if (isEditCategory) {
-                // Mode edit
-                if (kategoriLama == null) { // Should not happen if selection logic is correct
+                if (kategoriLama == null) {
                     PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Error",
                             "Kesalahan Edit", "Kategori lama tidak teridentifikasi. Silakan pilih lagi.");
                     clearFormAndSelection();
@@ -195,9 +179,9 @@ public class EditKategoriController implements Initializable { // Implement Init
                 }
             }
 
-            AmbilData(); // Refresh table data
-            clearFormAndSelection(); // Clear form and reset edit state
-            KategoriTable.getSelectionModel().clearSelection(); // Clear selection from table
+            AmbilData();
+            clearFormAndSelection();
+            KategoriTable.getSelectionModel().clearSelection();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -205,7 +189,7 @@ public class EditKategoriController implements Initializable { // Implement Init
                     "Terjadi Kesalahan", "Terjadi kesalahan sistem saat menyimpan kategori: " + e.getMessage());
         } finally {
             if (db != null) {
-                db.tutup_cinta(); // Ensure this method exists and closes resources in DatabaseController
+                db.tutup_cinta();
             }
         }
     }
@@ -221,7 +205,6 @@ public class EditKategoriController implements Initializable { // Implement Init
         }
 
         String namaKategoriYangDihapus = selectedRow.get(1); // namaKategori is at index 1
-        // Confirmation dialog
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Konfirmasi Hapus");
         confirmationDialog.setHeaderText("Hapus Kategori: " + namaKategoriYangDihapus);
@@ -272,8 +255,6 @@ public class EditKategoriController implements Initializable { // Implement Init
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
             Parent root = loader.load();
             MainController mainController = loader.getController();
-            // If MainController needs idacc or other data from this controller:
-            // mainController.initializeData(this.idacc); // Example method call
             Stage stage = getStage(event);
             stage.setScene(new Scene(root));
             stage.show();
@@ -284,8 +265,6 @@ public class EditKategoriController implements Initializable { // Implement Init
         }
     }
 
-    // This method seems unused based on the current flow.
-    // If you need it, ensure it's called appropriately.
     private void closeWindow(ActionEvent event) {
         Stage stage = getStage(event);
         stage.close();

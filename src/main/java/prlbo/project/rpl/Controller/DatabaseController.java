@@ -198,7 +198,7 @@ public class DatabaseController {
     }
 
     public boolean EditKategori(int idacc, String kategoriLama, String kategoriBaru) {
-        String sql = "UPDATE kategori SET nama_kategori = ? WHERE id_akun = ? AND nama_kategori = ?";
+        String sql = "UPDATE kategori SET namaKategori = ? WHERE id_account = ? AND namaKategori = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, kategoriBaru);
             stmt.setInt(2, idacc);
