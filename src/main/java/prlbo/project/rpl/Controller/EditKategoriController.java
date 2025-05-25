@@ -43,14 +43,15 @@ public class EditKategoriController {
     private ObservableList<ObservableList<String>> kategoriData = FXCollections.observableArrayList();
 
     public void initialize(URL location, ResourceBundle resources) {
-        KategoriTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Catatan>() {
-            public void changed(ObservableValue<?> observableValue) {
-                if (observableValue.getValue() != null) {
-                    selectedCatatan = observableValue.getValue();
-                    txtFldJudul.setText(observableValue.getValue().getJudul());
+        KategoriTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        String selectedKategori = newValue.get(1); // index 1 is the category name
+                        categoryNameField.setText(selectedKategori);
+                        editKategori(selectedKategori); // sets isEditCategory and kategoriLama
+                    }
                 }
-            }
-        }
+        );
     }
 
     public void set_idacc(int id) {
