@@ -17,6 +17,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import prlbo.project.rpl.App;
+import prlbo.project.rpl.Manager.SessionManager;
 import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
@@ -41,47 +43,67 @@ public class LoginController {
     private PasswordField txtPassword;
 
     @FXML
-    void Login(ActionEvent event) throws Exception {
-        String username = txtNama.getText();
-        String passwd = txtPassword.getText();
-        DatabaseController db = new DatabaseController();
-        if (db.login(username, passwd) == true) {
-            TrayNotification tray = new TrayNotification();
-            tray.setTitle("Welcome To Our ToDoListApp");
-            tray.setMessage("Hello " + username);
-            tray.setNotificationType(NotificationType.SUCCESS);
-            tray.showAndDismiss(Duration.seconds(3));
+    public void Login(ActionEvent event) throws Exception {
+        String username = txtNama.getText().trim();
+        String passwd = txtPassword.getText().trim();
 
-            /* Masuk ke akun user */
-            txtNama.clear();
-            txtPassword.clear();
-
-            FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
-
-            String query = "SELECT id_account,username FROM account WHERE username = '" + username + "'";
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
-            PreparedStatement stmt = conn.prepareStatement(query);
-
-            ResultSet resultSet = stmt.executeQuery();
-            System.out.println("Hello");
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id_account");
-                User user = new User(id, username, passwd);
-                System.out.println(user.getUsername());
-                UserManager.setCurrentUser(user);
-            }
-            Parent root = fxml_load.load();
-            MainController main = fxml_load.getController();
-            Stage currStage = getStage(event);
-            currStage.setScene(new Scene(root));
-            currStage.show();
-        } else {
-            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Login Gagal (Password atau Username Salah)");
-            txtNama.clear();
-            txtPassword.clear();
+        if (username.isEmpty() || passwd.isEmpty()) {
+            PesanMessage.tampilpesan(AlertType.ERROR, "Login Gagal", "Data Kosong", "Username atau password tidak boleh kosong!");
+            return;
         }
-        db.tutup_cinta();
+
+        DatabaseController db = new DatabaseController();
+
+        try {
+            if (db.login(username, passwd)) {
+                // Login berhasil
+                SessionManager.getInstance().login();
+
+                // Ambil data user dengan PreparedStatement
+                String query = "SELECT id_account, username FROM account WHERE username = ?";
+                try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
+                     PreparedStatement stmt = conn.prepareStatement(query)) {
+                    stmt.setString(1, username);
+                    ResultSet resultSet = stmt.executeQuery();
+
+                    if (resultSet.next()) {
+                        int id = resultSet.getInt("id_account");
+                        User user = new User(id, username, passwd);
+                        UserManager.setCurrentUser(user);
+                    }
+                }
+
+                // Load Main.fxml
+                FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+                Parent root = fxml_load.load();
+                Stage stage = getStage(event);
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                // Notifikasi sukses
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle("Welcome To Our ToDoListApp");
+                tray.setMessage("Hello " + username);
+                tray.setNotificationType(NotificationType.SUCCESS);
+                tray.showAndDismiss(Duration.seconds(3));
+
+                // Clear field
+                txtNama.clear();
+                txtPassword.clear();
+
+            } else {
+                PesanMessage.tampilpesan(AlertType.INFORMATION, "Login Gagal", "Error", "Username atau Password salah.");
+                txtNama.clear();
+                txtPassword.clear();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            PesanMessage.tampilpesan(AlertType.ERROR, "Error", "Terjadi Kesalahan", "Gagal login karena kesalahan sistem.");
+        } finally {
+            db.tutup_cinta();
+        }
     }
+
 
     @FXML
     void Lupa(ActionEvent event) throws IOException {
