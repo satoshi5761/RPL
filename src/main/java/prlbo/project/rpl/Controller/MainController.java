@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import org.w3c.dom.ls.LSOutput;
+import prlbo.project.rpl.Manager.SessionManager;
 import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
@@ -285,6 +286,7 @@ public class MainController {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.YES) {
                 try {
+                    SessionManager.getInstance().logout();
                     FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
                     Parent root = fxml_load.load();
                     Stage currStage = getStage(event);
