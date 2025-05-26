@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
+import prlbo.project.rpl.util.HashFunction;
 import prlbo.project.rpl.util.PesanMessage;
 
 import java.sql.*;
@@ -32,9 +33,10 @@ public class DatabaseController {
         return valid;
     }
 
-    public boolean forgot(String username, String password) {
+    public int forgot(String username, String password) {
+        password = HashFunction.getHash(password);
         if (!userValid(username)) {
-            return false;
+            return -1;
         }
         String query = "UPDATE account SET password=? WHERE username=?";
         try {
@@ -43,14 +45,15 @@ public class DatabaseController {
             stmt.setString(2, username);
             stmt.executeUpdate();
             System.out.println("Ubah Password berhasil");
-            return true;
+            return 1;
         } catch (SQLException e) {
             System.out.println("Gagal Chuaks");
-            return false;
+            return 0;
         }
     }
 
     public boolean register(String username, String passwd) {
+        passwd = HashFunction.getHash(passwd);
         String query = "INSERT INTO account (username, password) VALUES (?, ?);";
         try {
             PreparedStatement stmt = con.prepareStatement(query);
@@ -68,6 +71,7 @@ public class DatabaseController {
     }
 
     public boolean login(String username, String passwd) throws SQLException {
+        passwd = HashFunction.getHash(passwd);
         String query = "SELECT COUNT(*) FROM account WHERE username=? AND password=?;";
 
         PreparedStatement stmt = con.prepareStatement(query);
@@ -421,20 +425,20 @@ public class DatabaseController {
         /* semua Task in a pie chart based on Category */
         String query_completed = "select k.namaKategori as ktgr, count(*) as jmlh from" +
                 " tugas_selesai as t join kategori as k on t.id_kategori = k.id_kategori where t.id_account=?" +
-                "group by ktgr";
+                " group by ktgr";
 
         String query_uncompleted = "select k.namaKategori as ktgr, count(*) as jmlh from" +
                 " tugas_tidak_selesai as t join kategori as k on t.id_kategori = k.id_kategori where t.id_account=?" +
-                "group by ktgr";
+                " group by ktgr";
 
         String query_now = "select k.namaKategori as ktgr, count(*) as jmlh from" +
                 " tugas as t join kategori as k on t.id_kategori = k.id_kategori where t.id_account=?" +
-                "group by ktgr";
+                " group by ktgr";
 
         String query_combined = "SELECT ktgr, SUM(jmlh) as total FROM (" +
                 query_completed + " UNION ALL " +
                 query_uncompleted + " UNION ALL " +
-                query_completed  + " ) " +
+                query_now + " ) " +
                 " GROUP BY ktgr";
 
         ObservableList<PieChart.Data> pie = FXCollections.observableArrayList();

@@ -3,10 +3,10 @@ package prlbo.project.rpl.Controller;
 import javafx.beans.property.SimpleStringProperty;
 
 public class TugasSelesai {
-    private final SimpleStringProperty no;
-    private final SimpleStringProperty namaTugas;
-    private final SimpleStringProperty kategori;
-    private final SimpleStringProperty dueDate;
+    private SimpleStringProperty no;
+    private SimpleStringProperty namaTugas;
+    private SimpleStringProperty kategori;
+    private SimpleStringProperty dueDate;
     private SimpleStringProperty completedDate;
 
     public TugasSelesai(String no, String namaTugas, String kategori, String dueDate, String completedDate) {

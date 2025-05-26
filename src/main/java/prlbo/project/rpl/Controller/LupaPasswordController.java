@@ -49,19 +49,21 @@ public class LupaPasswordController {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Inputan tidak sesuai");
         } else if(password.equals(password1)) {
             DatabaseController db = new DatabaseController();
-            boolean sucess = db.forgot(nama, password); db.tutup_cinta();
-            if(sucess) {
+            int sucess = db.forgot(nama, password); db.tutup_cinta();
+            if(sucess == 1) {
                 System.out.println("Ubah Clicked");
                 FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
                 Parent root = fxml_load.load();
                 Stage currStage = getStage(event);
                 currStage.setScene(new Scene(root));
                 currStage.show();
+            } else if (sucess == 0){
+                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password");
             } else {
-                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password (Inputan Password Berbeda)");
+                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Username tidak ditemukan");
             }
         } else {
-            PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password");
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password\n(Password pertama tidak sesuai\ndengan password kedua)");
         }
     }
 
