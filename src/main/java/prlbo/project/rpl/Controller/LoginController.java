@@ -57,19 +57,17 @@ public class LoginController {
         try {
             if (db.login(username, passwd)) {
                 // Login berhasil
-                SessionManager.getInstance().login();
-
                 // Ambil data user dengan PreparedStatement
                 String query = "SELECT id_account, username FROM account WHERE username = ?";
                 try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
                      PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, username);
                     ResultSet resultSet = stmt.executeQuery();
-
                     if (resultSet.next()) {
                         int id = resultSet.getInt("id_account");
-                        User user = new User(id, username, passwd);
+                        User user = new User(id, username);
                         UserManager.setCurrentUser(user);
+                        SessionManager.getInstance().login();
                     }
                 }
 

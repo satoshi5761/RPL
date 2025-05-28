@@ -1,4 +1,5 @@
 module prlbo.project.rpl {
+    requires javafx.base;
     requires javafx.fxml;
     requires java.sql;
     requires javafx.controls;
