@@ -55,8 +55,6 @@ public class LoginController {
         try {
             if (db.login(username, passwd)) {
                 // Login berhasil
-
-
                 // Ambil data user dengan PreparedStatement
                 String query = "SELECT id_account, username FROM account WHERE username = ?";
                 try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
