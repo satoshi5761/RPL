@@ -174,9 +174,9 @@ public class MainController {
         String duedateold = "";
 
         if (selectedrow != null) {
-           namaold = selectedrow.get(0).toString();
-           kategoriold = selectedrow.get(1).toString();
-           duedateold = selectedrow.get(2).toString();
+            namaold = selectedrow.get(0).toString();
+            kategoriold = selectedrow.get(1).toString();
+            duedateold = selectedrow.get(2).toString();
             FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/TambahTugas.fxml"));
             Parent root = fxml_load.load();
             Stage currStage = getStage(event);
@@ -190,7 +190,7 @@ public class MainController {
             main.set_kategori(kategoriold);
         }
         else{
-           PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
+            PesanMessage.tampilpesan(Alert.AlertType.ERROR,"INFORMASI", "Error", "Belum ada data yang dipilih.");
         }
     }
 
@@ -209,19 +209,19 @@ public class MainController {
             db.HapusTugas(idacc, nama, duedate, kategori);
             AmbilData("");
 
-           boolean tugas_selesai = PesanMessage.selesai_atau_tidak("Task Status",
-                   "Apakah Anda sudah menyelesaikan tugas ini?",
-                   "Pilih salah satu:");
+            boolean tugas_selesai = PesanMessage.selesai_atau_tidak("Task Status",
+                    "Apakah Anda sudah menyelesaikan tugas ini?",
+                    "Pilih salah satu:");
 
-           if (tugas_selesai) {
-               boolean is_inserted = db.InsertTugasSelesai(idacc, kategori, nama, duedate);
-               if (is_inserted) System.out.println("selesai ditambahkan");
-               else System.out.println("tugas yang selesai gagal untuk ditambahkan");
-           } else {
+            if (tugas_selesai) {
+                boolean is_inserted = db.InsertTugasSelesai(idacc, kategori, nama, duedate);
+                if (is_inserted) System.out.println("selesai ditambahkan");
+                else System.out.println("tugas yang selesai gagal untuk ditambahkan");
+            } else {
                 boolean is_inserted = db.InsertTugasTidakSelesai(idacc, kategori, nama, duedate);
-               if (is_inserted) System.out.println("selesai ditambahkan");
-               else System.out.println("tugas yang tidak selesai gagal untuk ditambahkan");
-           }
+                if (is_inserted) System.out.println("selesai ditambahkan");
+                else System.out.println("tugas yang tidak selesai gagal untuk ditambahkan");
+            }
 
 
         }
@@ -321,7 +321,7 @@ public class MainController {
     }
 
 
-//
+    //
     public void Search(){
         searchBox.getText();
     }

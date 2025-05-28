@@ -3,7 +3,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HashFunction {
-
     public static String getHash(String passwd) {
 
          byte[] ASCII = passwd.getBytes();

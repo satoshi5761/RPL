@@ -61,10 +61,9 @@ public class LoginController {
                      PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, username);
                     ResultSet resultSet = stmt.executeQuery();
-
                     if (resultSet.next()) {
                         int id = resultSet.getInt("id_account");
-                        User user = new User(id, username, passwd);
+                        User user = new User(id, username);
                         UserManager.setCurrentUser(user);
                     }
                 }
