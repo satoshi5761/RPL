@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
-import prlbo.project.rpl.Manager.SessionManager;
 
 import java.io.IOException;
 
@@ -18,12 +17,7 @@ public class App extends Application {
         try {
             FXMLLoader fxml_load;
             Parent root;
-
-            if (SessionManager.getInstance().isLoggedIn()) {
-                fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
-            } else {
-                fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
-            }
+            fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
 
             root = fxml_load.load();
             Scene scene = new Scene(root);
