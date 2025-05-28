@@ -17,8 +17,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import prlbo.project.rpl.App;
-import prlbo.project.rpl.Manager.SessionManager;
 import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
@@ -57,7 +55,7 @@ public class LoginController {
         try {
             if (db.login(username, passwd)) {
                 // Login berhasil
-                SessionManager.getInstance().login();
+
 
                 // Ambil data user dengan PreparedStatement
                 String query = "SELECT id_account, username FROM account WHERE username = ?";
