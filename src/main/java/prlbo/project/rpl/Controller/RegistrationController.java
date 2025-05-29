@@ -52,40 +52,42 @@ public class RegistrationController {
         /*
          * User melakukan registrasi akun
          */
-        String name = txtNama.getText();
+        String name = txtNama.getText().trim();
         String pass = txtPassword.getText();
         String pass1 = txtPassword1.getText();
 
-        if (name.trim().isEmpty() || pass.trim().isEmpty() || pass1.trim().isEmpty()) {
-            /* Ada field input yang belum diisi */
+        if (name.isEmpty() || pass.isEmpty() || pass1.isEmpty()) {
             PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Ada Field Yang Kosong");
-
         } else if (!pass.equals(pass1)) {
-            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Inputan tidak sesuai (Password Berbeda)");
+            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Password tidak cocok");
+        } else if (pass.length() < 8) {
+            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Password minimal 8 karakter");
         } else {
-            // Register user ke dalam database;
+            // Register user ke dalam database
             DatabaseController db = new DatabaseController();
-            boolean success = db.register(name, pass); db.tutup_cinta();
-            txtNama.clear();
-            txtPassword.clear();
-            txtPassword1.clear();
-            PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Berhasil", "Berhasil Silahkan Lanjut Login");
-            try {
-                FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
-                Parent root = fxml_load.load();
+            boolean success = db.register(name, pass);
+            db.tutup_cinta();
 
-                Stage currStage = getStage(event);
-                currStage.setScene(new Scene(root));
-                currStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (!success) {
-                /* pop up GUI */
-                PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Username Sudah Tersedia");
+            if (success) {
+                txtNama.clear();
+                txtPassword.clear();
+                txtPassword1.clear();
+                PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Berhasil", "Registrasi berhasil! Silakan login.");
 
+                try {
+                    FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
+                    Parent root = fxml_load.load();
+                    Stage currStage = getStage(event);
+                    currStage.setScene(new Scene(root));
+                    currStage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                PesanMessage.tampilpesan(AlertType.INFORMATION, "INFORMASI", "Error", "Username sudah tersedia");
             }
         }
     }
+
 
 }
