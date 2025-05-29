@@ -54,7 +54,7 @@ public class UncompletedTaskController {
         DatabaseController db = new DatabaseController();
         CompletedTable.setItems(db.ShowUncompletedTaskDB(idacc));
 
-        db.tutup_cinta();
+        db.tutup_database();
     }
 
     Stage getStage(ActionEvent e) {

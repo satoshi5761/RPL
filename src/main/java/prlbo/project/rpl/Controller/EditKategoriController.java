@@ -90,29 +90,23 @@ public class EditKategoriController implements Initializable { // Implement Init
     public void AmbilData() {
         String query = "SELECT id_kategori, namaKategori FROM kategori WHERE id_account = ?";
         kategoriData.clear(); // Clear existing data before loading new
-
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setInt(1, idacc);
-            ResultSet rs = stmt.executeQuery();
-
-            int rowNum = 1;
-            while (rs.next()) {
-                ObservableList<String> row = FXCollections.observableArrayList();
-                row.add(String.valueOf(rs.getInt("id_kategori"))); // Column 0: id_kategori
-                row.add(rs.getString("namaKategori"));          // Column 1: namaKategori
-                kategoriData.add(row);
-            }
-            NoColumn.setCellValueFactory(cellDataFeatures -> {
-                int index = KategoriTable.getItems().indexOf(cellDataFeatures.getValue());
-                return new SimpleStringProperty(String.valueOf(index + 1));
-            });
-
-
+                stmt.setInt(1, idacc);
+                ResultSet rs = stmt.executeQuery();
+                int rowNum = 1;
+                while (rs.next()) {
+                    ObservableList<String> row = FXCollections.observableArrayList();
+                    row.add(String.valueOf(rs.getInt("id_kategori"))); // Column 0: id_kategori
+                    row.add(rs.getString("namaKategori"));          // Column 1: namaKategori
+                    kategoriData.add(row);
+                }
+                NoColumn.setCellValueFactory(cellDataFeatures -> {
+                    int index = KategoriTable.getItems().indexOf(cellDataFeatures.getValue());
+                    return new SimpleStringProperty(String.valueOf(index + 1));
+                });
             KategoriColumn.setCellValueFactory(cellData ->
                     new SimpleStringProperty(cellData.getValue().get(1))); // namaKategori is at index 1
-
             KategoriTable.setItems(kategoriData);
 
         } catch (SQLException e) {
@@ -154,19 +148,16 @@ public class EditKategoriController implements Initializable { // Implement Init
             db = new DatabaseController();
             if (isEditCategory) {
                 if (kategoriLama == null) {
-                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Error",
-                            "Kesalahan Edit", "Kategori lama tidak teridentifikasi. Silakan pilih lagi.");
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Error", "Kesalahan Edit", "Kategori lama tidak teridentifikasi. Silakan pilih lagi.");
                     clearFormAndSelection();
                     KategoriTable.getSelectionModel().clearSelection();
                     return;
                 }
                 boolean sukses = db.EditKategori(idacc, kategoriLama, kategoriBaru);
                 if (sukses) {
-                    PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Sukses",
-                            "Kategori Diperbarui", "Kategori '" + kategoriLama + "' berhasil diperbarui menjadi '" + kategoriBaru + "'.");
+                    PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Sukses", "Kategori Diperbarui", "Kategori '" + kategoriLama + "' berhasil diperbarui menjadi '" + kategoriBaru + "'.");
                 } else {
-                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Gagal",
-                            "Gagal Mengubah", "Perubahan gagal disimpan. Pastikan nama kategori baru unik jika diperlukan.");
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Gagal", "Gagal Mengubah", "Perubahan gagal disimpan. Pastikan nama kategori baru unik jika diperlukan.");
                 }
             } else {
                 // Mode tambah
@@ -175,7 +166,7 @@ public class EditKategoriController implements Initializable { // Implement Init
                             "Kategori Ditambahkan", "Kategori '" + kategoriBaru + "' berhasil ditambahkan.");
                 } else {
                     PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Gagal",
-                            "Gagal Menyimpan", "Kategori gagal ditambahkan. Mungkin nama kategori sudah ada.");
+                            "Gagal Menyimpan", "Kategori dengan nama " + kategoriBaru + " sudah tersedia");
                 }
             }
 
@@ -189,7 +180,7 @@ public class EditKategoriController implements Initializable { // Implement Init
                     "Terjadi Kesalahan", "Terjadi kesalahan sistem saat menyimpan kategori: " + e.getMessage());
         } finally {
             if (db != null) {
-                db.tutup_cinta();
+                db.tutup_database();
             }
         }
     }
@@ -238,7 +229,7 @@ public class EditKategoriController implements Initializable { // Implement Init
                             "Gagal Hapus", "Terjadi kesalahan sistem saat menghapus kategori: " + e.getMessage());
                 } finally {
                     if (db != null) {
-                        db.tutup_cinta(); // Ensure this method exists and closes resources
+                        db.tutup_database(); // Ensure this method exists and closes resources
                     }
                 }
             }

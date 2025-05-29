@@ -95,7 +95,7 @@ public class LoginController {
             e.printStackTrace();
             PesanMessage.tampilpesan(AlertType.ERROR, "Error", "Terjadi Kesalahan", "Gagal login karena kesalahan sistem.");
         } finally {
-            db.tutup_cinta();
+            db.tutup_database();
         }
     }
 

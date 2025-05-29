@@ -13,9 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 
 public class CompletedTaskController {
 
@@ -53,11 +51,9 @@ public class CompletedTaskController {
         Kategori.setCellValueFactory(new PropertyValueFactory<>("kategori"));
         Tenggat.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         Selesai.setCellValueFactory(new PropertyValueFactory<>("completedDate"));
-
         DatabaseController db = new DatabaseController();
         CompletedTable.setItems(db.ShowCompletedTaskDB(idacc));
-
-        db.tutup_cinta();
+        db.tutup_database();
     }
 
     Stage getStage(ActionEvent e) {
@@ -73,5 +69,4 @@ public class CompletedTaskController {
         currStage.setScene(new Scene(root));
         currStage.show();
     }
-
 }

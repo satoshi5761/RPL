@@ -232,7 +232,7 @@ public class MainController {
         } else {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Belum ada data yang dipilih.");
         }
-        db.tutup_cinta();
+        db.tutup_database();
     }
 
     @FXML

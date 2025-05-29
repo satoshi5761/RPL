@@ -6,13 +6,11 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import prlbo.project.rpl.util.HashFunction;
 import prlbo.project.rpl.util.PesanMessage;
-
 import java.sql.*;
 import java.time.LocalDate;
 
 public class DatabaseController {
     private Connection con;
-
     DatabaseController() throws Exception {
         this.con = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
         System.out.println("DB connected");
@@ -47,21 +45,20 @@ public class DatabaseController {
             System.out.println("Ubah Password berhasil");
             return 1;
         } catch (SQLException e) {
-            System.out.println("Gagal Chuaks");
+            System.out.println("Gagal Mengubah Password");
             return 0;
         }
     }
 
-    public boolean register(String username, String passwd) {
-        passwd = HashFunction.getHash(passwd);
+    public boolean register(String username, String password) {
+        password = HashFunction.getHash(password);
         String query = "INSERT INTO account (username, password) VALUES (?, ?);";
         try {
             PreparedStatement stmt = con.prepareStatement(query);
-
             stmt.setString(1, username);
-            stmt.setString(2, passwd);
+            stmt.setString(2, password);
             stmt.executeUpdate();
-            System.out.println("Registration successfull");
+            System.out.println("Sukses Registrasi User");
             return true;
         } catch (SQLException e) {
             System.out.println("Presumably, UNIQUE entry condition has been breached");
@@ -80,11 +77,9 @@ public class DatabaseController {
 
         ResultSet res = stmt.executeQuery();
         return res.getInt(1) >= 1;
-
     }
 
-    public void tutup_cinta() {
-        /* cintaku bukan di database uhuk uhuk */
+    public void tutup_database() {
         try {
             if (!con.isClosed()) {
                 con.close();
@@ -134,29 +129,31 @@ public class DatabaseController {
     }
 
     public boolean TambahKategori(int accountId, String kategoriName) throws SQLException {
-        String insertQuery = "INSERT INTO kategori (namaKategori, id_account) VALUES (?, ?)";
-
+        String checkQuery = "SELECT COUNT(*) FROM kategori WHERE namaKategori = ? AND id_account = ?";
         try {
-            PreparedStatement stmt = con.prepareStatement(insertQuery);
+            PreparedStatement stmt = con.prepareStatement(checkQuery);
             stmt.setString(1, kategoriName);
             stmt.setInt(2, accountId);
-
-
-            int affectedRows = stmt.executeUpdate();
-
-            if (affectedRows > 0) {
-                System.out.println("Kategori berhasil ditambahkan.");
-                return true;
-            } else {
-                System.out.println("Gagal menambahkan kategori.");
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                System.out.println("Kategori dengan Nama " + kategoriName + " sudah ada");
                 return false;
             }
-
-        } catch (SQLException e) {
-            System.err.println("Error menambahkan kategori: " + e.getMessage());
-            throw e; // Re-throw the exception for proper handling in the caller
+            String insertQuery = "INSERT INTO kategori (namaKategori, id_account) VALUES (?, ?)";
+            PreparedStatement stmt2 = con.prepareStatement(insertQuery);
+            stmt2.setString(1, kategoriName);
+            stmt2.setInt(2, accountId);
+            int efektambah = stmt2.executeUpdate();
+            if (efektambah > 0) {
+                return true;
+            } else {
+                return false;
+            }
+            } catch (SQLException e) {
+                System.err.println("Error menambahkan kategori: " + e.getMessage());
+                throw e; // Re-throw the exception for proper handling in the caller
+            }
         }
-    }
 
     public boolean EditTugas(int id, String namaold, String duedateold, String kategoriold, String nama, String duedate, String kategori) throws SQLException {
         String query = "UPDATE tugas SET id_kategori = ?, namaTugas = ?, dueDate = ? WHERE " +

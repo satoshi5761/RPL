@@ -96,7 +96,7 @@ public class TambahTugasController {
         Stage currStage = getStage(event);
         currStage.setScene(new Scene(root));
         currStage.show();
-        db.tutup_cinta();
+        db.tutup_database();
     }
 
     @FXML
@@ -119,7 +119,7 @@ public class TambahTugasController {
                         Stage currStage = getStage(event);
                         currStage.setScene(new Scene(root));
                         currStage.show();
-                        db.tutup_cinta();
+                        db.tutup_database();
                     }
                     else{
                         System.out.println("Gagal update");
@@ -138,7 +138,7 @@ public class TambahTugasController {
                     tray.setMessage("Tugas " + nama1 + " dengan kategori " +  kategori1 + " telah ditambahkan.");
                     tray.setNotificationType(NotificationType.SUCCESS);
                     tray.showAndDismiss(Duration.seconds(3));
-                    db.tutup_cinta();
+                    db.tutup_database();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

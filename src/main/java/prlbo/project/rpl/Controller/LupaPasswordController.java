@@ -49,7 +49,8 @@ public class LupaPasswordController {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Inputan tidak sesuai");
         } else if(password.equals(password1)) {
             DatabaseController db = new DatabaseController();
-            int sucess = db.forgot(nama, password); db.tutup_cinta();
+            int sucess = db.forgot(nama, password);
+            db.tutup_database();
             if(sucess == 1) {
                 System.out.println("Ubah Clicked");
                 FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));

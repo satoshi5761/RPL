@@ -66,7 +66,7 @@ public class RegistrationController {
             // Register user ke dalam database
             DatabaseController db = new DatabaseController();
             boolean success = db.register(name, pass);
-            db.tutup_cinta();
+            db.tutup_database();
 
             if (success) {
                 txtNama.clear();

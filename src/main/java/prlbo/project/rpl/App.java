@@ -1,12 +1,10 @@
 package prlbo.project.rpl;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
-
 import java.io.IOException;
 
 public class App extends Application {
@@ -18,10 +16,8 @@ public class App extends Application {
             FXMLLoader fxml_load;
             Parent root;
             fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
-
             root = fxml_load.load();
             Scene scene = new Scene(root);
-
             primaryStage.setScene(scene);
             primaryStage.setTitle("JADWALIN");
             primaryStage.setWidth(725);
@@ -34,9 +30,7 @@ public class App extends Application {
         }
     }
 
-
-    public static void setRoot(String fxml, String title, boolean isResizeable)
-            throws IOException {
+    public static void setRoot(String fxml, String title, boolean isResizeable) throws IOException {
         primaryStage.getScene().setRoot(loadFXML(fxml));
         primaryStage.sizeToScene();
         primaryStage.setResizable(isResizeable);
@@ -47,8 +41,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class
-                .getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
