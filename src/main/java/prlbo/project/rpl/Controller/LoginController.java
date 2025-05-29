@@ -80,7 +80,7 @@ public class LoginController {
                 tray.setTitle("Welcome To Our ToDoListApp");
                 tray.setMessage("Hello " + username);
                 tray.setNotificationType(NotificationType.SUCCESS);
-                tray.showAndDismiss(Duration.seconds(3));
+                tray.showAndDismiss(Duration.seconds(1));
 
                 // Clear field
                 txtNama.clear();

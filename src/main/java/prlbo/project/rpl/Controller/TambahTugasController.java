@@ -11,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import prlbo.project.rpl.util.PesanMessage;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -129,6 +132,12 @@ public class TambahTugasController {
                     Stage currStage = getStage(event);
                     currStage.setScene(new Scene(root));
                     currStage.show();
+                    // Notifikasi sukses
+                    TrayNotification tray = new TrayNotification();
+                    tray.setTitle("Tugas Berhasil Ditambahkan!");
+                    tray.setMessage("Tugas " + nama1 + " dengan kategori " +  kategori1 + " telah ditambahkan.");
+                    tray.setNotificationType(NotificationType.SUCCESS);
+                    tray.showAndDismiss(Duration.seconds(3));
                     db.tutup_cinta();
                 }
             } catch (Exception e) {
