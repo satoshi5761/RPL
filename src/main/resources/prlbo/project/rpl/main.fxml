@@ -43,9 +43,10 @@
             <TableView fx:id="tblTugas" layoutX="34.0" layoutY="85.0" prefHeight="353.0" prefWidth="472.0" styleClass="ViewMain">
               <columns>
                 <TableColumn fx:id="colNo" prefWidth="38.0" text="No" />
-                <TableColumn fx:id="colNama" prefWidth="146.0" text="Nama Tugas" />
-                  <TableColumn fx:id="colKategori" prefWidth="133.0" text="Kategori" />
-                  <TableColumn fx:id="colTenggat" prefWidth="154.0" text="Tenggat" />
+                <TableColumn fx:id="colNama" prefWidth="158.0" text="Nama Tugas" />
+                  <TableColumn fx:id="colKategori" prefWidth="85.0" text="Kategori" />
+                  <TableColumn fx:id="colTenggat" prefWidth="139.0" text="Tenggat" />
+                  <TableColumn fx:id="colstatus" prefWidth="51.0" text="Status" />
               </columns>
             </TableView>
             <Button fx:id="btnLogout" layoutX="236.0" layoutY="451.0" mnemonicParsing="false" onAction="#Logout" prefHeight="29.0" prefWidth="69.0" styleClass="ButtonMain" text="Logout" />

@@ -10,11 +10,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import prlbo.project.rpl.Manager.UserManager;
+import prlbo.project.rpl.data.Tugas;
 import prlbo.project.rpl.data.User;
 import prlbo.project.rpl.util.PesanMessage;
 import tray.notification.NotificationType;
@@ -42,11 +44,13 @@ public class MainController {
     @FXML private TableColumn<ObservableList<String>, String> colNama;
     @FXML private TableColumn<ObservableList<String>, String> colNo;
     @FXML private TableColumn<ObservableList<String>, String> colTenggat;
+    @FXML private TableColumn<Tugas, Boolean> colstatus;
+
 
     @FXML private TextField searchBox;
     @FXML private Label lblNama;
     @FXML private Label lblSapa;
-    @FXML private TableView<ObservableList<String>> tblTugas;
+    @FXML private TableView<Tugas> tblTugas;
 
     private int idacc;
 
@@ -74,7 +78,7 @@ public class MainController {
     }
 
     public void AmbilData(String search) {
-        ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
+        ObservableList<Tugas> data = FXCollections.observableArrayList();
         String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
         if (search != null && !search.isEmpty()) {
             query += " AND (LOWER(tugas.namaTugas) LIKE ? OR LOWER(kategori.namaKategori) LIKE ?)";
@@ -92,76 +96,73 @@ public class MainController {
             ResultSet rs = stmt.executeQuery();
             SimpleDateFormat masuk = new SimpleDateFormat("yyyy-MM-dd");
 
+
             while (rs.next()) {
-                ObservableList<String> row = FXCollections.observableArrayList();
-                row.add(rs.getString("namaTugas"));
-                row.add(rs.getString("namaKategori"));
-                String ambil = rs.getString("dueDate");
-                String hasil;
-                if (ambil.contains("-")) {
-                    hasil = ambil;
-                } else {
-                    long time = Long.parseLong(ambil);
-                    hasil = masuk.format(time);
-                }
-                row.add(hasil);
-                data.add(row);
+                String nama = (rs.getString("namaTugas"));
+                String namaK = (rs.getString("namaKategori"));
+                String duedate = rs.getString("dueDate");
+                boolean status = false;
+
+
+                data.add(new Tugas(nama, namaK, duedate, status));
             }
 
             colNo.setCellValueFactory(cellData ->
-                    new SimpleStringProperty(String.valueOf(tblTugas.getItems().indexOf(cellData.getValue()) + 1))
-            );
-            colNama.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
-            colKategori.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
-            colTenggat.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
-
+                    new SimpleStringProperty(String.valueOf(tblTugas.getItems().indexOf(cellData.getValue()) + 1)));
+            colNama.setCellValueFactory(new PropertyValueFactory<>("nama"));
+            colKategori.setCellValueFactory(new PropertyValueFactory<>("namakategori"));
+            colTenggat.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+            colstatus.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+            colstatus.setCellFactory(CheckBoxTableCell.forTableColumn(colstatus));
+            tblTugas.setEditable(true);
+            colstatus.setEditable(true);
             tblTugas.setItems(data);
 
-            tblTugas.setRowFactory(tv -> new TableRow<ObservableList<String>>() {
-                @Override
-                protected void updateItem(ObservableList<String> item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (item == null || empty) {
-                        setStyle("");
-                    } else {
-                        String tanggalStr = item.get(2);
-                        try {
-                            LocalDate tenggat = LocalDate.parse(tanggalStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                            LocalDate today = LocalDate.now();
+//            tblTugas.setRowFactory(tv -> new TableRow<ObservableList<String>>() {
+//                @Override
+//                protected void updateItem(ObservableList<String> item, boolean empty) {
+//                    super.updateItem(item, empty);
+//                    if (item == null || empty) {
+//                        setStyle("");
+//                    } else {
+//                        String tanggalStr = item.get(2);
+//                        try {
+//                            LocalDate tenggat = LocalDate.parse(tanggalStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//                            LocalDate today = LocalDate.now();
+//
+//                            if (tenggat.isBefore(today)) {
+//                                // Lewat tenggat: MERAH
+//                                setStyle("-fx-background-color: #ffcccc;");
+//                            } else if (tenggat.equals(today.plusDays(1))) {
+//                                // H-1: KUNING
+//                                setStyle("-fx-background-color: #fff2cc;");
+//                            } else {
+//                                setStyle("");
+//                            }
+//                        } catch (Exception e) {
+//                            setStyle("");
+//                        }
+//                    }
+//                }
+//            });
 
-                            if (tenggat.isBefore(today)) {
-                                // Lewat tenggat: MERAH
-                                setStyle("-fx-background-color: #ffcccc;");
-                            } else if (tenggat.equals(today.plusDays(1))) {
-                                // H-1: KUNING
-                                setStyle("-fx-background-color: #fff2cc;");
-                            } else {
-                                setStyle("");
-                            }
-                        } catch (Exception e) {
-                            setStyle("");
-                        }
-                    }
-                }
-            });
+//            // 🔔 Notifikasi jika ada tugas lewat tenggat
+//            boolean adaTugasTelat = data.stream().anyMatch(row -> {
+//                try {
+//                    LocalDate tenggat = LocalDate.parse(row.get(2), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//                    return tenggat.isBefore(LocalDate.now());
+//                } catch (Exception e) {
+//                    return false;
+//                }
+//            });
 
-            // 🔔 Notifikasi jika ada tugas lewat tenggat
-            boolean adaTugasTelat = data.stream().anyMatch(row -> {
-                try {
-                    LocalDate tenggat = LocalDate.parse(row.get(2), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    return tenggat.isBefore(LocalDate.now());
-                } catch (Exception e) {
-                    return false;
-                }
-            });
-
-            if (adaTugasTelat) {
-                TrayNotification tray = new TrayNotification();
-                tray.setTitle("Pengingat Tugas");
-                tray.setMessage("Ada tugas yang melewati tenggat waktu!");
-                tray.setNotificationType(NotificationType.WARNING);
-                tray.showAndDismiss(Duration.seconds(5));
-            }
+//            if (adaTugasTelat) {
+//                TrayNotification tray = new TrayNotification();
+//                tray.setTitle("Pengingat Tugas");
+//                tray.setMessage("Ada tugas yang melewati tenggat waktu!");
+//                tray.setNotificationType(NotificationType.WARNING);
+//                tray.showAndDismiss(Duration.seconds(5));
+//            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -190,11 +191,11 @@ public class MainController {
 
     @FXML
     void EditTugas(ActionEvent event) throws IOException {
-        ObservableList selectedrow = (ObservableList) tblTugas.getSelectionModel().getSelectedItem();
+        Tugas selectedrow = tblTugas.getSelectionModel().getSelectedItem();
         if (selectedrow != null) {
-            String namaold = selectedrow.get(0).toString();
-            String kategoriold = selectedrow.get(1).toString();
-            String duedateold = selectedrow.get(2).toString();
+            String namaold = selectedrow.getNama().toString();
+            String kategoriold = selectedrow.getNamakategori().toString();
+            String duedateold = selectedrow.getDueDate().toString();
 
             FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/TambahTugas.fxml"));
             Parent root = fxml_load.load();
@@ -212,28 +213,29 @@ public class MainController {
     }
 
     @FXML
-    void Hapus(ActionEvent event) throws Exception {
+        void Hapus(ActionEvent event) throws Exception {
         DatabaseController db = new DatabaseController();
-        ObservableList selectedrow = (ObservableList) tblTugas.getSelectionModel().getSelectedItem();
+        Tugas selectedrow = tblTugas.getSelectionModel().getSelectedItem();
 
         if (selectedrow != null) {
-            String nama = selectedrow.get(0).toString();
-            String kategori = selectedrow.get(1).toString();
-            String duedate = selectedrow.get(2).toString();
+            String nama = selectedrow.getNama().toString();
+            String kategori = selectedrow.getNamakategori().toString();
+            String duedate = selectedrow.getDueDate().toString();
             db.HapusTugas(idacc, nama, duedate, kategori);
             AmbilData("");
 
-            boolean tugas_selesai = PesanMessage.selesai_atau_tidak("Task Status",
-                    "Apakah Anda sudah menyelesaikan tugas ini?", "Pilih salah satu:");
-            boolean is_inserted = tugas_selesai
-                    ? db.InsertTugasSelesai(idacc, kategori, nama, duedate)
-                    : db.InsertTugasTidakSelesai(idacc, kategori, nama, duedate);
-            System.out.println(is_inserted ? "selesai ditambahkan" : "tugas gagal ditambahkan");
+            if (selectedrow.isStatus()){
+                db.InsertTugasSelesai(idacc, kategori, nama, duedate);
+            }
+            else{
+                db.InsertTugasSelesai(idacc, kategori, nama, duedate);
+            }
         } else {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Belum ada data yang dipilih.");
         }
         db.tutup_database();
     }
+
 
     @FXML
     void HistoryTugas(ActionEvent e) throws Exception {

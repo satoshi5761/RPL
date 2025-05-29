@@ -107,21 +107,31 @@ public class DatabaseController {
     }
 
     public boolean TambahTugas(int id, String nama, LocalDate duedate, String kategori) {
+        String query1 = "SELECT * FROM tugas WHERE id_account = ?;";
         String query = "INSERT INTO tugas (id_account, id_kategori, namaTugas, dueDate) VALUES (?, ?, ?, ?);";
         int idkategori = getidkategori(id, kategori);
-        System.out.println(kategori);
         try {
-            System.out.println(kategori);
+            PreparedStatement stmt1 = con.prepareStatement(query1);
+            stmt1.setInt(1, id);
+            ResultSet rs = stmt1.executeQuery();
+            while (rs.next()) {
+                if(nama.equalsIgnoreCase(rs.getString("namaTugas")) &&
+                        duedate.toString().equals(rs.getString("dueDate")) &&
+                        idkategori == (rs.getInt("id_kategori"))){
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Tugas Sudah ada!");
+                    return false;
+                }
+            }
+
             PreparedStatement stmt = con.prepareStatement(query);
-            System.out.println(kategori);
             stmt.setInt(1, id);
             stmt.setInt(2, idkategori);
             stmt.setString(3, nama);
             stmt.setString(4, duedate.toString());
-            System.out.println(kategori);
             stmt.executeUpdate();
             System.out.println("Tugas berhasil ditambahkan.");
             return true;
+
         } catch (SQLException e) {
             System.out.println("Tugas gagal ditambahkan.");
             return false;

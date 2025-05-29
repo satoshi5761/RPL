@@ -8,7 +8,7 @@ module prlbo.project.rpl {
     requires java.management;
     requires TrayNotification;
 
-
+    opens prlbo.project.rpl.data to javafx.base;
     opens prlbo.project.rpl to javafx.fxml;
     exports prlbo.project.rpl;
     exports prlbo.project.rpl.Controller;
