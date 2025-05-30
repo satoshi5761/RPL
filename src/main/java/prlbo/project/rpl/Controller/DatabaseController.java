@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
+import prlbo.project.rpl.data.Tugas;
 import prlbo.project.rpl.util.HashFunction;
 import prlbo.project.rpl.util.PesanMessage;
 import java.sql.*;
@@ -208,6 +209,32 @@ public class DatabaseController {
         }
     }
 
+    public boolean HapusTugas(int id) {
+        String query = "DELETE FROM tugas WHERE id_tugas = ?;";
+        try {
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+            System.out.println("Tugas berhasil dihapus.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Tugas gagal dihapus.");
+            return false;
+        }
+    }
+
+    public boolean HapusMarkedTugas (Tugas tugas) {
+        try {
+            InsertTugasSelesai(tugas.getIdacc(), tugas.getNamakategori(), tugas.getNama(), tugas.getDueDate());
+            HapusTugas(tugas.getId());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public boolean EditKategori(int idacc, String kategoriLama, String kategoriBaru) {
         String sql = "UPDATE kategori SET namaKategori = ? WHERE id_account = ? AND namaKategori = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -403,6 +430,7 @@ public class DatabaseController {
             return 0;
         }
     }
+
 
     public ObservableList<PieChart.Data> getCompletedTaskBasedOnCategory(int idacc) {
 

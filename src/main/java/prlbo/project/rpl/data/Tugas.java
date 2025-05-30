@@ -4,12 +4,16 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 public class Tugas {
+    private int id;
+    private int idacc;
     private String nama;
     private String namakategori;
     private String duedate;
     private BooleanProperty status;
 
-    public Tugas(String nama, String namakategori, String duedate, boolean status) {
+    public Tugas(int id, int idacc, String nama, String namakategori, String duedate, boolean status) {
+        this.id = id;
+        this.idacc = idacc;
         this.nama = nama;
         this.namakategori = namakategori;
         this.duedate = duedate;
@@ -31,6 +35,30 @@ public class Tugas {
 
     public boolean isStatus() {
         return status.get();
+    }
+
+    public int getIdacc() {
+        return idacc;
+    }
+
+    public void setIdacc(int idacc) {
+        this.idacc = idacc;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDuedate() {
+        return duedate;
+    }
+
+    public void setDuedate(String duedate) {
+        this.duedate = duedate;
     }
 
     // Setter

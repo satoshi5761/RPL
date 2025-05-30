@@ -68,6 +68,7 @@ public class MainController {
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> AmbilData(newValue));
     }
 
+
     public void set_usser(String user) {
         lblNama.setText(user);
     }
@@ -79,7 +80,7 @@ public class MainController {
 
     public void AmbilData(String search) {
         ObservableList<Tugas> data = FXCollections.observableArrayList();
-        String query = "SELECT tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
+        String query = "SELECT tugas.id_tugas, tugas.id_account, tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
         if (search != null && !search.isEmpty()) {
             query += " AND (LOWER(tugas.namaTugas) LIKE ? OR LOWER(kategori.namaKategori) LIKE ?)";
         }
@@ -98,13 +99,15 @@ public class MainController {
 
 
             while (rs.next()) {
+                int id = rs.getInt("id_tugas");
+                int idacc = rs.getInt("id_account");
                 String nama = (rs.getString("namaTugas"));
                 String namaK = (rs.getString("namaKategori"));
                 String duedate = rs.getString("dueDate");
                 boolean status = false;
 
 
-                data.add(new Tugas(nama, namaK, duedate, status));
+                data.add(new Tugas(id, idacc, nama, namaK, duedate, status));
             }
 
             colNo.setCellValueFactory(cellData ->
@@ -116,7 +119,7 @@ public class MainController {
             colstatus.setCellFactory(CheckBoxTableCell.forTableColumn(colstatus));
             tblTugas.setEditable(true);
             colstatus.setEditable(true);
-            tblTugas.setItems(data);
+
 
 //            tblTugas.setRowFactory(tv -> new TableRow<ObservableList<String>>() {
 //                @Override
@@ -167,7 +170,31 @@ public class MainController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        for (Tugas t : data) {
+            t.statusProperty().addListener((observable, oldVal, newVal)
+        -> {
+                try {
+                    f(newVal, t);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
+
+        tblTugas.setItems(data);
     }
+
+    public void f(boolean checked, Tugas tugas) throws  Exception {
+        if (checked) {
+            System.out.println("Anda marked tugas " + tugas.getNama());
+            DatabaseController db = new DatabaseController();
+            db.HapusMarkedTugas(tugas);
+
+            tblTugas.getItems().remove(tugas);
+        }
+    }
+
 
     Stage getStage(ActionEvent e) {
         return (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -228,7 +255,7 @@ public class MainController {
                 db.InsertTugasSelesai(idacc, kategori, nama, duedate);
             }
             else{
-                db.InsertTugasSelesai(idacc, kategori, nama, duedate);
+                db.InsertTugasTidakSelesai(idacc, kategori, nama, duedate);
             }
         } else {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Belum ada data yang dipilih.");
@@ -258,8 +285,12 @@ public class MainController {
         }
 
         Stage curstage = getStage(event);
-        curstage.setScene(new Scene(root));
-        curstage.show();
+        Stage newstage = new Stage();
+        newstage.setScene(new Scene(root));
+        
+        newstage.initOwner(curstage);
+        newstage.initModality(Modality.WINDOW_MODAL);
+        newstage.showAndWait();
     }
 
     @FXML
