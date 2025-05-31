@@ -293,8 +293,7 @@ public class DatabaseController {
             stmt.setInt(2, id);
             if(!cektugas(id, idkategori)) {
                 stmt.executeUpdate();
-                PesanMessage.tampilpesan(Alert.AlertType.INFORMATION, "Hapus Kategori",
-                        "Berhasil hapus", "Kategori Terhapus!");
+                return true;
             }
             else{
                 PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Error",

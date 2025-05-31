@@ -215,9 +215,6 @@ public class EditKategoriController implements Initializable { // Implement Init
                         AmbilData(); // Refresh data
                         clearFormAndSelection(); // Clear form and selection
                         KategoriTable.getSelectionModel().clearSelection();
-                    } else {
-                        PesanMessage.tampilpesan(Alert.AlertType.ERROR, "Gagal",
-                                "Gagal Hapus", "Gagal menghapus kategori '" + namaKategoriYangDihapus + "'.");
                     }
                 } catch (NumberFormatException e) {
                     e.printStackTrace();

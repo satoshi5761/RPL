@@ -17,7 +17,7 @@
             <Font size="15.0" />
          </font></TextField>
       <DatePicker fx:id="dateduedate" layoutX="81.0" layoutY="418.0" prefHeight="65.0" prefWidth="400.0" promptText="Masukkan Tanggal" />
-      <Label alignment="CENTER" layoutX="567.0" layoutY="43.0" prefHeight="116.0" prefWidth="267.0" style="-fx-text-fill: black;" text="Tambah Tugas">
+      <Label fx:id="labeljudul" alignment="CENTER" layoutX="567.0" layoutY="43.0" prefHeight="116.0" prefWidth="267.0" style="-fx-text-fill: black;" text="Tambah Tugas">
          <font>
             <Font name="Bodoni MT Condensed Bold" size="50.0" />
          </font>
