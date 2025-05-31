@@ -35,12 +35,19 @@ public class TambahTugasController {
     @FXML
     private Button btnKembali;
 
+    @FXML
+    private Label labeljudul;
+
     private int idacc;
     private String nama;
     private String duedate;
     private String kategori;
     private boolean isEdit = false;
 
+    public void setjudul(String s) {
+        labeljudul.setText(s);
+        btntambah.setText(s);
+    }
     public void set_idacc(int id) {
         idacc = id;
         loadcomboboxkategori();
@@ -123,6 +130,11 @@ public class TambahTugasController {
                             currStage.setScene(new Scene(root));
                             currStage.show();
                             db.tutup_database();
+                            TrayNotification tray = new TrayNotification();
+                            System.out.println("updated");
+                            tray.setTitle("Tugas Berhasil Di Update!");
+                            tray.setNotificationType(NotificationType.SUCCESS);
+                            tray.showAndDismiss(Duration.seconds(0.5));
                         } else {
                             System.out.println("Gagal update");
                         }

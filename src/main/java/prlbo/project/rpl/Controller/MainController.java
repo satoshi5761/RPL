@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import prlbo.project.rpl.Manager.UserManager;
 import prlbo.project.rpl.data.Tugas;
 import prlbo.project.rpl.data.User;
@@ -83,7 +84,7 @@ public class MainController {
         String query = "SELECT tugas.id_tugas, tugas.id_account, tugas.namaTugas, tugas.dueDate, kategori.namaKategori FROM tugas INNER JOIN kategori ON tugas.id_kategori = kategori.id_kategori WHERE tugas.id_account = ?";
         if (search != null && !search.isEmpty()) {
             query += " AND (LOWER(tugas.namaTugas) LIKE ? OR LOWER(kategori.namaKategori) LIKE ?)";
-        }
+        } query += " order by tugas.dueDate";
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:DMAC.db");
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -192,6 +193,12 @@ public class MainController {
             db.HapusMarkedTugas(tugas);
 
             tblTugas.getItems().remove(tugas);
+
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle("You did it!");
+            tray.setMessage("Tugas " + tugas.getNama() + " selesai!");
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.seconds(1));
         }
     }
 
@@ -219,6 +226,7 @@ public class MainController {
     @FXML
     void EditTugas(ActionEvent event) throws IOException {
         Tugas selectedrow = tblTugas.getSelectionModel().getSelectedItem();
+        if (selectedrow == null) return;
         selectedrow.getId();
         if (selectedrow != null) {
             String namaold = selectedrow.getNama().toString();
@@ -231,6 +239,7 @@ public class MainController {
             currStage.setScene(new Scene(root));
             currStage.show();
             TambahTugasController main = fxml_load.getController();
+            main.setjudul("Edit Tugas");
             main.set_idacc(idacc);
             main.set_nama(namaold);
             main.set_duedate(duedateold);
@@ -257,6 +266,10 @@ public class MainController {
             }
             else{
                 db.InsertTugasTidakSelesai(idacc, kategori, nama, duedate);
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle("Tugas " + nama + " Tidak Selesai!");
+                tray.setNotificationType(NotificationType.ERROR);
+                tray.showAndDismiss(Duration.seconds(1));
             }
         } else {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Belum ada data yang dipilih.");
