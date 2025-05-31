@@ -123,7 +123,6 @@ public class DatabaseController {
                     return false;
                 }
             }
-
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, id);
             stmt.setInt(2, idkategori);
@@ -131,6 +130,7 @@ public class DatabaseController {
             stmt.setString(4, duedate.toString());
             stmt.executeUpdate();
             System.out.println("Tugas berhasil ditambahkan.");
+            tutup_database();
             return true;
 
         } catch (SQLException e) {
@@ -167,11 +167,26 @@ public class DatabaseController {
         }
 
     public boolean EditTugas(int id, String namaold, String duedateold, String kategoriold, String nama, String duedate, String kategori) throws SQLException {
+        String query1 = "SELECT * FROM tugas WHERE id_account = ?;";
         String query = "UPDATE tugas SET id_kategori = ?, namaTugas = ?, dueDate = ? WHERE " +
                 "id_account = ? AND id_kategori = ? AND namaTugas = ? AND dueDate = ?;";
         int idkategori = getidkategori(id, kategori);
         int idkategoriold = getidkategori(id, kategoriold);
+
+
         try {
+            PreparedStatement stmt1 = con.prepareStatement(query1);
+            stmt1.setInt(1, id);
+            ResultSet rs = stmt1.executeQuery();
+            while (rs.next()) {
+                if(nama.equalsIgnoreCase(rs.getString("namaTugas")) &&
+                        duedate.toString().equals(rs.getString("dueDate")) &&
+                        idkategori == (rs.getInt("id_kategori"))){
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Tugas Sudah ada!");
+                    return false;
+                }
+            }
+
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, idkategori);
             stmt.setString(2, nama);
@@ -183,6 +198,7 @@ public class DatabaseController {
 
             stmt.executeUpdate();
             System.out.println("Tugas berhasil diedit.");
+            tutup_database();
             return true;
         } catch (SQLException e) {
             System.out.println("Tugas gagal diedit.");
@@ -190,24 +206,24 @@ public class DatabaseController {
         }
     }
 
-    public boolean HapusTugas(int id, String nama, String duedate, String kategori) {
-        String query = "DELETE FROM tugas WHERE id_account = ? AND id_kategori = ? AND namaTugas = ? AND dueDate = ?;";
-        try {
-            PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setInt(1, id);
-            stmt.setInt(2, getidkategori(id, kategori));
-            stmt.setString(3, nama);
-            stmt.setString(4, duedate);
-
-
-            stmt.executeUpdate();
-            System.out.println("Tugas berhasil dihapus.");
-            return true;
-        } catch (SQLException e) {
-            System.out.println("Tugas gagal dihapus.");
-            return false;
-        }
-    }
+//    public boolean HapusTugas(int id, String nama, String duedate, String kategori) {
+//        String query = "DELETE FROM tugas WHERE id_account = ? AND id_kategori = ? AND namaTugas = ? AND dueDate = ?;";
+//        try {
+//            PreparedStatement stmt = con.prepareStatement(query);
+//            stmt.setInt(1, id);
+//            stmt.setInt(2, getidkategori(id, kategori));
+//            stmt.setString(3, nama);
+//            stmt.setString(4, duedate);
+//
+//
+//            stmt.executeUpdate();
+//            System.out.println("Tugas berhasil dihapus.");
+//            return true;
+//        } catch (SQLException e) {
+//            System.out.println("Tugas gagal dihapus.");
+//            return false;
+//        }
+//    }
 
     public boolean HapusTugas(int id) {
         String query = "DELETE FROM tugas WHERE id_tugas = ?;";

@@ -52,7 +52,7 @@ public class TambahTugasController {
 
     public void set_duedate (String duedate){
         this.duedate = duedate;
-        loadcomboboxkategori();
+//        loadcomboboxkategori();
 
     }
 
@@ -111,38 +111,46 @@ public class TambahTugasController {
             try {
                 DatabaseController db = new DatabaseController();
                 if (isEdit) {
-                    if(db.EditTugas(idacc, nama, duedate, kategori, nama1, String.valueOf(tanggal), kategori1)){
-                        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
-                        Parent root = fxml_load.load();
-                        MainController main = fxml_load.getController();
-                        Stage currStage = getStage(event);
-                        currStage.setScene(new Scene(root));
-                        currStage.show();
-                        db.tutup_database();
+                    if(tanggal.isBefore(LocalDate.now())){
+                        PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Tanggal sudah berakhir!");
                     }
-                    else{
-                        System.out.println("Gagal update");
+                    else {
+                        if (db.EditTugas(idacc, nama, duedate, kategori, nama1, String.valueOf(tanggal), kategori1)) {
+                            FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+                            Parent root = fxml_load.load();
+                            MainController main = fxml_load.getController();
+                            Stage currStage = getStage(event);
+                            currStage.setScene(new Scene(root));
+                            currStage.show();
+                            db.tutup_database();
+                        } else {
+                            System.out.println("Gagal update");
+                        }
                     }
                 }
                 else {
-                    if(db.TambahTugas(idacc, nama1, tanggal, kategori1)){
-                    FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
-                    Parent root = fxml_load.load();
-                    MainController main = fxml_load.getController();
-                    Stage currStage = getStage(event);
-                    currStage.setScene(new Scene(root));
-                    currStage.show();
+                    if(tanggal.isBefore(LocalDate.now())){
+                        PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Tanggal sudah berakhir!");
+                    }
+                    else {
+                        if (db.TambahTugas(idacc, nama1, tanggal, kategori1)) {
+                            FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
+                            Parent root = fxml_load.load();
+                            MainController main = fxml_load.getController();
+                            Stage currStage = getStage(event);
+                            currStage.setScene(new Scene(root));
+                            currStage.show();
 
-                    // Notifikasi sukses
+                            // Notifikasi sukses
 
-                    TrayNotification tray = new TrayNotification();
-                    tray.setTitle("Tugas Berhasil Ditambahkan!");
-                    tray.setMessage("Tugas " + nama1 + " dengan kategori " + kategori1 + " telah ditambahkan.");
-                    tray.setNotificationType(NotificationType.SUCCESS);
-                    tray.showAndDismiss(Duration.seconds(3));
+                            TrayNotification tray = new TrayNotification();
+                            tray.setTitle("Tugas Berhasil Ditambahkan!");
+                            tray.setMessage("Tugas " + nama1 + " dengan kategori " + kategori1 + " telah ditambahkan.");
+                            tray.setNotificationType(NotificationType.SUCCESS);
+                            tray.showAndDismiss(Duration.seconds(3));
+                        }
+                    }
                     db.tutup_database();
-
-                }
             }
             }catch (Exception e) {
                 e.printStackTrace();
@@ -166,6 +174,7 @@ public class TambahTugasController {
                 kategori = db.loadcomboboxkat(idacc);
                 combxkategori.setItems(kategori);
             }
+            db.tutup_database();
         } catch (Exception e) {
             System.out.println("gagal");
         }

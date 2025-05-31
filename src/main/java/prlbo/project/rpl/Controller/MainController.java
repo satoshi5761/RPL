@@ -219,6 +219,7 @@ public class MainController {
     @FXML
     void EditTugas(ActionEvent event) throws IOException {
         Tugas selectedrow = tblTugas.getSelectionModel().getSelectedItem();
+        selectedrow.getId();
         if (selectedrow != null) {
             String namaold = selectedrow.getNama().toString();
             String kategoriold = selectedrow.getNamakategori().toString();
@@ -248,8 +249,8 @@ public class MainController {
             String nama = selectedrow.getNama().toString();
             String kategori = selectedrow.getNamakategori().toString();
             String duedate = selectedrow.getDueDate().toString();
-            db.HapusTugas(idacc, nama, duedate, kategori);
-            AmbilData("");
+            db.HapusTugas(selectedrow.getId());
+            tblTugas.getItems().remove(selectedrow);
 
             if (selectedrow.isStatus()){
                 db.InsertTugasSelesai(idacc, kategori, nama, duedate);
