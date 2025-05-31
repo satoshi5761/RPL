@@ -10,31 +10,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="493.0" prefWidth="728.0" styleClass="Main" stylesheets="@../../../Asset/Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.TambahTugasController">
+<AnchorPane prefHeight="900.0" prefWidth="1400.0" styleClass="Main" stylesheets="@../../../Asset/Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.TambahTugasController">
    <children>
-      <TextField fx:id="txtnama" layoutX="23.0" layoutY="101.0" prefHeight="54.0" prefWidth="361.0" />
-      <DatePicker fx:id="dateduedate" layoutX="23.0" layoutY="221.0" prefHeight="26.0" prefWidth="361.0" />
-      <Label alignment="CENTER" layoutX="234.0" layoutY="14.0" prefHeight="54.0" prefWidth="261.0" style="-fx-text-fill: black;" text="Tambah Tugas">
+      <TextField fx:id="txtnama" layoutX="81.0" layoutY="261.0" prefHeight="65.0" prefWidth="400.0" promptText="Masukkan Nama Tugas">
          <font>
-            <Font name="Bodoni MT Condensed Bold" size="28.0" />
+            <Font size="15.0" />
+         </font></TextField>
+      <DatePicker fx:id="dateduedate" layoutX="81.0" layoutY="418.0" prefHeight="65.0" prefWidth="400.0" promptText="Masukkan Tanggal" />
+      <Label alignment="CENTER" layoutX="567.0" layoutY="43.0" prefHeight="116.0" prefWidth="267.0" style="-fx-text-fill: black;" text="Tambah Tugas">
+         <font>
+            <Font name="Bodoni MT Condensed Bold" size="50.0" />
          </font>
       </Label>
-      <Label layoutX="23.0" layoutY="75.0" text="Nama : ">
+      <Label layoutX="81.0" layoutY="207.0" text="Nama : ">
          <font>
-            <Font name="Bauhaus 93" size="15.0" />
+            <Font name="Bauhaus 93" size="25.0" />
          </font></Label>
-      <Label layoutX="22.0" layoutY="190.0" text="Tanggal :">
+      <Label layoutX="81.0" layoutY="365.0" text="Tanggal :">
          <font>
-            <Font name="Bauhaus 93" size="15.0" />
+            <Font name="Bauhaus 93" size="25.0" />
          </font></Label>
-      <Label layoutX="23.0" layoutY="282.0" text="Kategori : ">
+      <Label layoutX="81.0" layoutY="509.0" text="Kategori : ">
          <font>
-            <Font name="Bauhaus 93" size="15.0" />
+            <Font name="Bauhaus 93" size="25.0" />
          </font></Label>
-      <ComboBox fx:id="combxkategori" layoutX="23.0" layoutY="311.0" prefHeight="22.0" prefWidth="361.0" style="-fx-background-color: white;" />
-      <Button fx:id="btntambah" layoutX="382.0" layoutY="432.0" mnemonicParsing="false" onAction="#addTugas" prefHeight="37.0" prefWidth="98.0" styleClass="ButtonMain" stylesheets="@../../../Asset/Style.css" text="Tambah" />
-      <Button fx:id="btnKembali" layoutX="248.0" layoutY="432.0" mnemonicParsing="false" onAction="#Kembali" prefHeight="37.0" prefWidth="98.0" styleClass="ButtonMain" stylesheets="@../../../Asset/Style.css" text="Kembali" />
-      <ImageView fitHeight="311.0" fitWidth="228.0" layoutX="449.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ComboBox fx:id="combxkategori" layoutX="81.0" layoutY="570.0" prefHeight="65.0" prefWidth="400.0" promptText="Pilih Kategori" style="-fx-background-color: white;" />
+      <Button fx:id="btntambah" layoutX="747.0" layoutY="739.0" mnemonicParsing="false" onAction="#addTugas" prefHeight="65.0" prefWidth="250.0" styleClass="ButtonMain" stylesheets="@../../../Asset/Style.css" text="Tambah" />
+      <Button fx:id="btnKembali" layoutX="451.0" layoutY="739.0" mnemonicParsing="false" onAction="#Kembali" prefHeight="65.0" prefWidth="250.0" styleClass="ButtonMain" stylesheets="@../../../Asset/Style.css" text="Kembali" />
+      <ImageView fitHeight="450.0" fitWidth="450.0" layoutX="789.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Asset/To-Do-List.png" />
          </image>

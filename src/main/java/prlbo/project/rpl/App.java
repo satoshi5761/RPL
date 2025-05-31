@@ -20,8 +20,8 @@ public class App extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("JADWALIN");
-            primaryStage.setWidth(725);
-            primaryStage.setHeight(570);
+            primaryStage.setWidth(1400);
+            primaryStage.setHeight(900);
             primaryStage.setResizable(false);
             primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/Asset/To-Do-List.png")));
             primaryStage.show();

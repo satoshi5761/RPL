@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -12,39 +13,46 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="532.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.EditKategoriController">
+<BorderPane prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.EditKategoriController">
     <top>
         <ToolBar styleClass="Main" stylesheets="@../../../Asset/Style.css">
-            <Button onAction="#BackBtn" prefHeight="16.0" prefWidth="101.0" styleClass="ButtonMain" stylesheets="@../../../Asset/Style.css" text="Kembali" />
-            <Label prefWidth="191.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Edit Kategori" />
+            <Button onAction="#BackBtn" prefHeight="50.0" prefWidth="212.0" styleClass="ButtonMain" stylesheets="@../../../Asset/Style.css" text="Kembali" />
+            <Label prefHeight="53.0" prefWidth="165.0" style="-fx-font-weight: bold; -fx-font-size: 25;" text="Edit Kategori">
+            <font>
+               <Font name="Broadway" size="43.0" />
+            </font>
+            <padding>
+               <Insets left="25.0" />
+            </padding></Label>
         </ToolBar>
     </top>
 
     <center>
-        <VBox alignment="CENTER" prefHeight="29.0" prefWidth="382.0" spacing="20" style="-fx-padding: 20;" styleClass="Main" stylesheets="@../../../Asset/Style.css">
+        <VBox alignment="CENTER" prefHeight="755.0" prefWidth="1400.0" spacing="20" style="-fx-padding: 20;" styleClass="Main" stylesheets="@../../../Asset/Style.css">
             <GridPane alignment="CENTER" hgap="10" vgap="10">
                 <columnConstraints>
                     <ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
                     <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
                 </columnConstraints>
-
-                <Label text="Nama Kategori:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <TextField fx:id="categoryNameField" style="-fx-pref-width: 250;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+   
+                <Label prefHeight="43.0" prefWidth="113.0" text="Nama Kategori:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="categoryNameField" prefHeight="58.0" prefWidth="1237.0" style="-fx-pref-width: 250;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <rowConstraints>
                     <RowConstraints />
                     <RowConstraints />
                 </rowConstraints>
             </GridPane>
 
-            <HBox alignment="CENTER" spacing="10">
-                <Button onAction="#SaveCategoryBtn" prefHeight="35.0" prefWidth="107.0" style="-fx-pref-width: 100; -fx-font-weight: bold;" styleClass="ButtonMain" text="Simpan" />
-                <Button onAction="#hapusBtn" prefHeight="34.0" prefWidth="109.0" style="-fx-pref-width: 100;" styleClass="ButtonMain" text="Hapus" />
+            <HBox alignment="CENTER" prefHeight="72.0" prefWidth="1360.0" spacing="10">
+                <Button onAction="#SaveCategoryBtn" prefHeight="78.0" prefWidth="148.0" style="-fx-pref-width: 150; -fx-font-weight: bold;" styleClass="ButtonMain" text="Simpan" />
+                <Button onAction="#hapusBtn" prefHeight="81.0" prefWidth="109.0" style="-fx-pref-width: 150;" styleClass="ButtonMain" text="Hapus" />
             </HBox>
-            <TableView fx:id="KategoriTable" prefHeight="336.0" prefWidth="684.0">
+            <TableView fx:id="KategoriTable" prefHeight="467.0" prefWidth="1360.0">
                 <columns>
-                    <TableColumn fx:id="NoColumn" minWidth="0.666656494140625" prefWidth="78.0" text="No" />
-                    <TableColumn fx:id="KategoriColumn" minWidth="0.0" prefWidth="605.0" text="Kategori" />
+                    <TableColumn fx:id="NoColumn" minWidth="0.666656494140625" prefWidth="119.0" text="No" />
+                    <TableColumn fx:id="KategoriColumn" minWidth="0.0" prefWidth="1240.0" text="Kategori" />
                 </columns>
             </TableView>
         </VBox>

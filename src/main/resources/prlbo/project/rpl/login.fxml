@@ -11,63 +11,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.LoginController">
   <left>
-    <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #0698ff;" BorderPane.alignment="CENTER">
+    <AnchorPane prefHeight="900.0" prefWidth="700.0" style="-fx-background-color: #0698ff;" BorderPane.alignment="CENTER">
       <children>
-        <ImageView fitHeight="256.0" fitWidth="242.0" layoutX="54.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="533.0" fitWidth="518.0" layoutX="91.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
           <image>
             <Image url="@../../../Asset/To-Do-List.png" />
           </image>
         </ImageView>
-        <Text fill="WHITE" layoutX="110.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JADWALIN">
+        <Text fill="WHITE" layoutX="252.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JADWALIN" wrappingWidth="195.94482421875">
           <font>
-            <Font name="System Bold Italic" size="25.0" />
+            <Font name="System Bold Italic" size="35.0" />
           </font>
         </Text>
       </children>
     </AnchorPane>
   </left>
-  <right>
-    <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
+   <right>
+    <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
       <children>
-        <TextField fx:id="txtNama" layoutX="91.0" layoutY="196.0" prefWidth="168.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="txtPassword" layoutX="90.0" layoutY="244.0" prefHeight="27.0" prefWidth="171.0" promptText="Password" style="-fx-background-color: transparant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="btnLupa" layoutX="74.0" layoutY="279.0" mnemonicParsing="false" onAction="#Lupa" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Lupa Password ?" textFill="#0698ff">
+        <TextField fx:id="txtNama" layoutX="192.0" layoutY="319.0" prefHeight="50.0" prefWidth="350.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
                <font>
-                  <Font name="System Bold" size="10.0" />
+                  <Font size="20.0" />
+               </font></TextField>
+            <PasswordField fx:id="txtPassword" layoutX="192.0" layoutY="425.0" prefHeight="50.0" prefWidth="350.0" promptText="Password" style="-fx-background-color: transparant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font size="20.0" />
+               </font></PasswordField>
+            <Button fx:id="btnLupa" layoutX="159.0" layoutY="494.0" mnemonicParsing="false" onAction="#Lupa" prefHeight="58.0" prefWidth="182.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Lupa Password ?" textFill="#0698ff">
+               <font>
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-        <Button fx:id="btnLogin" layoutX="80.0" layoutY="328.0" mnemonicParsing="false" onAction="#Login" prefHeight="37.0" prefWidth="191.0" style="-fx-background-color: #0698ff; -fx-border-radius: 25;" styleClass="Buttonkeren" stylesheets="@../../../Asset/Style.css" text="Login" textFill="WHITE">
+        <Button fx:id="btnLogin" layoutX="205.0" layoutY="598.0" mnemonicParsing="false" onAction="#Login" prefHeight="79.0" prefWidth="324.0" style="-fx-background-color: #0698ff; -fx-border-radius: 25;" styleClass="Buttonkeren" stylesheets="@../../../Asset/Style.css" text="Login" textFill="WHITE">
           <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
           </padding>
           <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
           </font>
         </Button>
-        <Button fx:id="btnSignUp" layoutX="195.0" layoutY="431.0" mnemonicParsing="false" onAction="#Signup" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Registrasi" textFill="#0698ff">
+        <Button fx:id="btnSignUp" layoutX="409.0" layoutY="712.0" mnemonicParsing="false" onAction="#Signup" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: none;" styleClass="Linked" stylesheets="@../../../Asset/Style.css" text="Registrasi" textFill="#0698ff">
           <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
           </font>
         </Button>
-        <Text fill="#0698ff" layoutX="97.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+        <Text fill="#0698ff" layoutX="250.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" wrappingWidth="233.244140625">
           <font>
-            <Font name="System Bold" size="47.0" />
+            <Font name="System Bold" size="70.0" />
           </font>
         </Text>
-        <ImageView fitHeight="43.0" fitWidth="25.0" layoutX="55.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="118.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
           <image>
             <Image url="@../../../Asset/User.png" />
           </image>
         </ImageView>
-        <ImageView fitHeight="43.0" fitWidth="25.0" layoutX="55.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="118.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
           <image>
             <Image url="@../../../Asset/Pass.png" />
           </image>
         </ImageView>
-        <Text layoutX="74.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tidak mempunyai akun?" />
+        <Text layoutX="192.0" layoutY="742.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tidak mempunyai akun?">
+               <font>
+                  <Font size="20.0" />
+               </font></Text>
       </children>
     </AnchorPane>
-  </right>
+   </right>
 </BorderPane>

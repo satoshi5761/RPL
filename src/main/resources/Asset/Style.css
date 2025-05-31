@@ -14,13 +14,15 @@
     -fx-background-size: cover;
     -fx-font-family: "Baskerville Old Face";
     -fx-font-weight: bold;
+    -fx-font-size: 18px;
 }
 
 .ViewMain .column-header .label {
     -fx-text-fill: black;
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
 }
+
 
 .dialog-pane .header-panel {
     -fx-background-color: #2196f3;
