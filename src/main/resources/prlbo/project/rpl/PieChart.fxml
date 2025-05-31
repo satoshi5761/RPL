@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.PieChartController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="Main" stylesheets="@../../../Asset/Style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prlbo.project.rpl.Controller.PieChartController">
    <children>
-      <ComboBox fx:id="cmbox" layoutX="154.0" layoutY="24.0" prefHeight="25.0" prefWidth="292.0" promptText="Choose PieChart" />
+      <ComboBox fx:id="cmbox" layoutX="154.0" layoutY="24.0" prefHeight="25.0" prefWidth="292.0" promptText="Choose PieChart" style="-fx-background-color: white;" />
       <VBox layoutX="109.0" layoutY="56.0" prefHeight="322.0" prefWidth="382.0">
          <children>
             <PieChart fx:id="piechart" />

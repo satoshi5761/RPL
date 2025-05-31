@@ -288,7 +288,11 @@ public class MainController {
         Stage curstage = getStage(event);
         Stage newstage = new Stage();
         newstage.setScene(new Scene(root));
-        
+
+        newstage.setResizable(false);
+        newstage.setTitle(sfxml.startsWith("Complete") ? "Complete Task" : "Uncompleted Task");
+        newstage.getIcons().add(new Image(getClass().getResourceAsStream("/Asset/To-Do-List.png")));
+
         newstage.initOwner(curstage);
         newstage.initModality(Modality.WINDOW_MODAL);
         newstage.showAndWait();
@@ -342,6 +346,11 @@ public class MainController {
         main.setIdacc(idacc);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+
+        stage.setResizable(false);
+        stage.getIcons().add(new Image(PesanMessage.class.getResourceAsStream("/Asset/To-Do-List.png")));
+        stage.setTitle("Pie Chart - Task");
+
         stage.initOwner(getStage(e));
         stage.initModality(Modality.WINDOW_MODAL);
         stage.showAndWait();

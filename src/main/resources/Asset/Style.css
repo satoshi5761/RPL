@@ -10,11 +10,16 @@
     -fx-background-image: url("Background.jpg");
 }
 .Main {
-    -fx-background-image: url("Background.jpg");;
+    -fx-background-image: url("Background.jpg");
+    -fx-background-size: cover;
+    -fx-font-family: "Baskerville Old Face";
+    -fx-font-weight: bold;
 }
 
-.ViewMain {
-    -fx-background-image: url("BGView.jpg");
+.ViewMain .column-header .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
 }
 
 .dialog-pane .header-panel {
@@ -69,3 +74,4 @@
 .Linked:hover {
     -fx-text-fill: red;
 }
+

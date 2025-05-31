@@ -55,18 +55,4 @@ public class CompletedTaskController {
         CompletedTable.setItems(db.ShowCompletedTaskDB(idacc));
         db.tutup_database();
     }
-
-    Stage getStage(ActionEvent e) {
-        /* Mendapatkan Stage dari node objek e yang di lakukan action*/
-        return (Stage) (((Node) e.getSource()).getScene().getWindow());
-    }
-
-    @FXML
-    void Kembali(ActionEvent event) throws IOException {
-        FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/main.fxml"));
-        Parent root = fxml_load.load();
-        Stage currStage = getStage(event);
-        currStage.setScene(new Scene(root));
-        currStage.show();
-    }
 }

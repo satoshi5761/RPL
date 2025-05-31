@@ -21,7 +21,7 @@ public class App extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("JADWALIN");
             primaryStage.setWidth(725);
-            primaryStage.setHeight(535);
+            primaryStage.setHeight(570);
             primaryStage.setResizable(false);
             primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/Asset/To-Do-List.png")));
             primaryStage.show();
