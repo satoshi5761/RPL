@@ -48,20 +48,25 @@ public class LupaPasswordController {
         if(nama.trim().isEmpty() || password.trim().isEmpty() || password1.trim().isEmpty()) {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Inputan tidak sesuai");
         } else if(password.equals(password1)) {
-            DatabaseController db = new DatabaseController();
-            int sucess = db.forgot(nama, password);
-            db.tutup_database();
-            if(sucess == 1) {
-                System.out.println("Ubah Clicked");
-                FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
-                Parent root = fxml_load.load();
-                Stage currStage = getStage(event);
-                currStage.setScene(new Scene(root));
-                currStage.show();
-            } else if (sucess == 0){
-                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password");
+            if(password.length() < 8 || password1.length() < 8) {
+                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Password minimal 8 karakter");
             } else {
-                PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Username tidak ditemukan");
+                DatabaseController db = new DatabaseController();
+                int sucess = db.forgot(nama, password);
+                db.tutup_database();
+
+                if (sucess == 1) {
+                    System.out.println("Ubah Clicked");
+                    FXMLLoader fxml_load = new FXMLLoader(getClass().getResource("/prlbo/project/rpl/login.fxml"));
+                    Parent root = fxml_load.load();
+                    Stage currStage = getStage(event);
+                    currStage.setScene(new Scene(root));
+                    currStage.show();
+                } else if (sucess == 0) {
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password");
+                } else {
+                    PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Username tidak ditemukan");
+                }
             }
         } else {
             PesanMessage.tampilpesan(Alert.AlertType.ERROR, "INFORMASI", "Error", "Gagal Ubah Password\n(Password pertama tidak sesuai\ndengan password kedua)");
