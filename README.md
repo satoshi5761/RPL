@@ -1,29 +1,46 @@
-# RPL
-#### Pengajar
-Budi Susanto, S.Kom., M.T <br>
+# JavaFX To-Do List Application
 
-#### Anggota <br>
-| No. Presensi | NIM | Nama |
-|--------------|-----|------|
-|13 | 71230974 | Jimmy Christian |
-|14 | 71230975 | Thomas Aquinas Ryan Wisnu Adi |
-|32 | 71231002 | Philip Deric Kho |
-|46 | 71231050 | Samuel Natanael |
+A desktop task management application built with JavaFX that helps users organize, track, and manage their daily activities through an intuitive graphical user interface.
 
-## Getting Started
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Demo Video
 
-## Folder Structure
+🎥 Watch the application in action:
 
-The workspace contains two folders by default, where:
+https://www.youtube.com/watch?v=TjwQLu0oaN4
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Screenshot
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+<p align="center">
+  <img src="images/tampilan.png" width="700" alt="JavaFX To-Do List Application">
+</p>
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Features
 
-## Dependency Management
+- Create new tasks
+- Edit existing tasks
+- Delete tasks
+- Mark tasks as completed
+- User-friendly graphical interface
+- Persistent data storage using a local database
+- Desktop application built with JavaFX
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies)..
+
+## Team Members
+
+| NIM | Name |
+|------|------|
+| 71230974 | Jimmy Christian |
+| 71230975 | Thomas Aquinas Ryan Wisnu Adi |
+| 71231002 | Philip Deric Kho |
+| 71231050 | Samuel Natanael |
+
+## Course Information
+
+Developed as part of the Software Engineering (Rekayasa Perangkat Lunak) course.
+
+**Instructor:**  
+Budi Susanto, S.Kom., M.T.
+
+## License
+
+This project was developed for educational purposes.
